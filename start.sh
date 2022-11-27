@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "v0.9a"
+echo "v0.10a"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -13,7 +13,9 @@ $MY_SUDO apt update && $MY_SUDO apt upgrade -y
 [[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && WSL=0 || WSL=1
 [[ ! -f /etc/wsl.conf ]] && sudo touch /etc/wsl.conf
 #[[ $(sudo ls /etc/wsl.conf -la  | awk '{ print $5 }') = "0" ]] 
-
+curl -L https://raw.githubusercontent.com/abraxas678/startp/main/wsl.conf -o wsl.conf
+sudo cp wsl.conf /etc/
+read -p BUTTON me 
 echo
 echo ### USER-CHECK
 sleep 1
