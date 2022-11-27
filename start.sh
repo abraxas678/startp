@@ -55,9 +55,24 @@ if [[ $(whoami) = "abraxas" ]]; then
     mkdir $HOME/tmp/unison
     cd $HOME/tmp/unison
     wget https://github.com/bcpierce00/unison/releases/download/v2.52.1/unison-v2.52.1+ocaml-4.04.2+x86_64.linux.tar.gz  
+    tar -xf unison-v2.52.1+ocaml-4.04.2+x86_64.linux.tar.gz  
     sudo mv bin/uni* /usr/bin
   fi
   cd $HOME/tmp
+unison /home/abraxas/.ssh ssh://ionos2///home/abraxas/.ssh -auto -batch
+unison /home/abraxas/.config ssh://ionos2///home/abraxas/.config -auto -batch
+unison /home/abraxas/dotfiles ssh://ionos2///home/abraxas/dotfiles -auto -batch
+rclone copy df:bin/age.sh /home/abraxas/bin -P
+rclone copy df:.zshrc /home/abraxas/ -P
+
+cd $HOME
+git clone https://github.com/abraxas678/startp.git
+cd startp
+./apt-install.sh
+./pueue-setup.sh
+
+#unison /home/abraxas/bin ssh://ionos2///home/abraxas/bin
+
 #  git clone git@github.com/abraxas678/start.git  
 #  cd $HOME/tmp/start
 #  chmod +x *.s
