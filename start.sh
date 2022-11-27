@@ -58,12 +58,12 @@ if [[ $(whoami) = "abraxas" ]]; then
     sudo mv bin/uni* /usr/bin
   fi
   cd $HOME/tmp
-  git clone git@github.com/abraxas678/start.git  
-  cd $HOME/tmp/start
-  chmod +x *.s
-  ./pueue-setup.sh
-  ./install_brew_original.sh 
-  ./install_brew_original2.sh 
-  ./apt-install.sh
-
+#  git clone git@github.com/abraxas678/start.git  
+#  cd $HOME/tmp/start
+#  chmod +x *.s
+#  ./pueue-setup.sh
+#  ./install_brew_original.sh 
+#  ./install_brew_original2.sh 
+#  ./apt-install.sh
+mkdir $HOME/.unison
 fi
