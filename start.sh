@@ -27,6 +27,15 @@ sleep 1
 curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >$HOME/tmp/check_user.sh
 chmod +x $HOME/tmp/*.sh
 /bin/bash $HOME/tmp/check_user.sh
+echo
+read -p "enter hostname: >> " MY_HOSTNAME
+  echo MY_HOSTNAME $MY_HOSTNAME
+  echo "current hostname: $(hostname)"
+  echo
+if [[ $(hostname) != *"$MY_HOSTNAME"* ]]; then
+    curl -L  https://raw.githubusercontent.com/abraxas678/start/master/change-hostname.sh >$HOME/tmp/change-hostname.sh
+    $HOME/tmp/change-hostname.sh
+fi 
 
 if [[ $(whoami) = "abraxas" ]]; then
   sudo apt update && curl -fsSL https://tailscale.com/install.sh | sh
@@ -42,16 +51,6 @@ if [[ $(whoami) = "abraxas" ]]; then
   while [[ $MY_Y != *"y"* ]]; do
     read -p "'y' to continue" MY_Y
   done
-  echo
-  read -p "enter hostname: >> " MY_HOSTNAME
-  echo MY_HOSTNAME $MY_HOSTNAME
-  echo "current hostname: $(hostname)"
-  echo
-  if [[ $(hostname) != *"$MY_HOSTNAME"* ]]; then
-    curl -L  https://raw.githubusercontent.com/abraxas678/start/master/change-hostname.sh >$HOME/tmp/change-hostname.sh
-    chmod +x $HOME/start/*.sh
-    $HOME/tmp/change-hostname.sh
-  fi 
   if [[ $(which unison | wc -l) = "0" ]]; then
     mkdir $HOME/tmp/unison
     cd $HOME/tmp/unison
