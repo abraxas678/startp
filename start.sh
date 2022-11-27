@@ -10,6 +10,9 @@ curl -L https://raw.githubusercontent.com/abraxas678/start/master/check_user.sh 
 #curl -L https://raw.githubusercontent.com/abraxas678/start/master/start-b.sh >start-b.sh
 chmod +x $HOME/tmp/*.sh
 $MY_SUDO apt update && $MY_SUDO apt upgrade -y
+[[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && WSL=0 || WSL=1
+[[ ! -f /etc/wsl.conf ]] && sudo touch /etc/wsl.conf
+#[[ $(sudo ls /etc/wsl.conf -la  | awk '{ print $5 }') = "0" ]] 
 
 echo
 echo ### USER-CHECK
