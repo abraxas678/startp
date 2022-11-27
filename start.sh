@@ -6,9 +6,7 @@ echo "v0.10a"
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
 cd $HOME/tmp
 #rm $HOME/tmp/start-b.sh* -f
-curl -L https://raw.githubusercontent.com/abraxas678/start/master/check_user.sh >check_user.sh
 #curl -L https://raw.githubusercontent.com/abraxas678/start/master/start-b.sh >start-b.sh
-chmod +x $HOME/tmp/*.sh
 $MY_SUDO apt update && $MY_SUDO apt upgrade -y
 [[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && WSL=0 || WSL=1
 [[ ! -f /etc/wsl.conf ]] && sudo touch /etc/wsl.conf
@@ -19,6 +17,8 @@ read -p BUTTON me
 echo
 echo ### USER-CHECK
 sleep 1
+curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >$HOME/tmp/check_user.sh
+chmod +x $HOME/tmp/*.sh
 /bin/bash $HOME/tmp/check_user.sh
 
 if [[ $(whoami) = "abraxas" ]]; then
