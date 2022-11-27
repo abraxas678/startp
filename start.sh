@@ -58,7 +58,7 @@ if [[ $(whoami) = "abraxas" ]]; then
     sudo mv bin/uni* /usr/bin
   fi
   cd $HOME/tmp
-  git clone https://github.com/abraxas678/start.git  
+  git clone git@github.com/abraxas678/start.git  
   cd $HOME/tmp/start
   chmod +x *.s
   ./pueue-setup.sh
