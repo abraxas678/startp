@@ -26,7 +26,7 @@ if [[ $(whoami) = "abraxas" ]]; then
   echo https://login.tailscale.com/admin/machines #modify name
   echo
   MY_Y="0"
-  while [[ $MY_Y != "y" ]]; do
+  while [[ $MY_Y != *"y"* ]]; do
     read -p "'y' to continue" MY_Y
   done
   echo
