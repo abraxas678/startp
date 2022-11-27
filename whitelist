@@ -1,0 +1,7 @@
+# Unison preferences file
+auto = true
+batch = true
+prefer = newer
+
+path = docker
+include whitelist-ohne-docker

@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "v0.12a"
+echo "v0.13a"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -66,4 +66,6 @@ if [[ $(whoami) = "abraxas" ]]; then
 #  ./install_brew_original2.sh 
 #  ./apt-install.sh
 mkdir $HOME/.unison
+cd  $HOME/.unison
+unison $HOME/.unison ssh://ionos1/.unison -auto -batch             
 fi
