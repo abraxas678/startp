@@ -1,0 +1,48 @@
+# Unison preferences file
+auto = true
+batch = true
+prefer = newer
+
+path = github
+follow = Path sync_home
+#path = sync_home
+path = bin
+path = .config
+path = myshare
+path = .ssh
+path = .q
+path = .nb
+path = .local
+path = .ansible
+path = abraxas/start
+path = ansible
+path = myq
+path = ghq
+path = .cloudflared
+path = .mojopaste
+path = .unison/whitelist
+path = .unison/whitelist-ohne-docker
+path = .unison/whitelist-exclude
+path = .unison/ubuntu18
+path = .unison/*prf
+path = .unison/aws.prf
+path = .unison/wsl18.prf 
+path = .unison/wsl20.prf 
+path = .unison/wsl21.prf 
+path = .unison/hv-ubu4.prf 
+path = .unison/wsl1.prf 
+path = .unison/ionos.prf
+path = .unison/gc.prf
+path = .unison/snas.prf
+path = .unison/ionos2.prf
+path = .unison/lubuntu.prf
+path = .unison/razer.prf
+path = .unison/yoga.prf
+path = ansible
+path = *prf
+path = .*
+path = Regex .*.ich-dot
+path = Regex *.ich-dot2
+
+include whitelist-exclude
+ignorenot = Name .unison/*.prf

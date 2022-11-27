@@ -70,7 +70,9 @@ git clone https://github.com/abraxas678/startp.git
 cd startp
 ./apt-install.sh
 ./pueue-setup.sh
-
+./install_brew_original.sh 
+./install_brew_original2.sh 
+./rich_cli-install.sh
 #unison /home/abraxas/bin ssh://ionos2///home/abraxas/bin
 
 #  git clone git@github.com/abraxas678/start.git  
