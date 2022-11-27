@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "v0.11a"
+echo "v0.12a"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -13,6 +13,13 @@ $MY_SUDO apt update && $MY_SUDO apt upgrade -y
 #[[ $(sudo ls /etc/wsl.conf -la  | awk '{ print $5 }') = "0" ]] 
 curl -L https://raw.githubusercontent.com/abraxas678/startp/main/wsl.conf -o wsl.conf
 sudo cp wsl.conf /etc/
+echo 
+echo "wsl.conf:"
+echo "========="
+echo
+echo cat /etc/wsl.conf
+cat /etc/wsl.conf
+echo
 read -p BUTTON me 
 echo
 echo ### USER-CHECK
