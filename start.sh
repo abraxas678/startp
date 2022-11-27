@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "v0.10a"
+echo "v0.11a"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
