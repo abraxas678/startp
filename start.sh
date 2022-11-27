@@ -9,10 +9,11 @@ cd $HOME/tmp
 curl -L https://raw.githubusercontent.com/abraxas678/start/master/check_user.sh >check_user.sh
 #curl -L https://raw.githubusercontent.com/abraxas678/start/master/start-b.sh >start-b.sh
 chmod +x $HOME/tmp/*.sh
-$MY_SUDO apt get update && $MY_SUDO apt get upgrade -y
+$MY_SUDO apt update && $MY_SUDO apt upgrade -y
 
 echo
 echo ### USER-CHECK
+sleep 1
 /bin/bash $HOME/tmp/check_user.sh
 
 if [[ $(whoami) = "abraxas" ]]; then
