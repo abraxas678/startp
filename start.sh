@@ -88,5 +88,5 @@ cd startp
 #  ./apt-install.sh
 mkdir $HOME/.unison
 cd  $HOME/.unison
-unison $HOME/.unison ssh://ionos1/.unison -auto -batch             
+unison ionos2
 fi
