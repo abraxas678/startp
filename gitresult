@@ -1,0 +1,40 @@
+hint: Pulling without specifying how to reconcile divergent branches is
+hint: discouraged. You can squelch this message by running one of the following
+hint: commands sometime before your next pull:
+hint: 
+hint:   git config pull.rebase false  # merge (the default strategy)
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint: 
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+From github.com:abraxas678/startp
+ * branch            master     -> FETCH_HEAD
+   b5c8fe5..368f237  master     -> origin/master
+Updating b5c8fe5..368f237
+Fast-forward
+ apt-install.sh            | 41 +++++++++++++++++++++
+ change-hostname.sh        | 28 ++++++++++++++
+ check_user.sh             | 12 ++++++
+ install_brew_original.sh  |  3 ++
+ install_brew_original2.sh |  5 +++
+ ionos2.prf                |  3 ++
+ pueue-setup.sh            | 15 ++++++++
+ start.sh                  | 93 +++++++++++++++++++++++++++++++++++++++++++++++
+ whitelist                 |  7 ++++
+ whitelist-ohne-docker     | 48 ++++++++++++++++++++++++
+ wsl.conf                  |  3 ++
+ 11 files changed, 258 insertions(+)
+ create mode 100755 apt-install.sh
+ create mode 100755 change-hostname.sh
+ create mode 100755 check_user.sh
+ create mode 100755 install_brew_original.sh
+ create mode 100755 install_brew_original2.sh
+ create mode 100644 ionos2.prf
+ create mode 100755 pueue-setup.sh
+ create mode 100755 start.sh
+ create mode 100644 whitelist
+ create mode 100644 whitelist-ohne-docker
+ create mode 100644 wsl.conf
