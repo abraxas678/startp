@@ -9,7 +9,6 @@ sudo apt install -y jq polybar copyq \
   fd-find \
   xclip \
   gcalcli \
-           plocate \
            xorg \
           ssh \
           xclip \
@@ -36,5 +35,7 @@ sudo apt install -y jq polybar copyq \
            unison \
            sshpass \
            ssh-askpass 
+           
+sudo apt install -y plocate 
 
 
