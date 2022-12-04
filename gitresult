@@ -38,3 +38,6 @@ Fast-forward
  create mode 100644 whitelist
  create mode 100644 whitelist-ohne-docker
  create mode 100644 wsl.conf
+From github.com:abraxas678/startp
+ * branch            master     -> FETCH_HEAD
+Already up to date.
