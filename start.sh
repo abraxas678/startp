@@ -47,10 +47,11 @@ if [[ $(whoami) = "abraxas" ]]; then
   echo
   echo https://login.tailscale.com/admin/machines #modify name
   echo
-  MY_Y="0"
+  MY_Y="y"
   while [[ $MY_Y != *"y"* ]]; do
     read -p "'y' to continue" MY_Y
   done
+  read -p BUTTON me
   if [[ $(which unison | wc -l) = "0" ]]; then
     mkdir $HOME/tmp/unison
     cd $HOME/tmp/unison
