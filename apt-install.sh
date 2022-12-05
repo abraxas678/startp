@@ -2,6 +2,7 @@
 sudo apt install -y jq polybar copyq \
  cockpit \
            exa \
+               wormhole \
            bat \
   xauth \
   keychain \
