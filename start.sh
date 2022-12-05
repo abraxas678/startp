@@ -10,7 +10,10 @@ cd $HOME/tmp
 $MY_SUDO apt update && $MY_SUDO apt upgrade -y
 sudo apt install unzip -y
 ### uname -r | tr '[:upper:]' '[:lower:]'
-UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //')
+UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g'); 
+DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
+MACHINE="$DIST$UBU_VERS"
+echo MACHINE $MACHINE
 [[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && WSL=0 || WSL=1
 [[ ! -f /etc/wsl.conf ]] && sudo touch /etc/wsl.conf
 #[[ $(sudo ls /etc/wsl.conf -la  | awk '{ print $5 }') = "0" ]] 
@@ -37,7 +40,7 @@ read -p "enter hostname: >> " MY_HOSTNAME
   echo
 if [[ $(hostname) != *"$MY_HOSTNAME"* ]]; then
     curl -L  https://raw.githubusercontent.com/abraxas678/start/master/change-hostname.sh >$HOME/tmp/change-hostname.sh
-    $HOME/tmp/change-hostname.sh
+    /bin/bash $HOME/tmp/change-hostname.sh
 fi 
 
 if [[ $(whoami) = "abraxas" ]]; then
