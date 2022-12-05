@@ -60,9 +60,17 @@ if [[ $(whoami) = "abraxas" ]]; then
     sudo mv bin/uni* /usr/bin
   fi
   cd $HOME/tmp
-unison /home/abraxas/.ssh ssh://ionos2///home/abraxas/.ssh -auto -batch
-unison /home/abraxas/.config ssh://ionos2///home/abraxas/.config -auto -batch
-unison /home/abraxas/dotfiles ssh://ionos2///home/abraxas/dotfiles -auto -batch
+VERS=$(/usr/bin/wormhole --version)
+[[ $VERS = *"command not"* ]] && sudo apt install -y wormhole
+cd /home/abraxas
+mv .ssh .sshOLD
+mv .config .configOLD
+mv bin binOLD
+mv dotfiles dotfilesOLD
+echo "execute on other PC:   cd /home/abraxas; /usr/bin/wormhole send .config;  /usr/bin/wormhole send .ssh;  /usr/bin/wormhole dotfiles;  /usr/bin/wormhole send bin --ignore-unsendable-files"
+#unison /home/abraxas/.ssh ssh://ionos2///home/abraxas/.ssh -auto -batch
+#unison /home/abraxas/.config ssh://ionos2///home/abraxas/.config -auto -batch
+#unison /home/abraxas/dotfiles ssh://ionos2///home/abraxas/dotfiles -auto -batch
 cp /home/abraxas/dotfiles/* /home/abraxas -r
 cp /home/abraxas/dotfiles/.* /home/abraxas -r
 source /home/abraxas/.zshrc
