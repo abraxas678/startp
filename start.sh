@@ -28,7 +28,11 @@ curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >
 chmod +x $HOME/tmp/*.sh
 /bin/bash $HOME/tmp/check_user.sh
 echo
-read -p "enter hostname: >> " MY_HOSTNAME
+cd /home/abraxas   
+mv .config .configOLD
+mv bin binOLD
+mv dotfiles dotfilesOLD
+mv .ssh .sshOLDread -p "enter hostname: >> " MY_HOSTNAME
   echo MY_HOSTNAME $MY_HOSTNAME
   echo "current hostname: $(hostname)"
   echo
@@ -60,9 +64,15 @@ if [[ $(whoami) = "abraxas" ]]; then
     sudo mv bin/uni* /usr/bin
   fi
   cd $HOME/tmp
-unison /home/abraxas/.ssh ssh://ionos2///home/abraxas/.ssh -auto -batch
-unison /home/abraxas/.config ssh://ionos2///home/abraxas/.config -auto -batch
-unison /home/abraxas/dotfiles ssh://ionos2///home/abraxas/dotfiles -auto -batch
+cd /home/abraxas   
+mv .config .configOLD
+mv bin binOLD
+mv dotfiles dotfilesOLD
+mv .ssh .sshOLD
+echo EXECUTE ON ExITING MACHINE:   cd /home/abraxas; wormhole send .config; wormhole send .ssh; wormhole send bin --ignore-unsendable-files; wormhole send dotfiles
+#unison /home/abraxas/.ssh ssh://ionos2///home/abraxas/.ssh -auto -batch
+#unison /home/abraxas/.config ssh://ionos2///home/abraxas/.config -auto -batch
+#unison /home/abraxas/dotfiles ssh://ionos2///home/abraxas/dotfiles -auto -batch
 cp /home/abraxas/dotfiles/* /home/abraxas -r
 cp /home/abraxas/dotfiles/.* /home/abraxas -r
 source /home/abraxas/.zshrc
