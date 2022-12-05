@@ -74,6 +74,7 @@ echo "execute on other PC:   cd /home/abraxas; /usr/bin/wormhole send .config;  
 #unison /home/abraxas/.ssh ssh://ionos2///home/abraxas/.ssh -auto -batch
 #unison /home/abraxas/.config ssh://ionos2///home/abraxas/.config -auto -batch
 #unison /home/abraxas/dotfiles ssh://ionos2///home/abraxas/dotfiles -auto -batch
+read -p BUTTON me
 cp /home/abraxas/dotfiles/* /home/abraxas -r
 cp /home/abraxas/dotfiles/.* /home/abraxas -r
 source /home/abraxas/.zshrc
