@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "v0.18"
+echo "v0.19"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -46,7 +46,7 @@ MY_HOSTNAME=$MACHINE
   echo
   sleep 2
 if [[ $(hostname) != *"$MY_HOSTNAME"* ]]; then
-    curl -L  https://raw.githubusercontent.com/abraxas678/start/master/change-hostname.sh >$HOME/tmp/change-hostname.sh
+    curl -L  https://raw.githubusercontent.com/abraxas678/startp/master/change-hostname.sh >$HOME/tmp/change-hostname.sh
     chmod +x *.sh
     /bin/bash $HOME/tmp/change-hostname.sh
 fi 
