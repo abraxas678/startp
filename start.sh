@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "v0.20"
+echo "v0.21"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -41,7 +41,7 @@ echo
 echo cat /etc/wsl.conf
 cat /etc/wsl.conf
 echo
-read -p BUTTON -t 30 me 
+read -p BUTTON30 -t 30 me 
 echo
 echo
 MY_HOSTNAME=$MACHINE
@@ -70,7 +70,7 @@ if [[ $(whoami) = "abraxas" ]]; then
   while [[ $MY_Y != *"y"* ]]; do
     read -p "'y' to continue" MY_Y
   done
-  read -p BUTTON me
+  read -p BUTTON30 -t 30 me
   if [[ $(which unison | wc -l) = "0" ]]; then
     echo; echo install unison
     mkdir $HOME/tmp/unison
