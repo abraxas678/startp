@@ -7,6 +7,7 @@ echo "v0.15"
 cd $HOME/tmp
 #rm $HOME/tmp/start-b.sh* -f
 #curl -L https://raw.githubusercontent.com/abraxas678/start/master/start-b.sh >start-b.sh
+echo; echo "update & upgrade"
 $MY_SUDO apt update && $MY_SUDO apt upgrade -y
 sudo apt install unzip -y
 ### uname -r | tr '[:upper:]' '[:lower:]'
@@ -32,18 +33,21 @@ cat /etc/wsl.conf
 echo
 read -p BUTTON me 
 echo
-echo ### USER-CHECK
+echo "### USER-CHECK"
 sleep 1
 curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >$HOME/tmp/check_user.sh
 chmod +x $HOME/tmp/*.sh
 /bin/bash $HOME/tmp/check_user.sh
 echo
-read -p "enter hostname: >> " MY_HOSTNAME
+MY_HOSTNAME=$MACHINE
+#read -p "enter hostname: >> " MY_HOSTNAME
   echo MY_HOSTNAME $MY_HOSTNAME
   echo "current hostname: $(hostname)"
   echo
+  sleep 2
 if [[ $(hostname) != *"$MY_HOSTNAME"* ]]; then
     curl -L  https://raw.githubusercontent.com/abraxas678/start/master/change-hostname.sh >$HOME/tmp/change-hostname.sh
+    chmod +x *.sh
     /bin/bash $HOME/tmp/change-hostname.sh
 fi 
 
