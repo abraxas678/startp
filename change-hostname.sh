@@ -36,6 +36,8 @@ sudo cat /etc/hosts
 else
 sudo nano /etc/hosts
 fi
-sudo echo $MY_HOSTNAME >/etc/hostname
+echo $MY_HOSTNAME > $HOME/tmp/hostname
+sudo mv $HOME/tmp/hostname /etc/
+
 echo ">>> now reboot <<<"
 read me
