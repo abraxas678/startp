@@ -20,11 +20,9 @@ echo
 sudo cat /etc/wsl.conf
 echo
 sudo cat /etc/hosts
-echo ">>> now reboot <<<"
-read me
 else
-sudo nano /etc/hostname
 sudo nano /etc/hosts
+fi
+sudo echo $MY_HOSTNAME >/etc/hostname
 echo ">>> now reboot <<<"
 read me
-fi
