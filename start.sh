@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "v0.14"
+echo "v0.15"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -13,7 +13,10 @@ sudo apt install unzip -y
 UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g'); 
 DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
 MACHINE="$DIST$UBU_VERS"
+MACHINE=$(echo $MACHINE | sed 's/ //g')
+echo
 echo MACHINE $MACHINE
+echo
 sleep 3
 [[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && WSL=0 || WSL=1
 [[ ! -f /etc/wsl.conf ]] && sudo touch /etc/wsl.conf
