@@ -14,10 +14,12 @@ chmod +x $HOME/tmp/*.sh
 cd $HOME/tmp
 #rm $HOME/tmp/start-b.sh* -f
 #curl -L https://raw.githubusercontent.com/abraxas678/start/master/start-b.sh >start-b.sh
+
 echo; echo "update & upgrade"
 $MY_SUDO apt update && $MY_SUDO apt upgrade -y
 sudo apt install unzip -y
 ### uname -r | tr '[:upper:]' '[:lower:]'
+
 UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g'); 
 DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
 MACHINE="$DIST$UBU_VERS"
@@ -26,6 +28,7 @@ echo
 echo MACHINE $MACHINE
 echo
 sleep 3
+
 [[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && WSL=0 || WSL=1
 [[ ! -f /etc/wsl.conf ]] && sudo touch /etc/wsl.conf
 #[[ $(sudo ls /etc/wsl.conf -la  | awk '{ print $5 }') = "0" ]] 
@@ -38,7 +41,7 @@ echo
 echo cat /etc/wsl.conf
 cat /etc/wsl.conf
 echo
-read -p BUTTON me 
+read -p BUTTON -t 30 me 
 echo
 echo
 MY_HOSTNAME=$MACHINE
