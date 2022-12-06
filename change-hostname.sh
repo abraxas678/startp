@@ -2,7 +2,20 @@
 echo
 sudo chown abraxas: /home -R
 mkidr $HOME/tmp >/dev/null 2>/dev/null
-read -p "is this a WSL? (y/n)" MY_WSL
+
+UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g'); 
+DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
+MACHINE="$DIST$UBU_VERS"
+MACHINE=$(echo $MACHINE | sed 's/ //g')
+echo
+echo MACHINE $MACHINE
+MY_HOSTNAME=$MACHINE
+echo
+sleep 3
+
+[[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && MY_WSL=0 || MY_WSL=1
+
+#read -p "is this a WSL? (y/n)" MY_WSL
 [[ ! $MY_HOSTNAME ]] && read -p "new hostname: >>> " MY_HOSTNAME
 
 if [[ $MY_WSL = "y" ]]; then
