@@ -1,5 +1,7 @@
 #!/bin/bash
 echo
+sudo chown abraxas: /home -R
+mkidr $HOME/tmp >/dev/null 2>/dev/null
 read -p "is this a WSL? (y/n)" MY_WSL
 [[ ! $MY_HOSTNAME ]] && read -p "new hostname: >>> " MY_HOSTNAME
 
