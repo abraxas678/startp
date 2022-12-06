@@ -6,7 +6,8 @@ echo "#####################################################################"
 echo "CURRENT USER: $USER"
 read -t 1 me
 #echo  >/home/abraxas/mysudo
-if [[ $USER != "abraxas" ]] && [[ ! $(id -u abraxas) ]]; then
+### && [[ ! $(id -u abraxas) ]]
+if [[ $USER != "abraxas" ]]; then
   adduser abraxas 
   passwd abraxas 
   usermod -aG sudo  abraxas 
