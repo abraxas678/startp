@@ -1,9 +1,16 @@
 #!/bin/bash
 clear
-echo "v0.19"
+echo "v0.20"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
+
+echo "### USER-CHECK"
+sleep 1
+curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >$HOME/tmp/check_user.sh
+chmod +x $HOME/tmp/*.sh
+/bin/bash $HOME/tmp/check_user.sh
+
 cd $HOME/tmp
 #rm $HOME/tmp/start-b.sh* -f
 #curl -L https://raw.githubusercontent.com/abraxas678/start/master/start-b.sh >start-b.sh
@@ -33,11 +40,6 @@ cat /etc/wsl.conf
 echo
 read -p BUTTON me 
 echo
-echo "### USER-CHECK"
-sleep 1
-curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >$HOME/tmp/check_user.sh
-chmod +x $HOME/tmp/*.sh
-/bin/bash $HOME/tmp/check_user.sh
 echo
 MY_HOSTNAME=$MACHINE
 #read -p "enter hostname: >> " MY_HOSTNAME
