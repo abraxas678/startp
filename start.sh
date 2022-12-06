@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "v0.17"
+echo "v0.18"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -67,6 +67,7 @@ if [[ $(whoami) = "abraxas" ]]; then
   done
   read -p BUTTON me
   if [[ $(which unison | wc -l) = "0" ]]; then
+    echo; echo install unison
     mkdir $HOME/tmp/unison
     cd $HOME/tmp/unison
     wget https://github.com/bcpierce00/unison/releases/download/v2.52.1/unison-v2.52.1+ocaml-4.04.2+x86_64.linux.tar.gz  
