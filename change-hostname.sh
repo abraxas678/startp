@@ -11,6 +11,7 @@ echo
 echo MACHINE $MACHINE
 MY_HOSTNAME=$MACHINE
 echo
+echo MY_HOSTNAME $MY_HOSTNAME
 sleep 3
 
 [[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && MY_WSL=0 || MY_WSL=1
