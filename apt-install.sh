@@ -37,6 +37,6 @@ sudo apt install -y jq polybar copyq \
            sshpass \
            ssh-askpass 
            
-sudo apt install -y plocate 
+#sudo apt install -y plocate 
 
 
