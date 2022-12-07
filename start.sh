@@ -103,6 +103,7 @@ cd $HOME
 echo #####################################################################
 echo                       CLONE STARTP
 echo #####################################################################
+rm -rf $HOME/startp
 git clone https://github.com/abraxas678/startp.git
 cd startp
 ./apt-install.sh
