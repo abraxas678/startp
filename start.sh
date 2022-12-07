@@ -57,6 +57,9 @@ if [[ $(hostname) != *"$MY_HOSTNAME"* ]]; then
 fi 
 
 if [[ $(whoami) = "abraxas" ]]; then
+echo #####################################################################
+echo                       TAILSCALE
+echo #####################################################################
   [[ $(tailscale status) = *"failed to connect"* ]] && sudo apt update && curl -fsSL https://tailscale.com/install.sh | sh
   echo
   sudo tailscale up --ssh
@@ -80,12 +83,15 @@ if [[ $(whoami) = "abraxas" ]]; then
     sudo mv bin/uni* /usr/bin
   fi
   cd $HOME/tmp
+echo #####################################################################
+echo                       WORMHOLE
+echo #####################################################################
 VERS=$(/usr/bin/wormhole --version)
 [[ $VERS = *"command not"* ]] && sudo apt install -y wormhole
 #unison /home/abraxas/.ssh ssh://ionos2///home/abraxas/.ssh -auto -batch
 #unison /home/abraxas/.config ssh://ionos2///home/abraxas/.config -auto -batch
 #unison /home/abraxas/dotfiles ssh://ionos2///home/abraxas/dotfiles -auto -batch
-read -p BUTTON me
+read -p BUTTON30 -t 30 me
 cp /home/abraxas/dotfiles/* /home/abraxas -r
 cp /home/abraxas/dotfiles/.* /home/abraxas -r
 source /home/abraxas/.zshrc
@@ -94,6 +100,9 @@ rclone copy df:bin/age.sh /home/abraxas/bin -P
 rclone copy df:.zshrc /home/abraxas/ -P
 
 cd $HOME
+echo #####################################################################
+echo                       CLONE STARTP
+echo #####################################################################
 git clone https://github.com/abraxas678/startp.git
 cd startp
 ./apt-install.sh
