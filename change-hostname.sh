@@ -10,7 +10,6 @@ UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g');
 DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
 MACHINE="$DIST$UBU_VERS"
 MACHINE=$(echo $MACHINE | sed 's/ //g')
-MACHINE=$(echo $MACHINE | sed 's/..*//g')
 echo
 echo MACHINE $MACHINE
 MY_HOSTNAME=$MACHINE
