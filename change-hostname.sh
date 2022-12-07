@@ -1,7 +1,7 @@
 #!/bin/bash
 echo
 echo "#####################################################################"
-echo "                      CHANGE HOSTNAME"
+echo "                      CHANGE HOSTNAME 0.1"
 echo "#####################################################################"
 sudo chown abraxas: /home -R
 mkidr $HOME/tmp >/dev/null 2>/dev/null
