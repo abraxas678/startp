@@ -12,10 +12,10 @@ echo MACHINE $MACHINE
 MY_HOSTNAME=$MACHINE
 echo
 echo MY_HOSTNAME $MY_HOSTNAME
-sleep 3
+#sleep 3
 
-[[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && MY_WSL=0 || MY_WSL=1
-
+#[[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && MY_WSL=0 || MY_WSL=1
+[[ $(uname -a) = *"WSL"* ]] && MY_WSL="y" || MY_WSL="n"
 #read -p "is this a WSL? (y/n)" MY_WSL
 [[ ! $MY_HOSTNAME ]] && read -p "new hostname: >>> " MY_HOSTNAME
 
