@@ -3,5 +3,13 @@ auto = true
 batch = true
 prefer = newer
 
-path = docker
+path = docker/docker/changedetection
+path = docker/docker/www
+path = docker/easypanel
+path = docker/tronitor
+path = docker/filebrowser
+path = docker/running-docker
+path = docker/age
+path = docker/rclone-mount
+path = docker/runitor 
 include whitelist-ohne-docker
