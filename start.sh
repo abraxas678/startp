@@ -129,6 +129,7 @@ cd /home/abraxas
 #mv bin binOLD
 #mv dotfiles dotfilesOLD
 echo "execute on other PC:   cd /home/abraxas; /usr/bin/wormhole send .config;  /usr/bin/wormhole send .ssh;  /usr/bin/wormhole send dotfiles;  /usr/bin/wormhole send bin --ignore-unsendable-files"
-
-#unison ionos2
+cp ~/startp/*.prf ~/.unison/
+cp ~/startp/white* ~/.unison/
+unison ionos2
 fi
