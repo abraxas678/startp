@@ -79,8 +79,8 @@ echo #####################################################################
     echo; echo install unison
     mkdir $HOME/tmp/unison
     cd $HOME/tmp/unison
-    wget https://github.com/bcpierce00/unison/releases/download/v2.52.1/unison-v2.52.1+ocaml-4.04.2+x86_64.linux.tar.gz  
-    tar -xf unison-v2.52.1+ocaml-4.04.2+x86_64.linux.tar.gz  
+    wget https://github.com/bcpierce00/unison/releases/download/v2.53.0/unison-v2.53.0+ocaml-4.14.0+x86_64.linux.tar.gz
+    tar -xf unison-v2.53.0+ocaml-4.14.0+x86_64.linux.tar.gz
     sudo mv bin/uni* /usr/bin
   fi
   cd $HOME/tmp
