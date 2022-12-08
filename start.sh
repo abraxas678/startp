@@ -135,3 +135,4 @@ fi
 pueued -d
 pueue add syncthing
 pueue
+echo http://127.0.0.1:63310/#   ### syncthing razer
