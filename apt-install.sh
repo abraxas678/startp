@@ -1,6 +1,7 @@
 #!/bin/bash
 sudo apt install -y jq polybar copyq \
  cockpit \
+ syncthing \
            exa \
                wormhole \
            bat \
