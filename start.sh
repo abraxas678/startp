@@ -108,6 +108,10 @@ git clone https://github.com/abraxas678/startp.git
 cd startp
 ./apt-install.sh
 ./pueue-setup.sh
+pueued -d
+pueue add syncthing
+pueue
+pueue log 0 | grep GUI
 ./install_brew_original.sh 
 ./install_brew_original2.sh 
 ./rich_cli-install.sh
@@ -132,8 +136,6 @@ cp ~/startp/*.prf ~/.unison/
 cp ~/startp/white* ~/.unison/
 unison ionos2
 fi
-pueued -d
-pueue add syncthing
-pueue
+
 sudo chown abraxas: -R /usr/share/taskwarrior
 echo http://127.0.0.1:63310/#   ### syncthing razer
