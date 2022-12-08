@@ -1,5 +1,6 @@
 #!/bin/bash
 clear
+ /mnt/c/Users/abraxas/OneDrive/'Personal Vault'.lnk
 echo "v0.21"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
