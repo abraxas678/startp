@@ -135,4 +135,5 @@ fi
 pueued -d
 pueue add syncthing
 pueue
+sudo chown abraxas: -R /usr/share/taskwarrior
 echo http://127.0.0.1:63310/#   ### syncthing razer
