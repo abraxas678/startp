@@ -60,7 +60,7 @@ if [[ $(whoami) = "abraxas" ]]; then
 echo #####################################################################
 echo                       TAILSCALE
 echo #####################################################################
-  [[ $(tailscale status) = *"failed to connect"* ]] && sudo apt update && curl -fsSL https://tailscale.com/install.sh | sh
+  [[ $(tailscale status) = *"ailed to connect"* ]] && sudo apt update && curl -fsSL https://tailscale.com/install.sh | sh
   echo
   sudo tailscale up --ssh
   echo
