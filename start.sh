@@ -124,10 +124,10 @@ cd startp
 mkdir $HOME/.unison
 cd  $HOME/.unison
 cd /home/abraxas
-mv .ssh .sshOLD
-mv .config .configOLD
-mv bin binOLD
-mv dotfiles dotfilesOLD
+#mv .ssh .sshOLD
+#mv .config .configOLD
+#mv bin binOLD
+#mv dotfiles dotfilesOLD
 echo "execute on other PC:   cd /home/abraxas; /usr/bin/wormhole send .config;  /usr/bin/wormhole send .ssh;  /usr/bin/wormhole send dotfiles;  /usr/bin/wormhole send bin --ignore-unsendable-files"
 
 #unison ionos2
