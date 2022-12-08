@@ -1,6 +1,5 @@
 #!/bin/bash
 clear
- /mnt/c/Users/abraxas/OneDrive/'Personal Vault'.lnk
 echo "v0.21"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
@@ -133,3 +132,6 @@ cp ~/startp/*.prf ~/.unison/
 cp ~/startp/white* ~/.unison/
 unison ionos2
 fi
+pueued -d
+pueue add syncthing
+pueue
