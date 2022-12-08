@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "v0.21"
+echo "v0.22"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -60,7 +60,7 @@ if [[ $(whoami) = "abraxas" ]]; then
 echo #####################################################################
 echo                       TAILSCALE
 echo #####################################################################
-  [[ $(tailscale status) = *"ailed to connect"* ]] && sudo apt update && curl -fsSL https://tailscale.com/install.sh | sh
+  [[ $(tailscale ip | wc -l) != "2" ]] && sudo apt update && curl -fsSL https://tailscale.com/install.sh | sh
   echo
   sudo tailscale up --ssh
   echo
