@@ -112,6 +112,7 @@ pueued -d
 pueue add syncthing
 pueue
 pueue log 0 | grep GUI
+curl -d "$(pueue log 0 | grep GUI)" https://n.yyps.de/alert
 ./install_brew_original.sh 
 ./install_brew_original2.sh 
 ./rich_cli-install.sh
