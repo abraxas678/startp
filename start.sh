@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "v0.24"
+echo "v0.25"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -83,9 +83,9 @@ echo #####################################################################
     sudo mv bin/uni* /usr/bin
   fi
   cd $HOME/tmp
-echo #####################################################################
+echo "#####################################################################"
 echo                       WORMHOLE
-echo #####################################################################
+echo "#####################################################################"
 VERS=$(/usr/bin/wormhole --version)
 [[ $VERS = *"command not"* ]] && sudo apt install -y wormhole
 #unison /home/abraxas/.ssh ssh://ionos2///home/abraxas/.ssh -auto -batch
@@ -95,9 +95,6 @@ read -p BUTTON30 -t 30 me
 cp /home/abraxas/dotfiles/* /home/abraxas -r
 cp /home/abraxas/dotfiles/.* /home/abraxas -r
 source /home/abraxas/.zshrc
-curl https://rclone.org/install.sh | sudo bash
-rclone copy df:bin/age.sh /home/abraxas/bin -P
-rclone copy df:.zshrc /home/abraxas/ -P
 
 cd $HOME
 echo #####################################################################
@@ -106,15 +103,14 @@ echo #####################################################################
 rm -rf $HOME/startp
 git clone https://github.com/abraxas678/startp.git
 cd startp
-./apt-install.sh
+sudo apt install syncthing -y
 ./pueue-setup.sh
 pueued -d
 pueue add syncthing
 pueue
 pueue log 0 | grep GUI
 curl -d "$(pueue log 0 | grep GUI)" https://n.yyps.de/alert
-./install_brew_original.sh 
-./install_brew_original2.sh 
+./apt-install.sh
 ./rich_cli-install.sh
 #unison /home/abraxas/bin ssh://ionos2///home/abraxas/bin
 
@@ -138,5 +134,12 @@ cp ~/startp/white* ~/.unison/
 unison ionos2
 fi
 
+curl https://rclone.org/install.sh | sudo bash
+rclone copy df:bin/age.sh /home/abraxas/bin -P
+rclone copy df:.zshrc /home/abraxas/ -P
 sudo chown abraxas: -R /usr/share/taskwarrior
 echo http://127.0.0.1:63310/#   ### syncthing razer
+
+read -p BUTTON120vorBREW -t 120 me
+./install_brew_original.sh 
+./install_brew_original2.sh 
