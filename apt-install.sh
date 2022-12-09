@@ -6,6 +6,7 @@ sudo apt install -y jq polybar copyq \
                wormhole \
                tmux \
            bat \
+           sshfs \
   xauth \
   keychain \
   age \
