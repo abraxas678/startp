@@ -114,7 +114,7 @@ echo "#####################################################################"
 echo
 pueued -d
 rm -f $HOME/syncthing-start.log
-syncthing & >>$HOME/syncthing-start.log 2>>$HOME/syncthing-start.log
+syncthing & >$HOME/syncthing-start.log 2>$HOME/syncthing-start.log
 sleep 2; echo
 curl -d "$(pueue log 0 | grep GUI)" https://n.yyps.de/alert
 ./apt-install.sh
