@@ -4,6 +4,7 @@ sudo apt install -y jq polybar copyq \
  syncthing \
            exa \
                wormhole \
+               tmux \
            bat \
   xauth \
   keychain \
