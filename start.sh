@@ -1,5 +1,6 @@
 #!/bin/bash
 clear
+cd $HOME
 echo "v0.28"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
