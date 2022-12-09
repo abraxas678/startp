@@ -161,4 +161,5 @@ echo
 read -p BUTTON120vorBREW -t 120 me
 /bin/bash /home/abraxas/startp/install_brew_original.sh 
 /bin/bash /home/abraxas/startp/install_brew_original2.sh
+cd $HOME
 exec zsh
