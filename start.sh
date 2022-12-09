@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 cd $HOME
-echo "v0.29"
+echo "v0.30"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -113,12 +113,8 @@ echo "#####################################################################"
 ./pueue-setup.sh
 echo
 pueued -d
-sleep 2; echo
-pueue add syncthing
-sleep 2; echo
-pueue
-sleep 2; echo
-pueue log 0 | grep GUI
+rm -f $HOME/syncthing-start.log
+syncthing & >>$HOME/syncthing-start.log 2>>$HOME/syncthing-start.log
 sleep 2; echo
 curl -d "$(pueue log 0 | grep GUI)" https://n.yyps.de/alert
 ./apt-install.sh
@@ -143,10 +139,10 @@ cd /home/abraxas
 cp ~/startp/*.prf ~/.unison/
 cp ~/startp/white* ~/.unison/
 echo
-echo "#####################################################################"
-echo                       UNISON IONOS2
-echo "#####################################################################"
-unison ionos2
+#echo "#####################################################################"
+#echo                       UNISON IONOS2
+#echo "#####################################################################"
+#unison ionos2
 fi
 
 curl https://rclone.org/install.sh | sudo bash
@@ -156,7 +152,8 @@ rclone copy df:bin/age.sh /home/abraxas/bin -P --password-command="echo $RCPW"
 rclone copy df:.zshrc /home/abraxas/ -P --password-command="echo $RCPW"
 sudo chown abraxas: -R /usr/share/taskwarrior
 echo
-echo http://127.0.0.1:63310/#   ### syncthing razer
+cat $HOME/syncthing-start.log | grep GUI
+#echo http://127.0.0.1:63310/#   ### syncthing razer
 echo
 read -p BUTTON120vorBREW -t 120 me
 ./install_brew_original.sh 
