@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "v0.26"
+echo "v0.27"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -102,7 +102,9 @@ echo                       CLONE STARTP
 echo #####################################################################
 rm -rf $HOME/startp
 git clone https://github.com/abraxas678/startp.git
-cd startp
+cd /home/abraxas/startp
+chmod +x *.sh
+/bin/bash permission-ssh-folder.sh
 sudo apt install syncthing -y
 ./pueue-setup.sh
 pueued -d
