@@ -41,10 +41,10 @@ echo
 echo cat /etc/wsl.conf
 cat /etc/wsl.conf
 echo
-read -p BUTTON30 -t 30 me 
+read -p BUTTON10 -t 10 me 
 echo
 echo
-MY_HOSTNAME=$MACHINE
+[[ ! -f /home/abraxas/MY_HOSTNAME ]] && MY_HOSTNAME=$MACHINE || MY_HOSTNAME=$(cat /home/abraxas/MY_HOSTNAME)
 #read -p "enter hostname: >> " MY_HOSTNAME
   echo MY_HOSTNAME $MY_HOSTNAME
   echo "current hostname: $(hostname)"
