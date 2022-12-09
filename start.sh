@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 cd $HOME
-echo "v0.32"
+echo "v0.33"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -63,7 +63,9 @@ echo                       TAILSCALE
 echo #####################################################################
   [[ $(tailscale ip | wc -l) != "2" ]] && sudo apt update && curl -fsSL https://tailscale.com/install.sh | sh
   echo
-  sudo tailscale up --ssh
+  sudo systemctl start tailscaled
+  sudo systemctl enable tailscaled
+  sudo tailscale up --ssh --accept-routes
   echo
   tailscale ip
   tailscale status
@@ -84,6 +86,7 @@ echo #####################################################################
     sudo mv bin/uni* /usr/bin
   fi
   cd $HOME/tmp
+echo
 echo "#####################################################################"
 echo                       WORMHOLE
 echo "#####################################################################"
