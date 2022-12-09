@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 cd $HOME
-echo "v0.31"
+echo "v0.32"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -156,5 +156,6 @@ cat $HOME/syncthing-start.log | grep GUI
 #echo http://127.0.0.1:63310/#   ### syncthing razer
 echo
 read -p BUTTON120vorBREW -t 120 me
-./install_brew_original.sh 
-./install_brew_original2.sh 
+/bin/bash /home/abraxas/startp/install_brew_original.sh 
+/bin/bash /home/abraxas/startp/install_brew_original2.sh
+exec zsh
