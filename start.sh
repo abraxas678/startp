@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 cd $HOME
-echo "v0.28"
+echo "v0.29"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -106,14 +106,23 @@ cd /home/abraxas/startp
 chmod +x *.sh
 /bin/bash permission-ssh-folder.sh
 sudo apt install syncthing -y
+echo
+echo "#####################################################################"
+echo                       PUEUE SETUP
+echo "#####################################################################"
 ./pueue-setup.sh
+echo
 pueued -d
+sleep 2; echo
 pueue add syncthing
+sleep 2; echo
 pueue
+sleep 2; echo
 pueue log 0 | grep GUI
+sleep 2; echo
 curl -d "$(pueue log 0 | grep GUI)" https://n.yyps.de/alert
 ./apt-install.sh
-./rich_cli-install.sh
+pip3 install rich-cli   
 #unison /home/abraxas/bin ssh://ionos2///home/abraxas/bin
 
 #  git clone git@github.com/abraxas678/start.git  
@@ -130,18 +139,25 @@ cd /home/abraxas
 #mv .config .configOLD
 #mv bin binOLD
 #mv dotfiles dotfilesOLD
-echo "execute on other PC:   cd /home/abraxas; /usr/bin/wormhole send .config;  /usr/bin/wormhole send .ssh;  /usr/bin/wormhole send dotfiles;  /usr/bin/wormhole send bin --ignore-unsendable-files"
+#echo "execute on other PC:   cd /home/abraxas; /usr/bin/wormhole send .config;  /usr/bin/wormhole send .ssh;  /usr/bin/wormhole send dotfiles;  /usr/bin/wormhole send bin --ignore-unsendable-files"
 cp ~/startp/*.prf ~/.unison/
 cp ~/startp/white* ~/.unison/
+echo
+echo "#####################################################################"
+echo                       UNISON IONOS2
+echo "#####################################################################"
 unison ionos2
 fi
 
 curl https://rclone.org/install.sh | sudo bash
-rclone copy df:bin/age.sh /home/abraxas/bin -P
-rclone copy df:.zshrc /home/abraxas/ -P
+read -p "RCLONE PASSWORD: " RCPW
+export RCPW=$RCPW
+rclone copy df:bin/age.sh /home/abraxas/bin -P --password-command="echo $RCPW"
+rclone copy df:.zshrc /home/abraxas/ -P --password-command="echo $RCPW"
 sudo chown abraxas: -R /usr/share/taskwarrior
+echo
 echo http://127.0.0.1:63310/#   ### syncthing razer
-sudo chmod 750 $HOME/.ssh
+echo
 read -p BUTTON120vorBREW -t 120 me
 ./install_brew_original.sh 
 ./install_brew_original2.sh 
