@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "v0.25"
+echo "v0.26"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -139,7 +139,7 @@ rclone copy df:bin/age.sh /home/abraxas/bin -P
 rclone copy df:.zshrc /home/abraxas/ -P
 sudo chown abraxas: -R /usr/share/taskwarrior
 echo http://127.0.0.1:63310/#   ### syncthing razer
-
+sudo chmod 750 $HOME/.ssh
 read -p BUTTON120vorBREW -t 120 me
 ./install_brew_original.sh 
 ./install_brew_original2.sh 
