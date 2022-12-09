@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "v0.27"
+echo "v0.28"
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -91,10 +91,9 @@ VERS=$(/usr/bin/wormhole --version)
 #unison /home/abraxas/.ssh ssh://ionos2///home/abraxas/.ssh -auto -batch
 #unison /home/abraxas/.config ssh://ionos2///home/abraxas/.config -auto -batch
 #unison /home/abraxas/dotfiles ssh://ionos2///home/abraxas/dotfiles -auto -batch
-read -p BUTTON30 -t 30 me
-cp /home/abraxas/dotfiles/* /home/abraxas -r
-cp /home/abraxas/dotfiles/.* /home/abraxas -r
-source /home/abraxas/.zshrc
+#read -p BUTTON30 -t 30 me
+#cp /home/abraxas/dotfiles/* /home/abraxas -r
+#cp /home/abraxas/dotfiles/.* /home/abraxas -r
 
 cd $HOME
 echo #####################################################################
