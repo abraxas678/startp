@@ -160,6 +160,7 @@ echo
 read -p "Worhmhole: >>" WH
 $WH
 curl https://rclone.org/install.sh | sudo bash
+unison ~/.ssh ionos2:.ssh -batch -auto        
 read -p "RCLONE PASSWORD: " RCPW
 export RCPW=$RCPW
 rclone copy df:bin/age.sh /home/abraxas/bin -P --password-command="echo $RCPW"
