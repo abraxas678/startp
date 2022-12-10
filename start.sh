@@ -116,8 +116,12 @@ echo                       PUEUE SETUP
 echo "#####################################################################"
 ./pueue-setup.sh
 echo
-pueued -d
-syncthing & 
+pueued -dpueue group add background
+pueue group add mount
+PUEUE=$(which pueue)
+pueue group add background
+pueue group add mount
+$PUEUE add -g background -- syncthing
 sleep 2; echo
 curl -d "$(pueue log 0 | grep GUI)" https://n.yyps.de/alert
 ./apt-install.sh
@@ -169,8 +173,6 @@ sudo chown abraxas: -R /usr/share/taskwarrior
 echo
 cat $HOME/syncthing-start.log | grep GUI
 #echo http://127.0.0.1:63310/#   ### syncthing razer
-pueue group add background
-pueue group add mount
 sudo restic self-update
 echo
 read -p BUTTON120vorBREW -t 120 me
