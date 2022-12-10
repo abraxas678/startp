@@ -108,6 +108,7 @@ git clone https://github.com/abraxas678/startp.git
 cd /home/abraxas/startp
 chmod +x *.sh
 /bin/bash permission-ssh-folder.sh
+kill $(ps aux | grep syncthing | grep -v grep  | awk '{ print $2 }')
 sudo apt install syncthing -y
 echo
 echo "#####################################################################"
