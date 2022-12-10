@@ -171,6 +171,7 @@ cat $HOME/syncthing-start.log | grep GUI
 #echo http://127.0.0.1:63310/#   ### syncthing razer
 pueue group add background
 pueue group add mount
+sudo restic self-update
 echo
 read -p BUTTON120vorBREW -t 120 me
 /bin/bash /home/abraxas/startp/install_brew_original.sh 
