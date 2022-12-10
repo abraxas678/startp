@@ -146,8 +146,19 @@ echo
 #echo                       UNISON IONOS2
 #echo "#####################################################################"
 #unison ionos2
+echo
+read -p "Worhmhole: >>" WH
+$WH
 fi
-
+echo
+echo "#####################################################################"
+echo                       COPY RCLONE.CONF
+echo "#####################################################################"
+echo ssh ionos2 /usr/bin/wormhole send ~/.config/rclone/rclone.conf
+ssh ionos2 /usr/bin/wormhole send ~/.config/rclone/rclone.conf
+echo
+read -p "Worhmhole: >>" WH
+$WH
 curl https://rclone.org/install.sh | sudo bash
 read -p "RCLONE PASSWORD: " RCPW
 export RCPW=$RCPW
