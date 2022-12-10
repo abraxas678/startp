@@ -13,8 +13,6 @@ chmod +x $HOME/tmp/*.sh
 /bin/bash $HOME/tmp/check_user.sh
 
 cd $HOME/tmp
-#rm $HOME/tmp/start-b.sh* -f
-#curl -L https://raw.githubusercontent.com/abraxas678/start/master/start-b.sh >start-b.sh
 
 echo; echo "update & upgrade"
 $MY_SUDO apt update && $MY_SUDO apt upgrade -y
@@ -28,13 +26,13 @@ MACHINE=$(echo $MACHINE | sed 's/ //g')
 echo
 echo MACHINE $MACHINE
 echo
-sleep 3
+#sleep 3
 
 [[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && WSL=0 || WSL=1
 [[ ! -f /etc/wsl.conf ]] && sudo touch /etc/wsl.conf
 #[[ $(sudo ls /etc/wsl.conf -la  | awk '{ print $5 }') = "0" ]] 
-curl -L https://raw.githubusercontent.com/abraxas678/startp/main/wsl.conf -o wsl.conf
-sudo cp wsl.conf /etc/
+#curl -L https://raw.githubusercontent.com/abraxas678/startp/main/wsl.conf -o wsl.conf
+#sudo cp wsl.conf /etc/
 echo 
 echo "wsl.conf:"
 echo "========="
