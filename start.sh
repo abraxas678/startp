@@ -19,10 +19,14 @@ $MY_SUDO apt update && $MY_SUDO apt upgrade -y
 sudo apt install unzip -y
 ### uname -r | tr '[:upper:]' '[:lower:]'
 
+if [[ ! -f /MY_MACHINE ]]; then
 UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g'); 
 DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
 MACHINE="$DIST$UBU_VERS"
 MACHINE=$(echo $MACHINE | sed 's/ //g')
+else
+ MACHINE=$(cat /MY_MACHINE)
+fi
 echo
 echo MACHINE $MACHINE
 echo
