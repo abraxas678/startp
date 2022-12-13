@@ -47,7 +47,7 @@ echo
 read -p BUTTON10 -t 10 me 
 echo
 echo
-[[ ! -f /home/abraxas/MY_HOSTNAME ]] && MY_HOSTNAME=$MACHINE || MY_HOSTNAME=$(cat /home/abraxas/MY_HOSTNAME)
+[[ ! -f /MY_HOSTNAME ]] && MY_HOSTNAME=$MACHINE || MY_HOSTNAME=$(cat /MY_HOSTNAME)
 #read -p "enter hostname: >> " MY_HOSTNAME
   echo MY_HOSTNAME $MY_HOSTNAME
   echo "current hostname: $(hostname)"
@@ -126,7 +126,8 @@ pueue group add mount
 $PUEUE add -g background -- syncthing
 sleep 2; echo
 curl -d "$(pueue log 0 | grep GUI)" https://n.yyps.de/alert
-./apt-install.sh
+#./apt-install.sh
+./apt-install-from-list.sh
 pip3 install rich-cli   
 #unison /home/abraxas/bin ssh://ionos2///home/abraxas/bin
 

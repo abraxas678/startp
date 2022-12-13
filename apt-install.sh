@@ -1,17 +1,17 @@
 #!/bin/bash
-sudo apt install -y jq polybar copyq \
+sudo apt install -y jq copyq \
  cockpit \
  syncthing \
-           exa \
+#           exa \
                wormhole \
                mosh \
                tmux \
-           bat \
+#           bat \
            sshfs \
   xauth \
   keychain \
-  age \
-  fd-find \
+#  age \
+#  fd-find \
   xclip \
   gcalcli \
            xorg \
@@ -29,7 +29,7 @@ sudo apt install -y jq polybar copyq \
            taskwarrior \
            sqlite3 \
            sqlitebrowser \
-           fzf \
+ #          fzf \
    ansible \
            nfs-common \
            zsh \
@@ -37,6 +37,7 @@ sudo apt install -y jq polybar copyq \
            restic \
            curl \
   php \
+zsh \
            unison \
            sshpass \
            ssh-askpass 
