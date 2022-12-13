@@ -47,7 +47,7 @@ echo
 read -p BUTTON10 -t 10 me 
 echo
 echo
-[[ ! -f /home/abraxas/MY_HOSTNAME ]] && MY_HOSTNAME=$MACHINE || MY_HOSTNAME=$(cat /home/abraxas/MY_HOSTNAME)
+[[ ! -f /MY_HOSTNAME ]] && MY_HOSTNAME=$MACHINE || MY_HOSTNAME=$(cat /MY_HOSTNAME)
 #read -p "enter hostname: >> " MY_HOSTNAME
   echo MY_HOSTNAME $MY_HOSTNAME
   echo "current hostname: $(hostname)"
