@@ -18,3 +18,9 @@ sudo usermod -aG rslsync abraxas
 
 sudo systemctl enable resilio-sync
 sudo systemctl start resilio-sync
+
+sudo chmod g+rw /home/abraxas
+
+
+#Synchronizing state of resilio-sync.service with SysV service script with /lib/systemd/systemd-sysv-install.
+#Executing: /lib/systemd/systemd-sysv-install enable resilio-sync
