@@ -6,6 +6,8 @@ sudo apt-get update
 sudo apt-get install resilio-sync -y
 echo
 
+sudo chown abraxas: /home -R
+
 #sudo usermod -aG user_group rslsync
 sudo usermod -aG abraxas rslsync
 
@@ -15,11 +17,12 @@ sudo usermod -aG rslsync abraxas
 #sudo chmod g+rw synced_folder
 #sudo chmod g+rw synced_folder
 
-
-sudo systemctl enable resilio-sync
-sudo systemctl start resilio-sync
-
+sudo cp /home/abraxas/startp/resilio-sync.service /usr/lib/systemd/user/
 sudo chmod g+rw /home/abraxas
+
+sudo systemctl --user enable resilio-sync
+sudo systemctl --user start resilio-sync
+
 
 
 #Synchronizing state of resilio-sync.service with SysV service script with /lib/systemd/systemd-sysv-install.
