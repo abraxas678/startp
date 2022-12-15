@@ -115,6 +115,8 @@ echo #####################################################################
 echo
 sleep 2
 ./resilio-setup.sh
+sudo cp /home/abraxas/startp/resilio-sync/* /etc/resilio-sync/ -r
+sudo systemctl restart resilio-sync
 ##/bin/bash permission-ssh-folder.sh
 #kill $(ps aux | grep syncthing | grep -v grep  | awk '{ print $2 }')
 #sudo apt install syncthing -y
