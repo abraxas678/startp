@@ -228,7 +228,7 @@ echo
 #echo
 #read -p "Worhmhole: >>" WH
 #$WH
-echo
+echo/home/abraxas   
 #unison ~/.ssh ionos2:.ssh -batch -auto        
 #read -p "RCLONE PASSWORD: " RCPW
 #export RCPW=$RCPW
@@ -260,6 +260,10 @@ read -p BUTTON120vorBREW -t 120 me
 /bin/bash /home/abraxas/startp/install_brew_original2.sh
 brew install ghq
 cd $HOME
+rm -rf .antigen
+curl -L git.io/antigen > antigen.zsh
+cp /home/abraxas/dotfiles/* . -r
+cp /home/abraxas/dotfiles/.* . -r
 source ~/.zshrc
 exec zsh
 fi
