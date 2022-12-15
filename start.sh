@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 cd $HOME
-echo "v0.43"
+echo "v0.44"
 echo
 [[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt install figlet -y
 if [[ $(which rclone) != *"/usr/bin/rclone"* ]]; then
