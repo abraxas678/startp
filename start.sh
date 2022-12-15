@@ -1,9 +1,19 @@
 #!/bin/bash
 clear
 cd $HOME
-echo "v0.40"
+echo "v0.41"
 echo
 [[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt install figlet -y
+if [[ $(which rclone) != *"/usr/bin/rclone"* ]]; then
+  echo "#####################################################################"
+  echo                       INSTALL RCLONE
+  echo "#####################################################################"
+  sleep 1
+  curl https://rclone.org/install.sh | sudo bash
+  echo
+fi
+[[ $(/usr/bin/rclone listremotes) != *"gd:"* ]] && /usr/bin/rclone config
+
 read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
 
 if [[ $MY_TYPE = "s" ]]; then
@@ -147,22 +157,29 @@ sudo systemctl restart resilio-sync
 #sudo apt install syncthing -y
 echo
 echo "#####################################################################"
-echo                       PUEUE SETUP
+/usr/bin/figlet                       PUEUE SETUP
 echo "#####################################################################"
 sleep 2
 ./pueue-setup.sh
 echo
-pueued -dpueue group add background
-pueue group add mount
+pueued -d
 PUEUE=$(which pueue)
-pueue group add background
-pueue group add mount
-$PUEUE add -g background -- syncthing
-sleep 2; echo
-curl -d "$(pueue log 0 | grep GUI)" https://n.yyps.de/alert
+$PUEUE group add background >/dev/null 2>/dev/null
+$PUEUE group add mount >/dev/null 2>/dev/null
+#$PUEUE add -g background -- syncthing
+#sleep 2; echo
+#curl -d "$(pueue log 0 | grep GUI)" https://n.yyps.de/alert
 #./apt-install.sh
 cd $HOME/startp
+echo "#####################################################################"
+/usr/bin/figlet                       APT INSTALL
+echo "#####################################################################"
+sleep 1
 ./apt-install-from-list.sh
+echo "#####################################################################"
+/usr/bin/figlet                       PIP3  INSTALL
+echo "#####################################################################"
+sleep 1
 pip3 install rich-cli   
 #unison /home/abraxas/bin ssh://ionos2///home/abraxas/bin
 
@@ -174,6 +191,8 @@ pip3 install rich-cli
 #  ./install_brew_original2.sh 
 #  ./apt-install.sh
 mkdir $HOME/.unison
+cp ~/startp/*.prf ~/.unison/
+cp ~/startp/white* ~/.unison/
 cd  $HOME/.unison
 cd /home/abraxas
 #mv .ssh .sshOLD
@@ -181,8 +200,6 @@ cd /home/abraxas
 #mv bin binOLD
 #mv dotfiles dotfilesOLD
 #echo "execute on other PC:   cd /home/abraxas; /usr/bin/wormhole send .config;  /usr/bin/wormhole send .ssh;  /usr/bin/wormhole send dotfiles;  /usr/bin/wormhole send bin --ignore-unsendable-files"
-cp ~/startp/*.prf ~/.unison/
-cp ~/startp/white* ~/.unison/
 echo
 #echo "#####################################################################"
 #echo                       UNISON IONOS2
@@ -201,11 +218,8 @@ echo
 #echo
 #read -p "Worhmhole: >>" WH
 #$WH
-echo "#####################################################################"
-echo                       INSTALL RCLONE
-echo "#####################################################################"
-curl https://rclone.org/install.sh | sudo bash
-unison ~/.ssh ionos2:.ssh -batch -auto        
+echo
+#unison ~/.ssh ionos2:.ssh -batch -auto        
 read -p "RCLONE PASSWORD: " RCPW
 export RCPW=$RCPW
 rclone copy df:bin/age.sh /home/abraxas/bin -P --password-command="echo $RCPW"
