@@ -196,3 +196,4 @@ read -p BUTTON120vorBREW -t 120 me
 brew install ghq
 cd $HOME
 exec zsh
+fi
