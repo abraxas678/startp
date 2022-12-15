@@ -177,6 +177,10 @@ echo
 cat $HOME/syncthing-start.log | grep GUI
 #echo http://127.0.0.1:63310/#   ### syncthing razer
 sudo restic self-update
+
+echo "#####################################################################"
+echo                       BREW
+echo "#####################################################################"
 echo
 read -p BUTTON120vorBREW -t 120 me
 /bin/bash /home/abraxas/startp/install_brew_original.sh 
