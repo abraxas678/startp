@@ -3,6 +3,7 @@ clear
 cd $HOME
 echo "v0.49"
 echo
+sudo ls ~/tmp >/dev/null 2>/dev/null
 [[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt install figlet -y
 if [[ $(which rclone) != *"/usr/bin/rclone"* ]]; then
   echo "#####################################################################"
@@ -246,6 +247,11 @@ sudo chown abraxas: -R /usr/share/taskwarrior
 echo
 cat $HOME/syncthing-start.log | grep GUI
 #echo http://127.0.0.1:63310/#   ### syncthing razer
+sudo restic self-update
+
+echo "#####################################################################"
+echo                       BREW
+echo "#####################################################################"
 sudo /usr/bin/restic self-update
 echo
 read -p BUTTON120vorBREW -t 120 me
