@@ -1,16 +1,19 @@
 #!/bin/bash
 clear
 cd $HOME
-echo "v0.36"
+echo "v0.38"
 echo
+[[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt install figlet -y
 read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
 
-if [[ $MY_TYPE = "S" ]]; then
+if [[ $MY_TYPE = "s" ]]; then
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
 
-echo "### USER-CHECK"
+echo #####################################################################
+echo                       USER-CHECK
+echo #####################################################################
 sleep 1
 curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >$HOME/tmp/check_user.sh
 chmod +x $HOME/tmp/*.sh
