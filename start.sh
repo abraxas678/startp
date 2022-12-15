@@ -235,7 +235,7 @@ rclone copy df:bin/age.sh /home/abraxas/bin -P --password-command="echo $RC_PASS
 rclone copy df:dotfiles /home/abraxas/dotfiles -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
 rclone copy df:.config /home/abraxas/.config --max-depth 2 -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
 rclone copy df:.ssh /home/abraxas/.ssh --max-depth 2 -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
-rclone copy df:dotfiles/.zshrc ~ -P
+rclone copy df:dotfiles/.zshrc ~ -P --password-command="echo $RC_PASSWORD"
 sudo chown abraxas: -R /usr/share/taskwarrior
 echo
 cat $HOME/syncthing-start.log | grep GUI
@@ -247,6 +247,7 @@ read -p BUTTON120vorBREW -t 120 me
 /bin/bash /home/abraxas/startp/install_brew_original2.sh
 brew install ghq
 cd $HOME
+source ~/.zshrc
 exec zsh
 fi
 fi
