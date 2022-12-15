@@ -1,7 +1,14 @@
 #!/bin/bash
 clear
 cd $HOME
-echo "v0.50"
+VERSION="v0.51"
+echo $VERSION
+
+x=0
+while [[ $x = "0" ]]; do
+  [[ $VERSION != *"$1"* ]]  && sleep 2 || x=1
+done
+
 echo
 sudo ls ~/tmp >/dev/null 2>/dev/null
 [[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt install figlet -y
