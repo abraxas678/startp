@@ -127,6 +127,7 @@ $PUEUE add -g background -- syncthing
 sleep 2; echo
 curl -d "$(pueue log 0 | grep GUI)" https://n.yyps.de/alert
 #./apt-install.sh
+cd $HOME/startp
 ./apt-install-from-list.sh
 pip3 install rich-cli   
 #unison /home/abraxas/bin ssh://ionos2///home/abraxas/bin
@@ -166,6 +167,9 @@ ssh ionos2 /usr/bin/wormhole send ~/.config/rclone/rclone.conf
 echo
 read -p "Worhmhole: >>" WH
 $WH
+echo "#####################################################################"
+echo                       INSTALL RCLONE
+echo "#####################################################################"
 curl https://rclone.org/install.sh | sudo bash
 unison ~/.ssh ionos2:.ssh -batch -auto        
 read -p "RCLONE PASSWORD: " RCPW
