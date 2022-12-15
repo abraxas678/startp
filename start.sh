@@ -1,7 +1,11 @@
 #!/bin/bash
 clear
 cd $HOME
-echo "v0.35"
+echo "v0.36"
+echo
+read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
+
+if [[ $MY_TYPE = "S" ]]; then
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
@@ -196,4 +200,5 @@ read -p BUTTON120vorBREW -t 120 me
 brew install ghq
 cd $HOME
 exec zsh
+fi
 fi

@@ -25,5 +25,6 @@ curl -s "http://$MY_TS_RAZER_IP/?openme&$myurl" >/dev/null
 #curl "https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush?apikey=304c57b5ddbd4c10b03b76fa97d44559&deviceNames=chrome-razer&url=$myurl"
 
 
-
+echo myurl $myurl
+echo curl "https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush?apikey=304c57b5ddbd4c10b03b76fa97d44559&deviceNames=sidekick&url=$myurl"
 curl "https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush?apikey=304c57b5ddbd4c10b03b76fa97d44559&deviceNames=sidekick&url=$myurl"
