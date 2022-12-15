@@ -12,7 +12,7 @@ if [[ $MY_TYPE = "s" ]]; then
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
 
 echo #####################################################################
-echo                       USER-CHECK
+/usr/bin/figlet                       USER-CHECK
 echo #####################################################################
 sleep 1
 curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >$HOME/tmp/check_user.sh
@@ -68,8 +68,9 @@ fi
 
 if [[ $(whoami) = "abraxas" ]]; then
 echo #####################################################################
-echo                       TAILSCALE
+/usr/bin/figlet                       TAILSCALE
 echo #####################################################################
+sleep 1
   [[ $(tailscale ip | wc -l) != "2" ]] && sudo apt update && curl -fsSL https://tailscale.com/install.sh | sh
   echo
   sudo systemctl start tailscaled
