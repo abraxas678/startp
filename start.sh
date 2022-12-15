@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 cd $HOME
-echo "v0.42"
+echo "v0.43"
 echo
 [[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt install figlet -y
 if [[ $(which rclone) != *"/usr/bin/rclone"* ]]; then
@@ -12,9 +12,9 @@ if [[ $(which rclone) != *"/usr/bin/rclone"* ]]; then
   curl https://rclone.org/install.sh | sudo bash
   echo
 fi
-[[ $(eval $RCLONE_PASSWORD_COMMAND | wc -l) = "0" ]] && read -p "RCLONE-PASSWORD: >> " RC_PASSWORD && export RC_PASSWORD=$RC_PASSWORD || export RC_PASSWORD=$(eval $RCLONE_PASSWORD_COMMAND)
+[[ $(eval $RCLONE_PASSWORD_COMMAND | wc -l) = "0" ]] && read -p "RCLONE-PASSWORD: >> " RC_PASSWORD && export RC_PASSWORD=$RC_PASSWORD && clear || export RC_PASSWORD=$(eval $RCLONE_PASSWORD_COMMAND)
 
-[[ $(/usr/bin/rclone listremotes) != *"gd:"* ]] && /usr/bin/rclone config
+[[ $(/usr/bin/rclone listremotes --password-command="echo $RC_PASSWORD") != *"gd:"* ]] && /usr/bin/rclone config
 
 read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
 
