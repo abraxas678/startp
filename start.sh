@@ -238,6 +238,7 @@ rclone copy df:.config /home/abraxas/.config --max-depth 2 -P --password-command
 rclone copy df:.ssh /home/abraxas/.ssh --max-depth 2 -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
 rclone copy df:bin/mydotfiles.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
 rclone copy df:bin/bashful-setup.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+rclone copy df:bin/bashfuler.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
 #rclone copy df:dotfiles/.zshrc ~/ -P --password-command="echo $RC_PASSWORD"
 cd $HOME
 chmod +x /home/abraxas/bin/*.sh
