@@ -1,13 +1,19 @@
 #!/bin/bash
 clear
 cd $HOME
-VERSION="v0.51"
+VERSION="v0.52"
 echo $VERSION
 
-x=0
-while [[ $x = "0" ]]; do
-  [[ $VERSION != *"$1"* ]]  && sleep 2 || x=1
-done
+#VERSION_ONLINE=
+#x=0
+#while [[ $x = "0" ]]; do
+#  if [[ $VERSION != *"$1"* ]]; then
+#    sleep 2
+#    bash <() 
+#  else
+#    x=1
+#  fi
+#done
 
 echo
 sudo ls ~/tmp >/dev/null 2>/dev/null
