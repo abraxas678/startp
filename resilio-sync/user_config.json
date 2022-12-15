@@ -1,0 +1,10 @@
+{
+    "storage_path" : "{HOME}/.config/resilio-sync/storage",
+    "pid_file" : "{HOME}/.config/resilio-sync/sync.pid",
+
+    "webui" :
+    {
+        "force_https": true,
+        "listen" : "0.0.0.0:8888"
+    }
+}

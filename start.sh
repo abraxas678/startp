@@ -1,12 +1,38 @@
 #!/bin/bash
 clear
 cd $HOME
-echo "v0.34"
+echo "v0.49"
+echo
+[[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt install figlet -y
+if [[ $(which rclone) != *"/usr/bin/rclone"* ]]; then
+  echo "#####################################################################"
+  echo                       INSTALL RCLONE
+  echo "#####################################################################"
+  sleep 1
+  curl https://rclone.org/install.sh | sudo bash
+  echo
+fi
+[[ $(eval $RCLONE_PASSWORD_COMMAND | wc -l) = "0" ]] && read -p "RCLONE-PASSWORD: >> " RC_PASSWORD && export RC_PASSWORD=$RC_PASSWORD && clear || export RC_PASSWORD=$(eval $RCLONE_PASSWORD_COMMAND)
+
+[[ $(/usr/bin/rclone listremotes --password-command="echo $RC_PASSWORD") != *"gd:"* ]] && /usr/bin/rclone config
+
+
+
+read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
+
+if [[ $MY_TYPE = "m" ]]; then
+  rclone copy /home/abraxas/.config/rclone/rclone.conf df:.config/rclone -P
+  rclone sync /home/abraxas/.config df:.config --max-depth 2 -P
+  rclone sync /home/abraxas/.ssh df:.ssh -P
+  rclone sync /home/abraxas/dotfiles df:dotfiles -P
+elif [[ $MY_TYPE = "s" ]]; then
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
 
-echo "### USER-CHECK"
+echo #####################################################################
+/usr/bin/figlet                       USER-CHECK
+echo #####################################################################
 sleep 1
 curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >$HOME/tmp/check_user.sh
 chmod +x $HOME/tmp/*.sh
@@ -14,11 +40,19 @@ chmod +x $HOME/tmp/*.sh
 
 cd $HOME/tmp
 
-echo; echo "update & upgrade"
+echo; 
+echo #####################################################################
+/usr/bin/figlet                       UPDATE & UPGRADE
+echo #####################################################################
+sleep 1
 $MY_SUDO apt update && $MY_SUDO apt upgrade -y
 sudo apt install unzip -y
 ### uname -r | tr '[:upper:]' '[:lower:]'
 
+echo #####################################################################
+/usr/bin/figlet                       MACHINE NAME
+echo #####################################################################
+sleep 1
 if [[ ! -f /MY_MACHINE ]]; then
 UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g'); 
 DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
@@ -28,11 +62,13 @@ else
  MACHINE=$(cat /MY_MACHINE)
 fi
 echo
-echo MACHINE $MACHINE
+echo "MACHINE=  $MACHINE"
 echo
-#sleep 3
+sleep 1
 
 [[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && WSL=0 || WSL=1
+echo; echo "WSL= $WSL"
+sleep 1
 [[ ! -f /etc/wsl.conf ]] && sudo touch /etc/wsl.conf
 #[[ $(sudo ls /etc/wsl.conf -la  | awk '{ print $5 }') = "0" ]] 
 #curl -L https://raw.githubusercontent.com/abraxas678/startp/main/wsl.conf -o wsl.conf
@@ -61,8 +97,9 @@ fi
 
 if [[ $(whoami) = "abraxas" ]]; then
 echo #####################################################################
-echo                       TAILSCALE
+/usr/bin/figlet                       TAILSCALE
 echo #####################################################################
+sleep 1
   [[ $(tailscale ip | wc -l) != "2" ]] && sudo apt update && curl -fsSL https://tailscale.com/install.sh | sh
   echo
   sudo systemctl start tailscaled
@@ -79,6 +116,10 @@ echo #####################################################################
     read -p "'y' to continue" MY_Y
   done
   read -p BUTTON30 -t 30 me
+echo #####################################################################
+/usr/bin/figlet                       UNISON INSTALL
+echo #####################################################################
+
   if [[ $(which unison | wc -l) = "0" ]]; then
     echo; echo install unison
     mkdir $HOME/tmp/unison
@@ -90,10 +131,11 @@ echo #####################################################################
   cd $HOME/tmp
 echo
 echo "#####################################################################"
-echo                       WORMHOLE
+/usr/bin/figlet                       WORMHOLE INSTALL
 echo "#####################################################################"
 VERS=$(/usr/bin/wormhole --version)
 [[ $VERS = *"command not"* ]] && sudo apt install -y wormhole
+
 #unison /home/abraxas/.ssh ssh://ionos2///home/abraxas/.ssh -auto -batch
 #unison /home/abraxas/.config ssh://ionos2///home/abraxas/.config -auto -batch
 #unison /home/abraxas/dotfiles ssh://ionos2///home/abraxas/dotfiles -auto -batch
@@ -103,31 +145,50 @@ VERS=$(/usr/bin/wormhole --version)
 
 cd $HOME
 echo #####################################################################
-echo                       CLONE STARTP
+/usr/bin/figlet                       CLONE STARTP
 echo #####################################################################
+sleep 1
 rm -rf $HOME/startp
 git clone https://github.com/abraxas678/startp.git
 cd /home/abraxas/startp
 chmod +x *.sh
-/bin/bash permission-ssh-folder.sh
-kill $(ps aux | grep syncthing | grep -v grep  | awk '{ print $2 }')
-sudo apt install syncthing -y
+echo #####################################################################
+echo                       RESILIO SETUP
+echo #####################################################################
+echo
+sleep 2
+./resilio-setup.sh
+sudo cp /home/abraxas/startp/resilio-sync/* /etc/resilio-sync/ -r
+sudo systemctl restart resilio-sync
+/bin/bash /home/abraxas/startp/openme.sh $(hostname):8888
+##/bin/bash permission-ssh-folder.sh
+#kill $(ps aux | grep syncthing | grep -v grep  | awk '{ print $2 }')
+#sudo apt install syncthing -y
 echo
 echo "#####################################################################"
-echo                       PUEUE SETUP
+/usr/bin/figlet                       PUEUE SETUP
 echo "#####################################################################"
+sleep 2
 ./pueue-setup.sh
 echo
-pueued -dpueue group add background
-pueue group add mount
+pueued -d
 PUEUE=$(which pueue)
-pueue group add background
-pueue group add mount
-$PUEUE add -g background -- syncthing
-sleep 2; echo
-curl -d "$(pueue log 0 | grep GUI)" https://n.yyps.de/alert
+$PUEUE group add background >/dev/null 2>/dev/null
+$PUEUE group add mount >/dev/null 2>/dev/null
+#$PUEUE add -g background -- syncthing
+#sleep 2; echo
+#curl -d "$(pueue log 0 | grep GUI)" https://n.yyps.de/alert
 #./apt-install.sh
+cd $HOME/startp
+echo "#####################################################################"
+/usr/bin/figlet                       APT INSTALL
+echo "#####################################################################"
+sleep 1
 ./apt-install-from-list.sh
+echo "#####################################################################"
+/usr/bin/figlet                       PIP3  INSTALL
+echo "#####################################################################"
+sleep 1
 pip3 install rich-cli   
 #unison /home/abraxas/bin ssh://ionos2///home/abraxas/bin
 
@@ -139,6 +200,8 @@ pip3 install rich-cli
 #  ./install_brew_original2.sh 
 #  ./apt-install.sh
 mkdir $HOME/.unison
+cp ~/startp/*.prf ~/.unison/
+cp ~/startp/white* ~/.unison/
 cd  $HOME/.unison
 cd /home/abraxas
 #mv .ssh .sshOLD
@@ -146,32 +209,39 @@ cd /home/abraxas
 #mv bin binOLD
 #mv dotfiles dotfilesOLD
 #echo "execute on other PC:   cd /home/abraxas; /usr/bin/wormhole send .config;  /usr/bin/wormhole send .ssh;  /usr/bin/wormhole send dotfiles;  /usr/bin/wormhole send bin --ignore-unsendable-files"
-cp ~/startp/*.prf ~/.unison/
-cp ~/startp/white* ~/.unison/
 echo
 #echo "#####################################################################"
 #echo                       UNISON IONOS2
 #echo "#####################################################################"
 #unison ionos2
+#echo
+#read -p "Worhmhole: >>" WH
+#$WH
+#fi
 echo
-read -p "Worhmhole: >>" WH
-$WH
-fi
+#echo "#####################################################################"
+#echo                       COPY RCLONE.CONF
+#echo "#####################################################################"
+#echo ssh ionos2 /usr/bin/wormhole send ~/.config/rclone/rclone.conf
+#ssh ionos2 /usr/bin/wormhole send ~/.config/rclone/rclone.conf
+#echo
+#read -p "Worhmhole: >>" WH
+#$WH
 echo
-echo "#####################################################################"
-echo                       COPY RCLONE.CONF
-echo "#####################################################################"
-echo ssh ionos2 /usr/bin/wormhole send ~/.config/rclone/rclone.conf
-ssh ionos2 /usr/bin/wormhole send ~/.config/rclone/rclone.conf
-echo
-read -p "Worhmhole: >>" WH
-$WH
-curl https://rclone.org/install.sh | sudo bash
-unison ~/.ssh ionos2:.ssh -batch -auto        
-read -p "RCLONE PASSWORD: " RCPW
-export RCPW=$RCPW
-rclone copy df:bin/age.sh /home/abraxas/bin -P --password-command="echo $RCPW"
-rclone copy df:.zshrc /home/abraxas/ -P --password-command="echo $RCPW"
+#unison ~/.ssh ionos2:.ssh -batch -auto        
+#read -p "RCLONE PASSWORD: " RCPW
+#export RCPW=$RCPW
+rclone copy df:bin/age.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+rclone copy df:dotfiles /home/abraxas/dotfiles -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+rclone copy df:.config /home/abraxas/.config --max-depth 2 -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+rclone copy df:.ssh /home/abraxas/.ssh --max-depth 2 -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+rclone copy df:bin/mydotfiles.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+rclone copy df:bin/bashful-setup.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+#rclone copy df:dotfiles/.zshrc ~/ -P --password-command="echo $RC_PASSWORD"
+cd $HOME
+chmod +x /home/abraxas/bin/*.sh
+curl -L git.io/antigen > antigen.zsh
+cp $HOME/dotfiles/.zshrc $HOME/
 sudo chown abraxas: -R /usr/share/taskwarrior
 echo
 cat $HOME/syncthing-start.log | grep GUI
@@ -181,10 +251,14 @@ sudo restic self-update
 echo "#####################################################################"
 echo                       BREW
 echo "#####################################################################"
+sudo /usr/bin/restic self-update
 echo
 read -p BUTTON120vorBREW -t 120 me
 /bin/bash /home/abraxas/startp/install_brew_original.sh 
 /bin/bash /home/abraxas/startp/install_brew_original2.sh
 brew install ghq
 cd $HOME
+source ~/.zshrc
 exec zsh
+fi
+fi
