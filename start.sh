@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 cd $HOME
-echo "v0.49"
+echo "v0.50"
 echo
 sudo ls ~/tmp >/dev/null 2>/dev/null
 [[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt install figlet -y
