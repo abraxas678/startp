@@ -89,9 +89,9 @@ echo #####################################################################
   fi
   cd $HOME/tmp
 echo
-echo "#####################################################################"
-echo                       WORMHOLE
-echo "#####################################################################"
+#echo "#####################################################################"
+#echo                       WORMHOLE
+#echo "#####################################################################"
 VERS=$(/usr/bin/wormhole --version)
 [[ $VERS = *"command not"* ]] && sudo apt install -y wormhole
 #unison /home/abraxas/.ssh ssh://ionos2///home/abraxas/.ssh -auto -batch
@@ -109,9 +109,15 @@ rm -rf $HOME/startp
 git clone https://github.com/abraxas678/startp.git
 cd /home/abraxas/startp
 chmod +x *.sh
-/bin/bash permission-ssh-folder.sh
-kill $(ps aux | grep syncthing | grep -v grep  | awk '{ print $2 }')
-sudo apt install syncthing -y
+echo #####################################################################
+echo                       RESILIO SETUP
+echo #####################################################################
+echo
+sleep 2
+./resilio-setup.sh
+##/bin/bash permission-ssh-folder.sh
+#kill $(ps aux | grep syncthing | grep -v grep  | awk '{ print $2 }')
+#sudo apt install syncthing -y
 echo
 echo "#####################################################################"
 echo                       PUEUE SETUP
