@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 cd $HOME
-echo "v0.44"
+echo "v0.45"
 echo
 [[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt install figlet -y
 if [[ $(which rclone) != *"/usr/bin/rclone"* ]]; then
@@ -229,10 +229,12 @@ echo
 #$WH
 echo
 #unison ~/.ssh ionos2:.ssh -batch -auto        
-read -p "RCLONE PASSWORD: " RCPW
-export RCPW=$RCPW
-rclone copy df:bin/age.sh /home/abraxas/bin -P --password-command="echo $RCPW"
-rclone copy df:.zshrc /home/abraxas/ -P --password-command="echo $RCPW"
+#read -p "RCLONE PASSWORD: " RCPW
+#export RCPW=$RCPW
+rclone copy df:bin/age.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+rclone copy df:dotfiles /home/abraxas/dotfiles -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+rclone copy df:.config /home/abraxas/.config --max-depth 2 -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+rclone copy df:.ssh /home/abraxas/.ssh --max-depth 2 -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
 sudo chown abraxas: -R /usr/share/taskwarrior
 echo
 cat $HOME/syncthing-start.log | grep GUI
