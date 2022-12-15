@@ -162,19 +162,19 @@ echo
 #echo                       UNISON IONOS2
 #echo "#####################################################################"
 #unison ionos2
+#echo
+#read -p "Worhmhole: >>" WH
+#$WH
+#fi
 echo
-read -p "Worhmhole: >>" WH
-$WH
-fi
-echo
-echo "#####################################################################"
-echo                       COPY RCLONE.CONF
-echo "#####################################################################"
-echo ssh ionos2 /usr/bin/wormhole send ~/.config/rclone/rclone.conf
-ssh ionos2 /usr/bin/wormhole send ~/.config/rclone/rclone.conf
-echo
-read -p "Worhmhole: >>" WH
-$WH
+#echo "#####################################################################"
+#echo                       COPY RCLONE.CONF
+#echo "#####################################################################"
+#echo ssh ionos2 /usr/bin/wormhole send ~/.config/rclone/rclone.conf
+#ssh ionos2 /usr/bin/wormhole send ~/.config/rclone/rclone.conf
+#echo
+#read -p "Worhmhole: >>" WH
+#$WH
 echo "#####################################################################"
 echo                       INSTALL RCLONE
 echo "#####################################################################"
