@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 cd $HOME
-echo "v0.45"
+echo "v0.46"
 echo
 [[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt install figlet -y
 if [[ $(which rclone) != *"/usr/bin/rclone"* ]]; then
@@ -235,11 +235,12 @@ rclone copy df:bin/age.sh /home/abraxas/bin -P --password-command="echo $RC_PASS
 rclone copy df:dotfiles /home/abraxas/dotfiles -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
 rclone copy df:.config /home/abraxas/.config --max-depth 2 -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
 rclone copy df:.ssh /home/abraxas/.ssh --max-depth 2 -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+rclone copy df:dotfiles/.zshrc ~ -P
 sudo chown abraxas: -R /usr/share/taskwarrior
 echo
 cat $HOME/syncthing-start.log | grep GUI
 #echo http://127.0.0.1:63310/#   ### syncthing razer
-sudo restic self-update
+sudo /usr/bin/restic self-update
 echo
 read -p BUTTON120vorBREW -t 120 me
 /bin/bash /home/abraxas/startp/install_brew_original.sh 
