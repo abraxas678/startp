@@ -3,6 +3,7 @@ clear
 cd $HOME
 echo "v0.49"
 echo
+sudo ls ~/tmp >/dev/null 2>/dev/null
 [[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt install figlet -y
 if [[ $(which rclone) != *"/usr/bin/rclone"* ]]; then
   echo "#####################################################################"
