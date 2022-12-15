@@ -16,9 +16,16 @@ fi
 
 [[ $(/usr/bin/rclone listremotes --password-command="echo $RC_PASSWORD") != *"gd:"* ]] && /usr/bin/rclone config
 
+
+
 read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
 
-if [[ $MY_TYPE = "s" ]]; then
+if [[ $MY_TYPE = "m" ]]; then
+  rclone copy /home/abraxas/.config/rclone/rclone.conf df:.config/rclone -P
+  rclone sync /home/abraxas/.config df:.config --max-depth 2 -P
+  rclone sync /home/abraxas/.ssh df:.ssh -P
+  rclone sync /home/abraxas/dotfiles df:dotfiles -P
+elif [[ $MY_TYPE = "s" ]]; then
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 [[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
