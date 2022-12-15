@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 cd $HOME
-echo "v0.38"
+echo "v0.40"
 echo
 [[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt install figlet -y
 read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
@@ -21,11 +21,19 @@ chmod +x $HOME/tmp/*.sh
 
 cd $HOME/tmp
 
-echo; echo "update & upgrade"
+echo; 
+echo #####################################################################
+/usr/bin/figlet                       UPDATE & UPGRADE
+echo #####################################################################
+sleep 1
 $MY_SUDO apt update && $MY_SUDO apt upgrade -y
 sudo apt install unzip -y
 ### uname -r | tr '[:upper:]' '[:lower:]'
 
+echo #####################################################################
+/usr/bin/figlet                       MACHINE NAME
+echo #####################################################################
+sleep 1
 if [[ ! -f /MY_MACHINE ]]; then
 UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g'); 
 DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
@@ -35,11 +43,13 @@ else
  MACHINE=$(cat /MY_MACHINE)
 fi
 echo
-echo MACHINE $MACHINE
+echo "MACHINE=  $MACHINE"
 echo
-#sleep 3
+sleep 1
 
 [[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && WSL=0 || WSL=1
+echo; echo "WSL= $WSL"
+sleep 1
 [[ ! -f /etc/wsl.conf ]] && sudo touch /etc/wsl.conf
 #[[ $(sudo ls /etc/wsl.conf -la  | awk '{ print $5 }') = "0" ]] 
 #curl -L https://raw.githubusercontent.com/abraxas678/startp/main/wsl.conf -o wsl.conf
@@ -87,6 +97,10 @@ sleep 1
     read -p "'y' to continue" MY_Y
   done
   read -p BUTTON30 -t 30 me
+echo #####################################################################
+/usr/bin/figlet                       UNISON INSTALL
+echo #####################################################################
+
   if [[ $(which unison | wc -l) = "0" ]]; then
     echo; echo install unison
     mkdir $HOME/tmp/unison
@@ -97,11 +111,12 @@ sleep 1
   fi
   cd $HOME/tmp
 echo
-#echo "#####################################################################"
-#echo                       WORMHOLE
-#echo "#####################################################################"
+echo "#####################################################################"
+/usr/bin/figlet                       WORMHOLE INSTALL
+echo "#####################################################################"
 VERS=$(/usr/bin/wormhole --version)
 [[ $VERS = *"command not"* ]] && sudo apt install -y wormhole
+
 #unison /home/abraxas/.ssh ssh://ionos2///home/abraxas/.ssh -auto -batch
 #unison /home/abraxas/.config ssh://ionos2///home/abraxas/.config -auto -batch
 #unison /home/abraxas/dotfiles ssh://ionos2///home/abraxas/dotfiles -auto -batch
@@ -111,8 +126,9 @@ VERS=$(/usr/bin/wormhole --version)
 
 cd $HOME
 echo #####################################################################
-echo                       CLONE STARTP
+/usr/bin/figlet                       CLONE STARTP
 echo #####################################################################
+sleep 1
 rm -rf $HOME/startp
 git clone https://github.com/abraxas678/startp.git
 cd /home/abraxas/startp
@@ -125,6 +141,7 @@ sleep 2
 ./resilio-setup.sh
 sudo cp /home/abraxas/startp/resilio-sync/* /etc/resilio-sync/ -r
 sudo systemctl restart resilio-sync
+/bin/bash /home/abraxas/startp/openme.sh $(hostname):8888
 ##/bin/bash permission-ssh-folder.sh
 #kill $(ps aux | grep syncthing | grep -v grep  | awk '{ print $2 }')
 #sudo apt install syncthing -y
@@ -132,6 +149,7 @@ echo
 echo "#####################################################################"
 echo                       PUEUE SETUP
 echo "#####################################################################"
+sleep 2
 ./pueue-setup.sh
 echo
 pueued -dpueue group add background
