@@ -3,9 +3,13 @@ clear
 cd $HOME
 VERSION="v0.52"
 echo $VERSION
-[[ ! -f /MY_MACHINE ]] && read -p "/MY_MACHINE does not exit. Create it? (y/n)" MACH 
-[[ $MACH = "y" ]] && read -p "machine name: >> " MY_MACHINE && su root && echo $MY_MACHINE >/MY_MACHINE
-
+if [[ ! -f /MY_MACHINE ]]; then 
+  read -p "/MY_MACHINE does not exit. Create it? (y/n)" MACH 
+  if [[ $MACH = "y" ]]; then
+    [[ $USER != "root" ]] && echo "switching to root" && su root
+    read -p "machine name: >> " MY_MACHINE && su root && echo $MY_MACHINE >/MY_MACHINE
+  fi
+fi
 #VERSION_ONLINE=
 #x=0
 #while [[ $x = "0" ]]; do
