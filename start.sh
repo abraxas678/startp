@@ -3,6 +3,8 @@ clear
 cd $HOME
 VERSION="v0.52"
 echo $VERSION
+[[ ! -f /MY_MACHINE ]] && read -p "/MY_MACHINE does not exit. Create it? (y/n)" MACH 
+[[ $MACH = "y" ]] && read -p "machine name: >> " MY_MACHINE && su root && echo $MY_MACHINE >/MY_MACHINE
 
 #VERSION_ONLINE=
 #x=0
