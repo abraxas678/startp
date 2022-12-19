@@ -291,6 +291,7 @@ read -p BUTTON120vorBREW -t 120 me
 /bin/bash /home/abraxas/startp/install_brew_original2.sh
 brew install ghq
 sudo apt autoremove -y
+curl -sSL https://get.easypanel.io | sh
 cd $HOME
 rm -rf .antigen
 curl -L git.io/antigen > antigen.zsh
