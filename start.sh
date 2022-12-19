@@ -289,7 +289,9 @@ echo
 read -p BUTTON120vorBREW -t 120 me
 /bin/bash /home/abraxas/startp/install_brew_original.sh 
 /bin/bash /homeabraxas/startp/install_brew_original2.sh
-
+sudo apt purge task -y
+sudo apt purge task taskwarrior -y
+brew install taskwarrior -y
 sudo apt autoremove -y
 curl -sSL https://get.easypanel.io | sh
 cd $HOME
