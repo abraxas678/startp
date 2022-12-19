@@ -172,7 +172,7 @@ rm -rf $HOME/startp
 git clone https://github.com/abraxas678/startp.git
 cd /home/abraxas/startp
 chmod +x *.sh
-echo #####################################################################
+echo ###############################################################i######
 echo                       RESILIO SETUP
 echo #####################################################################
 echo
@@ -180,6 +180,7 @@ sleep 2
 ./resilio-setup.sh
 sudo cp /home/abraxas/startp/resilio-sync/* /etc/resilio-sync/ -r
 sudo systemctl restart resilio-sync
+systemctl --user restart resilio-sync
 /bin/bash /home/abraxas/startp/openme.sh $(hostname):8888
 ##/bin/bash permission-ssh-folder.sh
 #kill $(ps aux | grep syncthing | grep -v grep  | awk '{ print $2 }')
