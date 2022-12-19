@@ -288,8 +288,8 @@ sudo /usr/bin/restic self-update
 echo
 read -p BUTTON120vorBREW -t 120 me
 /bin/bash /home/abraxas/startp/install_brew_original.sh 
-/bin/bash /home/abraxas/startp/install_brew_original2.sh
-brew install ghq
+/bin/bash /homeabraxas/startp/install_brew_original2.sh
+
 sudo apt autoremove -y
 curl -sSL https://get.easypanel.io | sh
 cd $HOME
