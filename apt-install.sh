@@ -26,7 +26,6 @@ sudo apt install -y jq copyq \
            wget \
            nano \
            git \
-           taskwarrior \
            sqlite3 \
            sqlitebrowser \
  #          fzf \
