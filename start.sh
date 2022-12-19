@@ -269,6 +269,17 @@ echo
 cat $HOME/syncthing-start.log | grep GUI
 #echo http://127.0.0.1:63310/#   ### syncthing razer
 sudo restic self-update
+echo "#####################################################################"
+echo                       CLOUDFLARE
+echo "#####################################################################"
+
+if [[ $(hostname) = *"ionos2"* ]];then
+curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && 
+
+sudo dpkg -i cloudflared.deb && 
+
+sudo cloudflared service install eyJhIjoiYjZjOTc0YmU4MzZmMDVkZmNhNjU4OTVlZjUxYTAwMzYiLCJ0IjoiMWNhM2IxNzktNDQ4YS00YWRjLWI1OWItZGJhN2UzNDRiMTZiIiwicyI6Ik1tWTVObVZoTUdRdE9XVTRNUzAwWkRaaExXSmtaV1l0T1dFeVpHWXlPVGd5TXpBMiJ9
+fi
 
 echo "#####################################################################"
 echo                       BREW
