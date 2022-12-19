@@ -23,8 +23,8 @@ sudo usermod -aG rslsync abraxas
 sudo cp /home/abraxas/startp/resilio-sync.service /usr/lib/systemd/user/
 sudo chmod g+rw /home/abraxas
 
-sudo systemctl --user enable resilio-sync
-sudo systemctl --user start resilio-sync
+systemctl --user enable resilio-sync
+systemctl --user start resilio-sync
 
 
 
