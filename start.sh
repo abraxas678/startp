@@ -100,7 +100,7 @@ echo
 echo cat /etc/wsl.conf
 cat /etc/wsl.conf
 echo
-read -p BUTTON10 -t 10 me 
+read -p BUTTON5 -t 5 me 
 echo
 echo
 [[ ! -f /MY_HOSTNAME ]] && MY_HOSTNAME=$MACHINE || MY_HOSTNAME=$(cat /MY_HOSTNAME)
@@ -280,6 +280,7 @@ sudo dpkg -i cloudflared.deb &&
 
 sudo cloudflared service install eyJhIjoiYjZjOTc0YmU4MzZmMDVkZmNhNjU4OTVlZjUxYTAwMzYiLCJ0IjoiMWNhM2IxNzktNDQ4YS00YWRjLWI1OWItZGJhN2UzNDRiMTZiIiwicyI6Ik1tWTVObVZoTUdRdE9XVTRNUzAwWkRaaExXSmtaV1l0T1dFeVpHWXlPVGd5TXpBMiJ9
 fi
+ [[ $(cat /etc/sudoers) != *"timestamp_timeout="* ]] && echo "add      timestamp_timeout=240     on next page" && read -p BUTTON me         
 
 echo "#####################################################################"
 echo                       BREW
