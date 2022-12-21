@@ -3,13 +3,14 @@ clear
 cd $HOME
 VERSION="v0.52"
 echo $VERSION
+sudo chown abraxas: /home -R
 if [[ ! -f /home/MY_MACHINE ]]; then 
   read -p "/home/MY_MACHINE does not exit. Create it? (y/n)" MACH 
   if [[ $MACH = "y" ]]; then
-    [[ $USER != "root" ]] && echo "switching to root" && su root
-    read -p "machine name: >> " MY_MACHINE && su root && echo $MY_MACHINE >/home/MY_MACHINE
+    read -p "machine name: >> " MY_MACHINE && echo $MY_MACHINE >/home/MY_MACHINE
   fi
 fi
+
 #VERSION_ONLINE=
 #x=0
 #while [[ $x = "0" ]]; do
@@ -100,6 +101,12 @@ echo
 echo cat /etc/wsl.conf
 cat /etc/wsl.conf
 echo
+read -p BUTTON5 -t 5 me 
+echo
+echo /etc/hostname
+cat /etc/hostname
+echo
+
 read -p BUTTON5 -t 5 me 
 echo
 echo
