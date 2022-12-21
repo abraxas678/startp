@@ -3,11 +3,11 @@ clear
 cd $HOME
 VERSION="v0.52"
 echo $VERSION
-if [[ ! -f /MY_MACHINE ]]; then 
-  read -p "/MY_MACHINE does not exit. Create it? (y/n)" MACH 
+if [[ ! -f /home/MY_MACHINE ]]; then 
+  read -p "/home/MY_MACHINE does not exit. Create it? (y/n)" MACH 
   if [[ $MACH = "y" ]]; then
     [[ $USER != "root" ]] && echo "switching to root" && su root
-    read -p "machine name: >> " MY_MACHINE && su root && echo $MY_MACHINE >/MY_MACHINE
+    read -p "machine name: >> " MY_MACHINE && su root && echo $MY_MACHINE >/home/MY_MACHINE
   fi
 fi
 #VERSION_ONLINE=
@@ -73,13 +73,13 @@ echo #####################################################################
 /usr/bin/figlet                       MACHINE NAME
 echo #####################################################################
 sleep 1
-if [[ ! -f /MY_MACHINE ]]; then
+if [[ ! -f /home/MY_MACHINE ]]; then
 UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g'); 
 DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
 MACHINE="$DIST$UBU_VERS"
 MACHINE=$(echo $MACHINE | sed 's/ //g')
 else
- MACHINE=$(cat /MY_MACHINE)
+ MACHINE=$(cat /home/MY_MACHINE)
 fi
 echo
 echo "MACHINE=  $MACHINE"
