@@ -3,11 +3,11 @@ clear
 cd $HOME
 VERSION="v0.52"
 echo $VERSION
-if [[ ! -f /MY_MACHINE ]]; then 
-  read -p "/MY_MACHINE does not exit. Create it? (y/n)" MACH 
+if [[ ! -f /home/MY_MACHINE ]]; then 
+  read -p "/home/MY_MACHINE does not exit. Create it? (y/n)" MACH 
   if [[ $MACH = "y" ]]; then
     [[ $USER != "root" ]] && echo "switching to root" && su root
-    read -p "machine name: >> " MY_MACHINE && su root && echo $MY_MACHINE >/MY_MACHINE
+    read -p "machine name: >> " MY_MACHINE && su root && echo $MY_MACHINE >/home/MY_MACHINE
   fi
 fi
 #VERSION_ONLINE=
@@ -73,13 +73,13 @@ echo #####################################################################
 /usr/bin/figlet                       MACHINE NAME
 echo #####################################################################
 sleep 1
-if [[ ! -f /MY_MACHINE ]]; then
+if [[ ! -f /home/MY_MACHINE ]]; then
 UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g'); 
 DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
 MACHINE="$DIST$UBU_VERS"
 MACHINE=$(echo $MACHINE | sed 's/ //g')
 else
- MACHINE=$(cat /MY_MACHINE)
+ MACHINE=$(cat /home/MY_MACHINE)
 fi
 echo
 echo "MACHINE=  $MACHINE"
@@ -100,7 +100,7 @@ echo
 echo cat /etc/wsl.conf
 cat /etc/wsl.conf
 echo
-read -p BUTTON10 -t 10 me 
+read -p BUTTON5 -t 5 me 
 echo
 echo
 [[ ! -f /MY_HOSTNAME ]] && MY_HOSTNAME=$MACHINE || MY_HOSTNAME=$(cat /MY_HOSTNAME)
@@ -280,6 +280,7 @@ sudo dpkg -i cloudflared.deb &&
 
 sudo cloudflared service install eyJhIjoiYjZjOTc0YmU4MzZmMDVkZmNhNjU4OTVlZjUxYTAwMzYiLCJ0IjoiMWNhM2IxNzktNDQ4YS00YWRjLWI1OWItZGJhN2UzNDRiMTZiIiwicyI6Ik1tWTVObVZoTUdRdE9XVTRNUzAwWkRaaExXSmtaV1l0T1dFeVpHWXlPVGd5TXpBMiJ9
 fi
+ [[ $(cat /etc/sudoers) != *"timestamp_timeout="* ]] && echo "add      timestamp_timeout=240     on next page" && read -p BUTTON me && sudo visudo        
 
 echo "#####################################################################"
 echo                       BREW
