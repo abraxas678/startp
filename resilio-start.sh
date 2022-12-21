@@ -1,5 +1,7 @@
 #!/bin/bash
 echo
+echo v .1
+echo
 echo "====="
 echo "MKDIR"
 echo "====="
@@ -13,9 +15,9 @@ echo "INSTALL DOCKER"
 echo "=============="
 sudo apt install docker.io -y
 echo
-echo "=============="
+echo "==================="
 echo "DOCKER WITHOUT SUDO"
-echo "=============="
+echo "==================="
 sudo groupadd docker
 sudo usermod -aG docker $USER &
 newgrp docker &
@@ -25,9 +27,12 @@ echo "==========================="
 echo "MOVE RESILIO TARGET FOLDERS"
 echo "==========================="
 
+read -p "move folder? (y/n) >> " MOVE
+if [[ $MOVE = "y" ]]; then
 for line in $(cat resilio-folder.dat); do
   mv /home/abraxas/$line /home/abraxas/resilio-moved/
 done
+fi
 
 echo
 echo "====================="
