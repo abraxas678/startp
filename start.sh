@@ -311,6 +311,9 @@ sudo apt purge task -y
 sudo apt purge task taskwarrior -y
 brew install taskwarrior -y
 sudo apt autoremove -y
+echo "#####################################################################"
+echo                       EASYPANEL
+echo "#####################################################################"
 curl -sSL https://get.easypanel.io | sh
 cd $HOME
 rm -rf .antigen
