@@ -329,7 +329,8 @@ sudo apt autoremove -y
 echo "#####################################################################"
 echo                       EASYPANEL
 echo "#####################################################################"
-/bin/bash /home/abraxas/startp/docker-without-sudo.sh 
+/bin/bash /home/abraxas/startp/docker-without-sudo.sh &
+read -p BUTTON20 -t 20 me
 curl -sSL https://get.easypanel.io | sh
 cd $HOME
 rm -rf .antigen
