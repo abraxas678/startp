@@ -195,7 +195,7 @@ read -p BUTTON20 -t 20 me
 ##/bin/bash permission-ssh-folder.sh
 #kill $(ps aux | grep syncthing | grep -v grep  | awk '{ print $2 }')
 #sudo apt install syncthing -y
-read -p BUTTON120 -t 120 me
+read -p BUTTON1200 -t 1200 me
 cd $HOME
 git clone https://github.com/abraxas678/startp.git
 echo
