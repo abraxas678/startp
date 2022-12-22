@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 cd $HOME
-VERSION="v0.53"
+VERSION="v0.54"
 echo $VERSION
 sudo chown abraxas: /home -R
 if [[ ! -f /home/MY_MACHINE ]]; then 
@@ -83,7 +83,7 @@ else
  MACHINE=$(cat /home/MY_MACHINE)
 fi
 echo
-echo "MACHINE=  $MACHINE"
+echo "SOLL-NAME MACHINE=  $MACHINE"
 echo
 sleep 1
 
@@ -94,6 +94,7 @@ sleep 1
 #[[ $(sudo ls /etc/wsl.conf -la  | awk '{ print $5 }') = "0" ]] 
 #curl -L https://raw.githubusercontent.com/abraxas678/startp/main/wsl.conf -o wsl.conf
 #sudo cp wsl.conf /etc/
+if [[ $WSL = "1" ]]; then
 echo 
 echo "wsl.conf:"
 echo "========="
@@ -102,7 +103,9 @@ echo cat /etc/wsl.conf
 cat /etc/wsl.conf
 echo
 read -p BUTTON5 -t 5 me 
+fi
 echo
+[[ *"$MACHINE"* = *"$(sudo cat /etc/hostname)"* ]] && sudo echo $MACHINE >/etc/hostname
 echo /etc/hostname
 cat /etc/hostname
 echo
