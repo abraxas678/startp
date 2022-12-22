@@ -201,7 +201,15 @@ read -p BUTTON me
 #sudo apt install syncthing -y
 read -p BUTTON1200 -t 1200 me
 cd $HOME
+echo #####################################################################
+/usr/bin/figlet                       CLONE STARTP
+echo #####################################################################
+sleep 1
+rm -rf $HOME/startp
 git clone https://github.com/abraxas678/startp.git
+cd /home/abraxas/startp
+chmod +x *.sh
+
 echo
 echo "#####################################################################"
 /usr/bin/figlet                       PUEUE SETUP
