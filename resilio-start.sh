@@ -14,6 +14,7 @@ echo "=============="
 echo "INSTALL DOCKER"
 echo "=============="
 sudo apt install docker.io -y
+sudo apt install docker-compose -y
 echo
 echo "==================="
 echo "DOCKER WITHOUT SUDO"
