@@ -63,7 +63,7 @@ fi
 
 echo; 
 echo #####################################################################
-/usr/bin/figlet                       UPDATE & UPGRADE
+/usr/bin/figlet                       "UPDATE & UPGRADE"
 echo #####################################################################
 sleep 1
 $MY_SUDO apt update && $MY_SUDO apt upgrade -y
