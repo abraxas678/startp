@@ -183,6 +183,8 @@ echo ###############################################################i######
 echo                       RESILIO START - DOCKER
 echo #####################################################################
 echo
+echo "hostname: $(hostname)"
+echo
 sleep 2
 read -p BUTTON20 -t 20 me
 ./resilio-start.sh
