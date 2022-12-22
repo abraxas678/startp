@@ -37,8 +37,7 @@ while [[ $x = "1" ]]; do
       mv /home/abraxas/$line /home/abraxas/resilio-moved/
     done
   else
-  x=1
-  sleep 1
+    [[ $MOVE = "n" ]]  && x=0 | sleep 1 
   fi
 done
 echo
