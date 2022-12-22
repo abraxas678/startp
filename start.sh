@@ -194,6 +194,8 @@ read -p BUTTON20 -t 20 me
 #kill $(ps aux | grep syncthing | grep -v grep  | awk '{ print $2 }')
 #sudo apt install syncthing -y
 read -p BUTTON120 -t 120 me
+cd $HOME
+git clone https://github.com/abraxas678/startp.git
 echo
 echo "#####################################################################"
 /usr/bin/figlet                       PUEUE SETUP
@@ -314,6 +316,7 @@ sudo apt autoremove -y
 echo "#####################################################################"
 echo                       EASYPANEL
 echo "#####################################################################"
+/bin/bash /home/abraxas/startp/docker-without-sudo.sh 
 curl -sSL https://get.easypanel.io | sh
 cd $HOME
 rm -rf .antigen
