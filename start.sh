@@ -5,7 +5,7 @@ VERSION="v0.54"
 echo $VERSION
 sudo chown abraxas: /home -R
 if [[ ! -f /home/MY_MACHINE ]]; then 
-  read -p "/home/MY_MACHINE does not exit. Create it? (y/n)" MACH 
+  read -p "/home/MY_MACHINE does not exit. Create it? (y/n)" -n 1 MACH 
   if [[ $MACH = "y" ]]; then
     read -p "machine name: >> " MY_MACHINE && echo $MY_MACHINE >/home/MY_MACHINE
   fi
