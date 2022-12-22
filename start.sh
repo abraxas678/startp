@@ -301,6 +301,13 @@ sudo dpkg -i cloudflared.deb &&
 sudo cloudflared service install eyJhIjoiYjZjOTc0YmU4MzZmMDVkZmNhNjU4OTVlZjUxYTAwMzYiLCJ0IjoiOTgwODg5YWMtZWFlNy00ZTMzLTk0YjctMGJkODYzNmQzOTI2IiwicyI6Ik5EVTFOak0yTmpJdE5tVTVZaTAwWVdKbExUZ3hOV010TldOaFpERXpZekF4WldObSJ9
 fi
 
+if [[ $(hostname) = *"ubuntu18"* ]];then
+curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && 
+
+sudo dpkg -i cloudflared.deb && 
+
+sudo cloudflared service install eyJhIjoiYjZjOTc0YmU4MzZmMDVkZmNhNjU4OTVlZjUxYTAwMzYiLCJ0IjoiYzZjOGI0NjctZDYxZS00NGY1LTg5OWEtNTBlYTUwNjVmZDBmIiwicyI6IlpETTBaVFUxWW1NdE9EWTBNQzAwWlRVMkxUbGpNV1V0WWpKaFpHRXdaREJsTURVNCJ9
+fi
  [[ $(cat /etc/sudoers) != *"timestamp_timeout="* ]] && echo "add      timestamp_timeout=240     on next page" && read -p BUTTON me && sudo visudo        
 
 echo "#####################################################################"
