@@ -27,13 +27,15 @@ echo "==========================="
 echo "MOVE RESILIO TARGET FOLDERS"
 echo "==========================="
 
-read -p "move folder? (y/n) >> " MOVE
-if [[ $MOVE = "y" ]]; then
-for line in $(cat resilio-folder.dat); do
-  mv /home/abraxas/$line /home/abraxas/resilio-moved/
+x=1
+while [[ $x = "1" ]]; do
+  read -p "move folder? (y/n) >> " MOVE
+  if [[ $MOVE = "y" ]]; then
+    for line in $(cat resilio-folder.dat); do
+      mv /home/abraxas/$line /home/abraxas/resilio-moved/
+    done
+  fi
 done
-fi
-
 echo
 echo "====================="
 echo "CREATE DOCKER-COMPOSE"
