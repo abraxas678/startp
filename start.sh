@@ -217,6 +217,7 @@ $PUEUE group add mount >/dev/null 2>/dev/null
 #sleep 2; echo
 #curl -d "$(pueue log 0 | grep GUI)" https://n.yyps.de/alert
 #./apt-install.sh
+read -p BUTTON60 -t 60 me
 cd $HOME/startp
 echo "#####################################################################"
 /usr/bin/figlet                       APT INSTALL
