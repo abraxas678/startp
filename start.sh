@@ -4,6 +4,10 @@ cd $HOME
 VERSION="v0.54"
 echo $VERSION
 sudo chown abraxas: /home -R
+[[ ! -f /home/rpw.dat ]] && read -p "Razer pw: >> " rpw
+echo $rpw >/home/rpw.dat
+sudo chmod 600 /home/rpw.dat
+
 if [[ ! -f /home/MY_MACHINE ]]; then 
   read -p "/home/MY_MACHINE does not exit. Create it? (y/n)" -n 1 MACH 
   if [[ $MACH = "y" ]]; then
