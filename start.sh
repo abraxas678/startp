@@ -186,7 +186,7 @@ echo
 echo "hostname: $(hostname)"
 echo
 sleep 2
-read -p BUTTON20 -t 20 me
+read -p BUTTON me
 ./resilio-start.sh
 #sudo cp /home/abraxas/startp/resilio-sync/* /etc/resilio-sync/ -r
 #sudo systemctl restart resilio-sync
@@ -265,13 +265,13 @@ echo/home/abraxas
 #unison ~/.ssh ionos2:.ssh -batch -auto        
 #read -p "RCLONE PASSWORD: " RCPW
 #export RCPW=$RCPW
-rclone copy df:bin/age.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
-rclone copy df:dotfiles /home/abraxas/dotfiles -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
-rclone copy df:.config /home/abraxas/.config --max-depth 2 -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
-rclone copy df:.ssh /home/abraxas/.ssh --max-depth 2 -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
-rclone copy df:bin/mydotfiles.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
-rclone copy df:bin/bashful-setup.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
-rclone copy df:bin/bashfuler.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+#rclone copy df:bin/age.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+#rclone copy df:dotfiles /home/abraxas/dotfiles -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+#rclone copy df:.config /home/abraxas/.config --max-depth 2 -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+#rclone copy df:.ssh /home/abraxas/.ssh --max-depth 2 -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+#rclone copy df:bin/mydotfiles.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+#rclone copy df:bin/bashful-setup.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
+#rclone copy df:bin/bashfuler.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
 #rclone copy df:dotfiles/.zshrc ~/ -P --password-command="echo $RC_PASSWORD"
 cd $HOME
 chmod +x /home/abraxas/bin/*.sh
@@ -279,7 +279,7 @@ curl -L git.io/antigen > antigen.zsh
 cp $HOME/dotfiles/.zshrc $HOME/
 sudo chown abraxas: -R /usr/share/taskwarrior
 echo
-cat $HOME/syncthing-start.log | grep GUI
+#cat $HOME/syncthing-start.log | grep GUI
 #echo http://127.0.0.1:63310/#   ### syncthing razer
 sudo restic self-update
 echo "#####################################################################"
