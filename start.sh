@@ -109,16 +109,13 @@ echo
 echo /etc/hostname
 cat /etc/hostname
 echo
-
-read -p BUTTON5 -t 5 me 
-echo
 echo
 [[ ! -f /MY_HOSTNAME ]] && MY_HOSTNAME=$MACHINE || MY_HOSTNAME=$(cat /MY_HOSTNAME)
 #read -p "enter hostname: >> " MY_HOSTNAME
   echo MY_HOSTNAME $MY_HOSTNAME
   echo "current hostname: $(hostname)"
   echo
-  sleep 2
+  read -p BUTTON15 -t 15 me 
 if [[ $(hostname) != *"$MY_HOSTNAME"* ]]; then
     curl -L  https://raw.githubusercontent.com/abraxas678/startp/master/change-hostname.sh >$HOME/tmp/change-hostname.sh
     chmod +x *.sh
