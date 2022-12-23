@@ -31,11 +31,13 @@ echo "==========================="
 x=1
 while [[ $x = "1" ]]; do
   read -p "move folder? (y/n) >> " MOVE
-  echo $MOVE
+  echo "MOVE: $MOVE"
+  echo
   [[ $MOVE = "n" ]] && x=0
   if [[ $MOVE = "y" ]]; then
   x=0
     for line in $(cat resilio-folder.dat); do
+      echo; echo "moving $line:"
       mv /home/abraxas/$line /home/abraxas/resilio-moved/
     done
   else
