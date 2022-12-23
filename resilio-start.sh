@@ -1,4 +1,6 @@
 #!/bin/bash
+docker kill resilio
+docker remove resilio
 echo
 echo v .1
 echo
