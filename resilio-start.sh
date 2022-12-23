@@ -32,7 +32,7 @@ echo "==========================="
 
 x=1
 while [[ $x = "1" ]]; do
-  read -p "move folder? (y/n) >> " MOVE
+  read -p "move folder? (y/n) >> " -n 1 MOVE
   echo "MOVE: $MOVE"
   echo
   [[ $MOVE = "n" ]] && x=0
