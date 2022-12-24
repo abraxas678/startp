@@ -334,6 +334,7 @@ read -p BUTTON120vorBREW -t 120 me
 sudo apt purge task -y
 sudo apt purge task taskwarrior -y
 brew install taskwarrior -y
+brew install age -y
 sudo apt autoremove -y
 echo "#####################################################################"
 echo                       EASYPANEL
