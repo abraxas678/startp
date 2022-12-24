@@ -333,8 +333,8 @@ read -p BUTTON120vorBREW -t 120 me
 /bin/bash /homeabraxas/startp/install_brew_original2.sh
 sudo apt purge task -y
 sudo apt purge task taskwarrior -y
-brew install taskwarrior -y
-brew install age -y
+brew install taskwarrior 
+brew install age
 sudo apt autoremove -y
 echo "#####################################################################"
 echo                       EASYPANEL
