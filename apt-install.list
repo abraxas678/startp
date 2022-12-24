@@ -10,7 +10,6 @@ copyq
            sshfs 
   xauth 
   keychain 
-  age 
   fd-find 
   xclip 
   gcalcli 
