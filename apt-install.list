@@ -10,8 +10,7 @@ copyq
            sshfs 
   xauth 
   keychain 
-  fd-find 
-  xclip 
+  fd-find  
   gcalcli 
            xorg 
           ssh 
@@ -24,8 +23,7 @@ copyq
            docker-compose 
            wget 
            nano 
-           git 
-           taskwarrior 
+           git  
            sqlite3 
            sqlitebrowser 
            fzf 
