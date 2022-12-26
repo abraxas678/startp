@@ -190,7 +190,7 @@ echo
 echo "hostname: $(hostname)"
 echo
 sleep 2
-read -p BUTTON me
+read -p BUTTON30 -t 30 me
 ./resilio-start.sh
 #sudo cp /home/abraxas/startp/resilio-sync/* /etc/resilio-sync/ -r
 #sudo systemctl restart resilio-sync
