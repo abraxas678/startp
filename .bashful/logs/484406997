@@ -1,0 +1,146 @@
+2022/12/21 22:53:44 [1;39mTask full output: rclone copy /home/ /home/abraxas/dotfiles --filter-from /home/abraxas/.config/dotfiles.txt --update -Pv -L --max-depth 4[0m
+
+2022-12-21 22:53:44 INFO  : abraxas/.myalert: Updated modification time in destination
+Transferred:       1.317k / 370.346 kBytes, 0%, 48.385 kBytes/s, ETA 7s
+Checks:                25 / 26, 96%
+Transferred:            0 / 2, 0%
+Elapsed time:         0.1s
+Checking:
+ *                              abraxas/.myalert: checking
+Transferring:
+ *                                    abraxas/.z:100% /1.317k, 0/s, -
+2022-12-21 22:53:44 ERROR : abraxas/.ssh/ids: lstat /home/abraxas/.ssh/ids/id_rsa.pub: permission denied
+Transferred:     370.346k / 370.346 kBytes, 100%, 8.733 MBytes/s, ETA 0s
+Checks:                26 / 27, 96%
+Transferred:            0 / 2, 0%
+Elapsed time:         0.1s
+Transferring:
+ *                          abraxas/.zsh_history:100% /369.028k, 0/s, -
+Transferred:     371.663k / 740.691 kBytes, 50%, 3.155 MBytes/s, ETA 0s
+Errors:                 4 (no need to retry)
+Checks:                88 / 90, 98%
+Transferred:            2 / 4, 50%
+Elapsed time:         0.4s
+Checking:
+2022-12-21 22:53:44 ERROR : abraxas/resilio-moved/etc/rndc.conf: Listing error: symlink: stat /home/abraxas/resilio-moved/etc/rndc.conf: no such file or directory
+Transferred:     740.691k / 740.691 kBytes, 100%, 4.867 MBytes/s, ETA 0s
+Transferring:
+ *                   abraxas/dotfiles/abraxas/.z:100% /1.317k, 0/s, -
+ *         abraxas/dotfiles/abraxas/.zsh_history:100% /369.028k, 0/s, -
+2022-12-21 22:53:44 ERROR : abraxas/resilio-moved/etc/named.conf: Listing error: symlink: stat /home/abraxas/resilio-moved/etc/named.conf: no such file or directory
+Transferred:     740.691k / 740.691 kBytes, 100%, 3.915 MBytes/s, ETA 0s
+Errors:                 7 (no need to retry)
+Checks:                91 / 91, 100%
+Transferred:            2 / 4, 50%
+Elapsed time:         0.5s
+Transferring:
+ *                   abraxas/dotfiles/abraxas/.z:100% /1.317k, 0/s, -
+ *         abraxas/dotfiles/abraxas/.zsh_history:100% /369.028k, 0/s, -Transferred:     740.691k / 740.691 kBytes, 100%, 3.421 MBytes/s, ETA 0s
+Errors:                 8 (no need to retry)
+Checks:                91 / 91, 100%
+Transferred:            2 / 4, 50%
+[91m2022/12/21 22:53:45 INFO  : [0m
+[91mTransferred:     740.691k / 740.691 kBytes, 100%, 2.516 MBytes/s, ETA 0s[0m
+Elapsed time:         0.5s
+Transferring:
+[91mErrors:                19 (no need to retry)[0m
+[91mChecks:               103 / 103, 100%[0m
+[91mTransferred:            4 / 4, 100%[0m
+[91mElapsed time:         1.0s[0m
+
+ *                   abraxas/dotfiles/abraxas/.z:100% /1.317k, 0/s, -
+[91m2022/12/21 22:53:45 Failed to copy with 19 errors: last error was: symlink: stat /home/abraxas/.config/pulse/e8b0490294cd4da4af6c3d9011eda65f-runtime: no such file or directory[0m
+ *         abraxas/dotfiles/abraxas/.zsh_history:100% /369.028k, 0/s, -
+2022-12-21 22:53:44 INFO  : abraxas/dotfiles/abraxas/.z: Copied (replaced existing)
+Transferred:     740.691k / 740.691 kBytes, 100%, 2.554 MBytes/s, ETA 0s
+Errors:                 8 (no need to retry)
+Checks:                92 / 94, 98%
+Transferred:            2 / 4, 50%
+Elapsed time:         0.6s
+Transferring:
+ *                   abraxas/dotfiles/abraxas/.z:100% /1.317k, 0/s, -
+ *         abraxas/dotfiles/abraxas/.zsh_history:100% /369.028k, 0/s, -
+2022-12-21 22:53:44 INFO  : abraxas/dotfiles/abraxas/.zsh_history: Copied (replaced existing)
+Transferred:     740.691k / 740.691 kBytes, 100%, 2.521 MBytes/s, ETA 0s
+Errors:                 8 (no need to retry)
+Checks:                94 / 94, 100%
+Transferred:            3 / 4, 75%
+Elapsed time:         0.6s
+Transferring:
+ *         abraxas/dotfiles/abraxas/.zsh_history:100% /369.028k, 0/s, -
+2022-12-21 22:53:44 ERROR : abraxas/.config/chromium/SingletonCookie: Listing error: symlink: stat /home/abraxas/.config/chromium/SingletonCookie: no such file or directory
+Transferred:     740.691k / 740.691 kBytes, 100%, 2.516 MBytes/s, ETA 0s
+Errors:                 8 (no need to retry)
+Checks:                94 / 94, 100%
+Transferred:            4 / 4, 100%
+Elapsed time:         0.6s
+2022-12-21 22:53:44 ERROR : abraxas/.config/chromium/SingletonLock: Listing error: symlink: stat /home/abraxas/.config/chromium/SingletonLock: no such file or directory
+Transferred:     740.691k / 740.691 kBytes, 100%, 2.516 MBytes/s, ETA 0s
+Errors:                 9 (no need to retry)
+Checks:                94 / 94, 100%
+Transferred:            4 / 4, 100%
+Elapsed time:         0.6s
+2022-12-21 22:53:44 ERROR : abraxas/.config/chromium/SingletonSocket: Listing error: symlink: stat /home/abraxas/.config/chromium/SingletonSocket: no such file or directory
+Transferred:     740.691k / 740.691 kBytes, 100%, 2.516 MBytes/s, ETA 0s
+Errors:                10 (no need to retry)
+Checks:                94 / 94, 100%
+Transferred:            4 / 4, 100%
+Elapsed time:         0.6s
+2022-12-21 22:53:44 ERROR : abraxas/resilio-moved/taskwarrior/holidays.por-PRT.rc: Listing error: symlink: stat /home/abraxas/resilio-moved/taskwarrior/holidays.por-PRT.rc: no such file or directory
+Transferred:     740.691k / 740.691 kBytes, 100%, 2.516 MBytes/s, ETA 0s
+Errors:                11 (no need to retry)
+Checks:                94 / 94, 100%
+Transferred:            4 / 4, 100%
+Elapsed time:         0.6s
+2022-12-21 22:53:44 ERROR : abraxas/.config/google-chrome/SingletonCookie: Listing error: symlink: stat /home/abraxas/.config/google-chrome/SingletonCookie: no such file or directory
+Transferred:     740.691k / 740.691 kBytes, 100%, 2.516 MBytes/s, ETA 0s
+Errors:                12 (no need to retry)
+Checks:                94 / 94, 100%
+Transferred:            4 / 4, 100%
+Elapsed time:         0.6s
+2022-12-21 22:53:44 ERROR : abraxas/.config/google-chrome/SingletonLock: Listing error: symlink: stat /home/abraxas/.config/google-chrome/SingletonLock: no such file or directory
+Transferred:     740.691k / 740.691 kBytes, 100%, 2.516 MBytes/s, ETA 0s
+Errors:                13 (no need to retry)
+Checks:                94 / 94, 100%
+Transferred:            4 / 4, 100%
+Elapsed time:         0.6s
+2022-12-21 22:53:45 ERROR : abraxas/.config/google-chrome/SingletonSocket: Listing error: symlink: stat /home/abraxas/.config/google-chrome/SingletonSocket: no such file or directory
+Transferred:     740.691k / 740.691 kBytes, 100%, 2.516 MBytes/s, ETA 0s
+Errors:                14 (no need to retry)
+Checks:                97 / 97, 100%
+Transferred:            4 / 4, 100%
+Elapsed time:         0.7s
+2022-12-21 22:53:45 ERROR : abraxas/.config/pulse/b21a16ef70aa44298835faac9a368baa-runtime: Listing error: symlink: stat /home/abraxas/.config/pulse/b21a16ef70aa44298835faac9a368baa-runtime: no such file or directory
+Transferred:     740.691k / 740.691 kBytes, 100%, 2.516 MBytes/s, ETA 0s
+Errors:                15 (no need to retry)
+Checks:                97 / 97, 100%
+Transferred:            4 / 4, 100%
+Elapsed time:         0.7s
+2022-12-21 22:53:45 ERROR : abraxas/.config/pulse/585af310fa6ae75c161e00306347b7a1-runtime: Listing error: symlink: stat /home/abraxas/.config/pulse/585af310fa6ae75c161e00306347b7a1-runtime: no such file or directory
+Transferred:     740.691k / 740.691 kBytes, 100%, 2.516 MBytes/s, ETA 0s
+Errors:                16 (no need to retry)
+Checks:                97 / 97, 100%
+Transferred:            4 / 4, 100%
+Elapsed time:         0.7s
+2022-12-21 22:53:45 ERROR : abraxas/.config/pulse/b840d4a1d2854e9b848c3d23813f0f2a-runtime: Listing error: symlink: stat /home/abraxas/.config/pulse/b840d4a1d2854e9b848c3d23813f0f2a-runtime: no such file or directory
+Transferred:     740.691k / 740.691 kBytes, 100%, 2.516 MBytes/s, ETA 0s
+Errors:                17 (no need to retry)
+Checks:                97 / 97, 100%
+Transferred:            4 / 4, 100%
+Elapsed time:         0.7s
+2022-12-21 22:53:45 ERROR : abraxas/.config/pulse/e8b0490294cd4da4af6c3d9011eda65f-runtime: Listing error: symlink: stat /home/abraxas/.config/pulse/e8b0490294cd4da4af6c3d9011eda65f-runtime: no such file or directory
+Transferred:     740.691k / 740.691 kBytes, 100%, 2.516 MBytes/s, ETA 0s
+Errors:                18 (no need to retry)
+Checks:                97 / 97, 100%
+Transferred:            4 / 4, 100%
+Elapsed time:         0.7s
+2022-12-21 22:53:45 ERROR : Can't retry this error - not attempting retries
+Transferred:     740.691k / 740.691 kBytes, 100%, 2.516 MBytes/s, ETA 0s
+Errors:                19 (no need to retry)
+Checks:               103 / 103, 100%
+Transferred:            4 / 4, 100%
+Elapsed time:         1.0sTransferred:     740.691k / 740.691 kBytes, 100%, 2.516 MBytes/s, ETA 0s
+Errors:                19 (no need to retry)
+Checks:               103 / 103, 100%
+Transferred:            4 / 4, 100%
+Elapsed time:         1.0s
