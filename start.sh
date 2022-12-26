@@ -28,7 +28,7 @@ fi
 
 echo
 sudo ls ~/tmp >/dev/null 2>/dev/null
-[[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt install figlet -y
+[[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt update && sudo apt install figlet -y
 
 read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
 
@@ -175,17 +175,17 @@ VERS=$(/usr/bin/wormhole --version)
 #cp /home/abraxas/dotfiles/.* /home/abraxas -r
 
 cd $HOME
-echo #####################################################################
+echo "#####################################################################"
 /usr/bin/figlet                       CLONE STARTP
-echo #####################################################################
+echo "#####################################################################"
 sleep 1
 rm -rf $HOME/startp
 git clone https://github.com/abraxas678/startp.git
 cd /home/abraxas/startp
 chmod +x *.sh
-echo ###############################################################i######
+echo "###############################################################i####"
 echo                       RESILIO START - DOCKER
-echo #####################################################################
+echo "####################################################################"
 echo
 echo "hostname: $(hostname)"
 echo
