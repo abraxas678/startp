@@ -76,7 +76,7 @@ echo "==========="
 echo "GET IP ADDR"
 echo "==========="
 
-sudo apt-get install dnsutils 
+sudo apt-get install dnsutils  -y
 echo
 echo "your ip:"
 dig +short myip.opendns.com @resolver1.opendns.com  
