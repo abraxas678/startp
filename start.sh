@@ -345,8 +345,10 @@ curl -sSL https://get.easypanel.io | sh
 cd $HOME
 rm -rf .antigen
 curl -L git.io/antigen > antigen.zsh
-cp /home/abraxas/dotfiles/* . -r
-cp /home/abraxas/dotfiles/.* . -r
+cp /home/abraxas/dotfiles/* /home/abraxas -r
+cp /home/abraxas/dotfiles/.* /home/abraxas -r
+rm -rf /home/abraxas/.antigen
+curl -L git.io/antigen > /home/abraxas/antigen.zsh
 source ~/.zshrc
 exec zsh
 fi
