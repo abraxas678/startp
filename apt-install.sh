@@ -8,6 +8,7 @@ sudo apt install -y jq copyq \
                tmux \
 #           bat \
            sshfs \
+           rsync \
   xauth \
   keychain \
 #  age \

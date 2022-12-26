@@ -1,7 +1,7 @@
 jq 
+rsync
 copyq 
  cockpit 
- syncthing 
            exa 
                wormhole 
                mosh 
@@ -10,9 +10,7 @@ copyq
            sshfs 
   xauth 
   keychain 
-  age 
-  fd-find 
-  xclip 
+  fd-find  
   gcalcli 
            xorg 
           ssh 
@@ -25,8 +23,7 @@ copyq
            docker-compose 
            wget 
            nano 
-           git 
-           taskwarrior 
+           git  
            sqlite3 
            sqlitebrowser 
            fzf 

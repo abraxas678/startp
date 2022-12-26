@@ -1,6 +1,6 @@
 #!/bin/bash
-docker kill resilio
-docker rm resilio
+docker kill resilio-gd
+docker rm resilio-gd
 echo
 echo v .1
 echo
@@ -11,6 +11,11 @@ mkdir /home/abraxas/docker >/dev/null 2>/dev/null
 mkdir /home/abraxas/docker/resilio >/dev/null 2>/dev/null
 mkdir /home/abraxas/docker/resilio/data >/dev/null 2>/dev/null
 mkdir /home/abraxas/resilio-moved/ >/dev/null 2>/dev/null
+mkdir /home/mnt >/dev/null 2>/dev/null
+mkdir /home/mnt/gd >/dev/null 2>/dev/null
+mkdir /home/mnt/gd/backup >/dev/null 2>/dev/null
+mkdir /home/mnt/gd/backup/resilio-client-sync-files >/dev/null 2>/dev/null
+/bin/bash $HOME/bin/sudo.sh chown abraxas: -R /home/mnt/gd >/dev/null 2>/dev/null
 echo
 echo "=============="
 echo "INSTALL DOCKER"
@@ -40,7 +45,7 @@ while [[ $x = "1" ]]; do
   x=0
     for line in $(cat resilio-folder.dat); do
       echo; echo "moving $line:"
-      mv /home/abraxas/$line /home/abraxas/resilio-moved/
+      mv GD      /home/abraxas/resilio-moved/
     done
   else
     [[ $MOVE = *"n"* ]]  && x=0 | sleep 1 
@@ -54,13 +59,13 @@ echo "====================="
 echo "version: '3.3'" >docker-compose.yaml
 echo "services:" >>docker-compose.yaml
 echo "    sync:" >>docker-compose.yaml
-echo "        container_name: resilio" >>docker-compose.yaml
+echo "        container_name: resilio-gd" >>docker-compose.yaml
 echo "        ports:" >>docker-compose.yaml
 echo "            - '0.0.0.0:8888:8888'" >>docker-compose.yaml
 echo "            - 55555" >>docker-compose.yaml
 echo "        volumes:" >>docker-compose.yaml
 echo "            - '/home/abraxas/docker/resilio/data:/mnt/sync'" >>docker-compose.yaml
-echo "            - '/home/abraxas:/mnt/mounted_folders/home/abraxas'" >>docker-compose.yaml
+echo "            - '/home/mnt/gd/backup/resilio-client-sync-files:/mnt/mounted_folders/home/mnt/gd/backup/resilio-client-sync-files'" >>docker-compose.yaml
 echo "        restart: on-failure" >>docker-compose.yaml
 echo "        image: resilio/sync" >>docker-compose.yaml
 
