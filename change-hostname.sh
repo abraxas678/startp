@@ -3,6 +3,7 @@ echo
 echo "#####################################################################"
 echo "                      CHANGE HOSTNAME 0.2"
 echo "#####################################################################"
+echo "sudo chown abraxas: /home -R"
 sudo chown abraxas: /home -R
 mkidr $HOME/tmp >/dev/null 2>/dev/null
 sudo apt-get install dnsutils
