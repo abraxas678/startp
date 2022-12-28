@@ -5,8 +5,14 @@ echo "                      CHANGE HOSTNAME 0.2"
 echo "#####################################################################"
 sudo chown abraxas: /home -R
 mkidr $HOME/tmp >/dev/null 2>/dev/null
-
-if [[ ! -f /home/MY_MACHINE ]]; then
+sudo apt-get install dnsutils
+echo
+IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
+if [[ $IP = "85.215.119.137" ]]; then
+  MACHINE="ionos2"
+elif [[ $IP = "85.215.119.175" ]]; then
+  MACHINE="ionos1"
+elif [[ ! -f /home/MY_MACHINE ]]; then
   UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g'); 
   DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
   MACHINE="$DIST$UBU_VERS"
@@ -16,14 +22,16 @@ else
 fi
 echo
 MACHINE=$(echo "$MACHINE" | awk '{print tolower($0)}')
-echo MACHINE $MACHINE
+#echo MACHINE $MACHINE
 MY_HOSTNAME=$MACHINE
 echo
 echo MY_HOSTNAME $MY_HOSTNAME
-#sleep 3
+sleep 3
 
 #[[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && MY_WSL=0 || MY_WSL=1
 [[ $(uname -a) = *"WSL"* ]] && MY_WSL="y" || MY_WSL="n"
+echo MY_WSL $MY_WSL
+sleep 3
 #read -p "is this a WSL? (y/n)" MY_WSL
 [[ ! $MY_HOSTNAME ]] && read -p "new hostname: >>> " MY_HOSTNAME
 
