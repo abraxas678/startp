@@ -6,15 +6,16 @@ echo "#####################################################################"
 sudo chown abraxas: /home -R
 mkidr $HOME/tmp >/dev/null 2>/dev/null
 
-if [[ ! -f /MY_MACHINE ]]; then
+if [[ ! -f /home/MY_MACHINE ]]; then
   UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g'); 
   DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
   MACHINE="$DIST$UBU_VERS"
   MACHINE=$(echo $MACHINE | sed 's/ //g')
 else
-  MACHINE=$(cat /MY_MACHINE)
+  MACHINE=$(cat /home/MY_MACHINE)
 fi
 echo
+MACHINE=$(echo "$MACHINE" | awk '{print tolower($0)}')
 echo MACHINE $MACHINE
 MY_HOSTNAME=$MACHINE
 echo
