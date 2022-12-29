@@ -61,7 +61,7 @@ echo "            - 55555" >>docker-compose.yaml
 echo "        volumes:" >>docker-compose.yaml
 echo "            - '/home/abraxas/docker/resilio/data:/mnt/sync'" >>docker-compose.yaml
 echo "            - '/home/abraxas:/mnt/mounted_folders/home/abraxas'" >>docker-compose.yaml
-echo "        restart: on-failure" >>docker-compose.yaml
+echo "        restart: always" >>docker-compose.yaml
 echo "        image: resilio/sync" >>docker-compose.yaml
 
 echo
