@@ -8,9 +8,9 @@ read -t 1 me
 #echo  >/home/abraxas/mysudo
 ### && [[ ! $(id -u abraxas) ]]
 if [[ $USER != "abraxas" ]]; then
-  adduser abraxas 
-  passwd abraxas 
-  usermod -aG sudo  abraxas 
+  sudo adduser abraxas 
+  sudo passwd abraxas 
+  sudo usermod -aG sudo  abraxas 
   su abraxas
 fi
 #[[ $USER != "abraxas" ]] && su abraxas
