@@ -166,7 +166,7 @@ echo "#####################################################################"
 echo "#####################################################################"
 VERS=$(/usr/bin/wormhole --version)
 [[ $VERS = *"command not"* ]] && sudo apt install -y wormhole
-
+echo
 #unison /home/abraxas/.ssh ssh://ionos2///home/abraxas/.ssh -auto -batch
 #unison /home/abraxas/.config ssh://ionos2///home/abraxas/.config -auto -batch
 #unison /home/abraxas/dotfiles ssh://ionos2///home/abraxas/dotfiles -auto -batch
@@ -183,11 +183,11 @@ rm -rf $HOME/startp
 git clone https://github.com/abraxas678/startp.git
 cd /home/abraxas/startp
 chmod +x *.sh
+echo
 echo "###############################################################i####"
 echo                       RESILIO START - DOCKER
 echo "####################################################################"
 echo
-echo "hostname: $(hostname)"
 echo
 sleep 2
 read -p BUTTON30 -t 30 me
@@ -199,6 +199,7 @@ read -p BUTTON30 -t 30 me
 ##/bin/bash permission-ssh-folder.sh
 #kill $(ps aux | grep syncthing | grep -v grep  | awk '{ print $2 }')
 #sudo apt install syncthing -y
+echo "hostname: $(hostname)"
 read -p BUTTON1200 -t 1200 me
 cd $HOME
 echo "#####################################################################"
@@ -227,6 +228,7 @@ $PUEUE group add mount >/dev/null 2>/dev/null
 #./apt-install.sh
 read -p BUTTON60 -t 60 me
 cd $HOME/startp
+echo
 echo "#####################################################################"
 /usr/bin/figlet                       APT INSTALL
 echo "#####################################################################"
@@ -321,8 +323,9 @@ sudo dpkg -i cloudflared.deb &&
 
 sudo cloudflared service install eyJhIjoiYjZjOTc0YmU4MzZmMDVkZmNhNjU4OTVlZjUxYTAwMzYiLCJ0IjoiYzZjOGI0NjctZDYxZS00NGY1LTg5OWEtNTBlYTUwNjVmZDBmIiwicyI6IlpETTBaVFUxWW1NdE9EWTBNQzAwWlRVMkxUbGpNV1V0WWpKaFpHRXdaREJsTURVNCJ9
 fi
- [[ $(cat /etc/sudoers) != *"timestamp_timeout="* ]] && echo "add      timestamp_timeout=240     on next page" && read -p BUTTON me && sudo visudo        
-
+echo
+ [[ "$(cat /etc/sudoers)" != *"timestamp_timeout=240"* ]] && echo "add   timestamp_timeout=240  on next page" && read -p BUTTON me && sudo visudo        
+echo
 echo "#####################################################################"
 echo                       BREW
 echo "#####################################################################"
