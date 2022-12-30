@@ -1,9 +1,10 @@
 #!/bin/bash
 clear
 cd $HOME
-VERSION="v0.60"
+VERSION="v0.61"
 echo $VERSION
-sudo chown abraxas: /home -R
+sleep 3
+sudo chown abraxas: /home/abraxas -R
 [[ ! -f /home/rpw.dat ]] && read -p "Razer pw: >> " rpw
 echo $rpw >/home/rpw.dat
 sudo chmod 600 /home/rpw.dat
