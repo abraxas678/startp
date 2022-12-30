@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 cd $HOME
-VERSION="v0.56"
+VERSION="v0.60"
 echo $VERSION
 sudo chown abraxas: /home -R
 [[ ! -f /home/rpw.dat ]] && read -p "Razer pw: >> " rpw
