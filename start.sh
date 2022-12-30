@@ -342,6 +342,7 @@ echo "#####################################################################"
 /bin/bash /home/abraxas/startp/docker-without-sudo.sh &
 read -p BUTTON20 -t 20 me
 curl -sSL https://get.easypanel.io | sh
+curl -OL https://bashhub.com/setup && /usr/bin/zsh setup
 cd $HOME
 rm -rf .antigen
 curl -L git.io/antigen > antigen.zsh
