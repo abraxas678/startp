@@ -325,7 +325,7 @@ sudo dpkg -i cloudflared.deb &&
 sudo cloudflared service install eyJhIjoiYjZjOTc0YmU4MzZmMDVkZmNhNjU4OTVlZjUxYTAwMzYiLCJ0IjoiYzZjOGI0NjctZDYxZS00NGY1LTg5OWEtNTBlYTUwNjVmZDBmIiwicyI6IlpETTBaVFUxWW1NdE9EWTBNQzAwWlRVMkxUbGpNV1V0WWpKaFpHRXdaREJsTURVNCJ9
 fi
 echo
- [[ "$(cat /etc/sudoers)" != *"timestamp_timeout=240"* ]] && echo "add   timestamp_timeout=240  on next page" && read -p BUTTON me && sudo visudo        
+ [[ "$(sudo cat /etc/sudoers)" != *"timestamp_timeout=240"* ]] && echo "add   timestamp_timeout=240  on next page" && read -p BUTTON me && sudo visudo        
 echo
 echo "#####################################################################"
 echo                       BREW
