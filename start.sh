@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 cd $HOME
-VERSION="v0.61"
+VERSION="v0.62"
 echo $VERSION
 sleep 3
 sudo chown abraxas: /home/abraxas -R
