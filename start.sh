@@ -22,7 +22,21 @@ curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >
 chmod +x $HOME/tmp/*.sh
 /bin/bash $HOME/tmp/check_user.sh
 
-[[ $(rclone listremotes | grep pc: | wc -l) -eq "0" ]] && echo "start tmate ssh session from local PC (cmd or powershell)" && tmate 
+if [[ $(rclone listremotes | grep pc: | wc -l) -eq "0" ]]; then
+  echo "start tmate ssh session from local PC (cmd or powershell) and setup pcloud" 
+ read -p "BUTTON to start tmate" me
+ tmate 
+fi
+
+sudo apt install -y rclone 
+sudo apt install -y age
+
+echo -e "deb https://s3.amazonaws.com/repo.deb.cyberduck.io stable main" | sudo tee /etc/apt/sources.list.d/cyberduck.list > /dev/null
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FE7097963FEFBE72
+sudo apt-get update
+sudo apt-get install duck -y
+
+
 
 if [[ ! -f /home/MY_MACHINE ]]; then 
   read -p "/home/MY_MACHINE does not exit. Create it? (y/n)" -n 1 MACH 
