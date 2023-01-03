@@ -5,9 +5,24 @@ VERSION="v0.61"
 echo $VERSION
 sleep 3
 sudo chown abraxas: /home/abraxas -R
-[[ ! -f /home/rpw.dat ]] && read -p "Razer pw: >> " rpw
-echo $rpw >/home/rpw.dat
-sudo chmod 600 /home/rpw.dat
+#[[ ! -f /home/rpw.dat ]] && read -p "Razer pw: >> " rpw
+#echo $rpw >/home/rpw.dat
+#sudo chmod 600 /home/rpw.dat
+
+[[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
+cd $HOME/tmp
+[[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
+$MY_SUDO ls ~/tmp >/dev/null 2>/dev/null
+$MY_SUDO apt update && $MY_SUDO apt install -y git curl wget figlet tmate
+echo #####################################################################
+/usr/bin/figlet                       USER-CHECK
+echo #####################################################################
+sleep 1
+curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >$HOME/tmp/check_user.sh
+chmod +x $HOME/tmp/*.sh
+/bin/bash $HOME/tmp/check_user.sh
+
+[[ $(rclone listremotes | grep pc: | wc -l) -eq "0" ]] && echo "start tmate ssh session from local PC (cmd or powershell)" && tmate 
 
 if [[ ! -f /home/MY_MACHINE ]]; then 
   read -p "/home/MY_MACHINE does not exit. Create it? (y/n)" -n 1 MACH 
@@ -27,9 +42,9 @@ fi
 #  fi
 #done
 
-echo
-sudo ls ~/tmp >/dev/null 2>/dev/null
-[[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt update && sudo apt install figlet -y
+#echo
+#
+#[[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt update && sudo apt install figlet -y
 
 read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
 
@@ -39,17 +54,7 @@ if [[ $MY_TYPE = "m" ]]; then
   rclone sync /home/abraxas/.ssh df:.ssh -P
   rclone sync /home/abraxas/dotfiles df:dotfiles -P
 elif [[ $MY_TYPE = "s" ]]; then
-[[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
-[[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
-[[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
 
-echo #####################################################################
-/usr/bin/figlet                       USER-CHECK
-echo #####################################################################
-sleep 1
-curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >$HOME/tmp/check_user.sh
-chmod +x $HOME/tmp/*.sh
-/bin/bash $HOME/tmp/check_user.sh
 
 cd $HOME/tmp
 
