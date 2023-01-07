@@ -8,5 +8,5 @@ services:
         volumes:
             - '/home/abraxas/docker/resilio/data:/mnt/sync'
             - '/home/abraxas:/mnt/mounted_folders/home/abraxas'
-        restart: on-failure
+        restart: always
         image: resilio/sync
