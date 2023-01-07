@@ -1,14 +1,13 @@
 #!/bin/bash
 clear
-MY_MAIN_USER="abraxas"
-export MY_MAIN_USER=$MY_MAIN_USER
-echo "MY_MAIN_USER=$MY_MAIN_USER"
-read -t2 me
 cd $HOME
 VERSION="v0.62"
 echo $VERSION
-sleep 3
-sudo chown abraxas: /home/abraxas -R
+MY_MAIN_USER="abraxas"
+export MY_MAIN_USER=$MY_MAIN_USER
+echo "MY_MAIN_USER=$MY_MAIN_USER"
+read -t3 me
+sudo chown $MY_MAIN_USER: /home/$MY_MAIN_USER -R
 #[[ ! -f /home/rpw.dat ]] && read -p "Razer pw: >> " rpw
 #echo $rpw >/home/rpw.dat
 #sudo chmod 600 /home/rpw.dat
@@ -67,10 +66,10 @@ fi
 read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
 
 if [[ $MY_TYPE = "m" ]]; then
-  rclone copy /home/abraxas/.config/rclone/rclone.conf df:.config/rclone -P
-  rclone sync /home/abraxas/.config df:.config --max-depth 2 -P
-  rclone sync /home/abraxas/.ssh df:.ssh -P
-  rclone sync /home/abraxas/dotfiles df:dotfiles -P
+  rclone copy /home/$MY_MAIN_USER/.config/rclone/rclone.conf df:.config/rclone -P
+  rclone sync /home/$MY_MAIN_USER/.config df:.config --max-depth 2 -P
+  rclone sync /home/$MY_MAIN_USER/.ssh df:.ssh -P
+  rclone sync /home/$MY_MAIN_USER/dotfiles df:dotfiles -P
 elif [[ $MY_TYPE = "s" ]]; then
 
 
@@ -150,7 +149,7 @@ if [[ $(hostname) != *"$MY_HOSTNAME"* ]]; then
     /bin/bash $HOME/tmp/change-hostname.sh
 fi 
 
-if [[ $(whoami) = "abraxas" ]]; then
+if [[ $(whoami) = "$MY_MAIN_USER" ]]; then
 echo #####################################################################
 /usr/bin/figlet                       TAILSCALE
 echo #####################################################################
@@ -205,7 +204,7 @@ echo "#####################################################################"
 sleep 1
 rm -rf $HOME/startp
 git clone https://github.com/abraxas678/startp.git
-cd /home/abraxas/startp
+cd /home/$MY_MAIN_USER/startp
 chmod +x *.sh
 echo
 echo "###############################################################i####"
@@ -232,7 +231,7 @@ echo "#####################################################################"
 sleep 1
 rm -rf $HOME/startp
 git clone https://github.com/abraxas678/startp.git
-cd /home/abraxas/startp
+cd /home/$MY_MAIN_USER/startp
 chmod +x *.sh
 
 echo
@@ -281,7 +280,7 @@ cd /home/abraxas
 #mv .config .configOLD
 #mv bin binOLD
 #mv dotfiles dotfilesOLD
-#echo "execute on other PC:   cd /home/abraxas; /usr/bin/wormhole send .config;  /usr/bin/wormhole send .ssh;  /usr/bin/wormhole send dotfiles;  /usr/bin/wormhole send bin --ignore-unsendable-files"
+#echo "execute on other PC:   cd /home/$MY_MAIN_USER; /usr/bin/wormhole send .config;  /usr/bin/wormhole send .ssh;  /usr/bin/wormhole send dotfiles;  /usr/bin/wormhole send bin --ignore-unsendable-files"
 echo
 #echo "#####################################################################"
 #echo                       UNISON IONOS2
@@ -300,7 +299,7 @@ echo
 #echo
 #read -p "Worhmhole: >>" WH
 #$WH
-echo/home/abraxas   
+echo/home/$MY_MAIN_USER   
 #unison ~/.ssh ionos2:.ssh -batch -auto        
 #read -p "RCLONE PASSWORD: " RCPW
 #export RCPW=$RCPW
@@ -313,10 +312,10 @@ echo/home/abraxas
 #rclone copy df:bin/bashfuler.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
 #rclone copy df:dotfiles/.zshrc ~/ -P --password-command="echo $RC_PASSWORD"
 cd $HOME
-chmod +x /home/abraxas/bin/*.sh
+chmod +x /home/$MY_MAIN_USER/bin/*.sh
 curl -L git.io/antigen > antigen.zsh
 cp $HOME/dotfiles/.zshrc $HOME/
-sudo chown abraxas: -R /usr/share/taskwarrior
+sudo chown $MY_MAIN_USER: -R /usr/share/taskwarrior
 echo
 #cat $HOME/syncthing-start.log | grep GUI
 #echo http://127.0.0.1:63310/#   ### syncthing razer
@@ -356,8 +355,8 @@ echo "#####################################################################"
 sudo /usr/bin/restic self-update
 echo
 read -p BUTTON120vorBREW -t 120 me
-/bin/bash /home/abraxas/startp/install_brew_original.sh 
-/bin/bash /homeabraxas/startp/install_brew_original2.sh
+/bin/bash /home/$MY_MAIN_USER/startp/install_brew_original.sh 
+/bin/bash /home/abraxas/startp/install_brew_original2.sh
 sudo apt purge task -y
 sudo apt purge task taskwarrior -y
 brew install taskwarrior 
@@ -366,17 +365,17 @@ sudo apt autoremove -y
 echo "#####################################################################"
 echo                       EASYPANEL
 echo "#####################################################################"
-/bin/bash /home/abraxas/startp/docker-without-sudo.sh &
+/bin/bash /home/$MY_MAIN_USER/startp/docker-without-sudo.sh &
 read -p BUTTON20 -t 20 me
 curl -sSL https://get.easypanel.io | sh
 curl -OL https://bashhub.com/setup && /usr/bin/zsh setup
 cd $HOME
 rm -rf .antigen
 curl -L git.io/antigen > antigen.zsh
-cp /home/abraxas/dotfiles/* /home/abraxas -r
-cp /home/abraxas/dotfiles/.* /home/abraxas -r
-rm -rf /home/abraxas/.antigen
-curl -L git.io/antigen > /home/abraxas/antigen.zsh
+cp /home/$MY_MAIN_USER/dotfiles/* /home/$MY_MAIN_USER -r
+cp /home/$MY_MAIN_USER/dotfiles/.* /home/$MY_MAIN_USER -r
+rm -rf /home/$MY_MAIN_USER/.antigen
+curl -L git.io/antigen > /home/$MY_MAIN_USER/antigen.zsh
 source ~/.zshrc
 exec zsh
 fi
