@@ -4,6 +4,8 @@ echo #####################################################################
 /usr/bin/figlet                       MACHINE NAME
 echo #####################################################################
 echo "                                                      machine_name.sh"
+echo
+echo
 [[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && WSL=0 || WSL=1
 echo; echo "WSL= $WSL"
 sleep 1
@@ -52,12 +54,12 @@ echo
 echo /etc/hostname
 cat /etc/hostname
 echo
-read -p BUTTON15 -t 15 me
+#read -p BUTTON15 -t 15 me
 echo
-  echo MY_HOSTNAME $MY_HOSTNAME
-  echo "current hostname: $(hostname)"
-  echo
-  read -p BUTTON15 -t 15 me 
+echo MY_HOSTNAME $MY_HOSTNAME
+echo "current hostname: $(hostname)"
+echo
+read -p BUTTON15 -t 15 me 
 #if [[ $(hostname) != *"$MY_HOSTNAME"* ]]; then
 #    curl -L  https://raw.githubusercontent.com/abraxas678/startp/master/change-hostname.sh >$HOME/tmp/change-hostname.sh
 #    chmod +x *.sh
