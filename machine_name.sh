@@ -3,6 +3,7 @@ cd $HOME
 echo #####################################################################
 /usr/bin/figlet                       MACHINE NAME
 echo #####################################################################
+echo "                                                      machine_name.sh"
 [[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && WSL=0 || WSL=1
 echo; echo "WSL= $WSL"
 sleep 1
