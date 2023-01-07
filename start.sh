@@ -1,47 +1,41 @@
 #!/bin/bash
 clear
 cd $HOME
-VERSION="v0.56"
+VERSION="v0.63"
 echo $VERSION
-sudo chown abraxas: /home -R
-[[ ! -f /home/rpw.dat ]] && read -p "Razer pw: >> " rpw
-echo $rpw >/home/rpw.dat
-sudo chmod 600 /home/rpw.dat
+MY_MAIN_USER="abraxas"
+MY_CH="n"
+read -p "CHANGE? (y/n) >> " -t 10 -n 1 MY_CH
+[[ $MY_CH = *"y"* ]] && read -p "MY_MAIN_USER: >> " MY_MAIN_USER
+export MY_MAIN_USER=$MY_MAIN_USER
+echo
+echo "MY_MAIN_USER=$MY_MAIN_USER"
+echo
+read -p BUTTON5 -t 5 me
+echo
+echo "sudo chown $MY_MAIN_USER: /home/$MY_MAIN_USER -R"
+sudo chown $MY_MAIN_USER: /home/$MY_MAIN_USER -R
+echo
 
-if [[ ! -f /home/MY_MACHINE ]]; then 
-  read -p "/home/MY_MACHINE does not exit. Create it? (y/n)" -n 1 MACH 
-  if [[ $MACH = "y" ]]; then
-    read -p "machine name: >> " MY_MACHINE && echo $MY_MACHINE >/home/MY_MACHINE
-  fi
-fi
+[[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
+cd $HOME/tmp
 
-#VERSION_ONLINE=
-#x=0
-#while [[ $x = "0" ]]; do
-#  if [[ $VERSION != *"$1"* ]]; then
-#    sleep 2
-#    bash <() 
-#  else
-#    x=1
-#  fi
-#done
+[[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
+$MY_SUDO ls ~/tmp >/dev/null 2>/dev/null
+$MY_SUDO apt update && $MY_SUDO apt install -y git curl wget figlet tmate
+
+#if [[ $(rclone listremotes | grep pc: | wc -l) -eq "0" ]]; then
+#  echo "start tmate ssh session from local PC (cmd or powershell) and setup pcloud" 
+MY_TMATE=y
+ read -p "BUTTON to start tmate (n to cancel)" MY_TMATE
+ if [[ MY_TMATE -eq "y" ]]; then
+ tmate >tmate.dat
+ curl -d "rm s.sh -f; curl -L start.yyps.de/alert >s.sh; chmod +x *.sh; ./s.sh"
+ curl -d "$(cat tmate.dat)" https://n.yyps.de/alert
+#fi
+ fi
 
 echo
-sudo ls ~/tmp >/dev/null 2>/dev/null
-[[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt update && sudo apt install figlet -y
-
-read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
-
-if [[ $MY_TYPE = "m" ]]; then
-  rclone copy /home/abraxas/.config/rclone/rclone.conf df:.config/rclone -P
-  rclone sync /home/abraxas/.config df:.config --max-depth 2 -P
-  rclone sync /home/abraxas/.ssh df:.ssh -P
-  rclone sync /home/abraxas/dotfiles df:dotfiles -P
-elif [[ $MY_TYPE = "s" ]]; then
-[[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
-[[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
-[[ $(git --version) != *"git version"* ]] && $MY_SUDO apt install -y git curl wget
-
 echo #####################################################################
 /usr/bin/figlet                       USER-CHECK
 echo #####################################################################
@@ -50,7 +44,38 @@ curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >
 chmod +x $HOME/tmp/*.sh
 /bin/bash $HOME/tmp/check_user.sh
 
+echo
+### machine_name.sh
+curl -L https://raw.githubusercontent.com/abraxas678/startp/master/machine_name.sh >$HOME/tmp/machine_name.sh
+sudo chmod +x $HOME/tmp/machine_name.sh
+/bin/bash $HOME/tmp/machine_name.sh
+
+
+sudo apt install -y rclone 
+sudo apt install -y age
+
+echo
+read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
+
+if [[ $MY_TYPE = "m" ]]; then
+  rclone copy /home/$MY_MAIN_USER/.config/rclone/rclone.conf df:.config/rclone -P
+  rclone sync /home/$MY_MAIN_USER/.config df:.config --max-depth 2 -P
+  rclone sync /home/$MY_MAIN_USER/.ssh df:.ssh -P
+  rclone sync /home/$MY_MAIN_USER/.local/share/dotfiles df:dotfiles -P
+elif [[ $MY_TYPE = "s" ]]; then
+
+
 cd $HOME/tmp
+
+if [[ $(duck --version) != "Cyberduck" ]]; then
+  echo "#####################################################################"
+  echo                       INSTALL CYBERDUCK
+  echo "#####################################################################"
+  echo -e "deb https://s3.amazonaws.com/repo.deb.cyberduck.io stable main" | sudo tee /etc/apt/sources.list.d/cyberduck.list > /dev/null
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FE7097963FEFBE72
+  sudo apt-get update
+  sudo apt-get install duck -y
+fi
 
 if [[ $(which rclone) != *"/usr/bin/rclone"* ]]; then
   echo "#####################################################################"
@@ -66,70 +91,19 @@ fi
 
 
 echo; 
-echo #####################################################################
+echo "#####################################################################"
 /usr/bin/figlet                       "UPDATE & UPGRADE"
-echo #####################################################################
+echo "#####################################################################"
 sleep 1
 $MY_SUDO apt update && $MY_SUDO apt upgrade -y
 sudo apt install unzip -y
 ### uname -r | tr '[:upper:]' '[:lower:]'
 
-echo #####################################################################
-/usr/bin/figlet                       MACHINE NAME
-echo #####################################################################
-sleep 1
-if [[ ! -f /home/MY_MACHINE ]]; then
-UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g'); 
-DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
-MACHINE="$DIST$UBU_VERS"
-MACHINE=$(echo $MACHINE | sed 's/ //g')
-else
- MACHINE=$(cat /home/MY_MACHINE)
-fi
-echo
-echo "SOLL-NAME MACHINE=  $MACHINE"
-echo
-sleep 1
 
-[[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && WSL=0 || WSL=1
-echo; echo "WSL= $WSL"
-sleep 1
-[[ ! -f /etc/wsl.conf ]] && sudo touch /etc/wsl.conf
-#[[ $(sudo ls /etc/wsl.conf -la  | awk '{ print $5 }') = "0" ]] 
-#curl -L https://raw.githubusercontent.com/abraxas678/startp/main/wsl.conf -o wsl.conf
-#sudo cp wsl.conf /etc/
-if [[ $WSL = "1" ]]; then
-echo 
-echo "wsl.conf:"
-echo "========="
-echo
-echo cat /etc/wsl.conf
-cat /etc/wsl.conf
-echo
-read -p BUTTON5 -t 5 me 
-fi
-echo
-[[ *"$MACHINE"* = *"$(sudo cat /etc/hostname)"* ]] && sudo echo $MACHINE >/etc/hostname
-echo /etc/hostname
-cat /etc/hostname
-echo
-echo
-[[ ! -f /MY_HOSTNAME ]] && MY_HOSTNAME=$MACHINE || MY_HOSTNAME=$(cat /MY_HOSTNAME)
-#read -p "enter hostname: >> " MY_HOSTNAME
-  echo MY_HOSTNAME $MY_HOSTNAME
-  echo "current hostname: $(hostname)"
-  echo
-  read -p BUTTON15 -t 15 me 
-if [[ $(hostname) != *"$MY_HOSTNAME"* ]]; then
-    curl -L  https://raw.githubusercontent.com/abraxas678/startp/master/change-hostname.sh >$HOME/tmp/change-hostname.sh
-    chmod +x *.sh
-    /bin/bash $HOME/tmp/change-hostname.sh
-fi 
-
-if [[ $(whoami) = "abraxas" ]]; then
-echo #####################################################################
+if [[ $(whoami) = "$MY_MAIN_USER" ]]; then
+echo "#####################################################################"
 /usr/bin/figlet                       TAILSCALE
-echo #####################################################################
+echo "#####################################################################"
 sleep 1
   [[ $(tailscale ip | wc -l) != "2" ]] && sudo apt update && curl -fsSL https://tailscale.com/install.sh | sh
   echo
@@ -147,9 +121,9 @@ sleep 1
     read -p "'y' to continue" MY_Y
   done
   read -p BUTTON30 -t 30 me
-echo #####################################################################
+echo "#####################################################################"
 /usr/bin/figlet                       UNISON INSTALL
-echo #####################################################################
+echo "#####################################################################"
 
   if [[ $(which unison | wc -l) = "0" ]]; then
     echo; echo install unison
@@ -166,7 +140,7 @@ echo "#####################################################################"
 echo "#####################################################################"
 VERS=$(/usr/bin/wormhole --version)
 [[ $VERS = *"command not"* ]] && sudo apt install -y wormhole
-
+echo
 #unison /home/abraxas/.ssh ssh://ionos2///home/abraxas/.ssh -auto -batch
 #unison /home/abraxas/.config ssh://ionos2///home/abraxas/.config -auto -batch
 #unison /home/abraxas/dotfiles ssh://ionos2///home/abraxas/dotfiles -auto -batch
@@ -181,24 +155,24 @@ echo "#####################################################################"
 sleep 1
 rm -rf $HOME/startp
 git clone https://github.com/abraxas678/startp.git
-cd /home/abraxas/startp
+cd /home/$MY_MAIN_USER/startp
 chmod +x *.sh
+echo
+if [[ "1" -eq "2" ]]; then
 echo "###############################################################i####"
 echo                       RESILIO START - DOCKER
 echo "####################################################################"
 echo
-echo "hostname: $(hostname)"
 echo
-sleep 2
-read -p BUTTON30 -t 30 me
-./resilio-start.sh
-#sudo cp /home/abraxas/startp/resilio-sync/* /etc/resilio-sync/ -r
-#sudo systemctl restart resilio-sync
-#systemctl --user restart resilio-sync
-#/bin/bash /home/abraxas/startp/openme.sh $(hostname):8888
+  ./resilio-start.sh
+  #sudo cp /home/abraxas/startp/resilio-sync/* /etc/resilio-sync/ -r
+  #sudo systemctl restart resilio-sync
+  #systemctl --user restart resilio-sync
+  #/bin/bash /home/abraxas/startp/openme.sh $(hostname):8888
 ##/bin/bash permission-ssh-folder.sh
 #kill $(ps aux | grep syncthing | grep -v grep  | awk '{ print $2 }')
 #sudo apt install syncthing -y
+echo "hostname: $(hostname)"
 read -p BUTTON1200 -t 1200 me
 cd $HOME
 echo "#####################################################################"
@@ -207,8 +181,9 @@ echo "#####################################################################"
 sleep 1
 rm -rf $HOME/startp
 git clone https://github.com/abraxas678/startp.git
-cd /home/abraxas/startp
+cd /home/$MY_MAIN_USER/startp
 chmod +x *.sh
+fi
 
 echo
 echo "#####################################################################"
@@ -227,6 +202,8 @@ $PUEUE group add mount >/dev/null 2>/dev/null
 #./apt-install.sh
 read -p BUTTON60 -t 60 me
 cd $HOME/startp
+
+echo
 echo "#####################################################################"
 /usr/bin/figlet                       APT INSTALL
 echo "#####################################################################"
@@ -237,26 +214,20 @@ echo "#####################################################################"
 echo "#####################################################################"
 sleep 1
 pip3 install rich-cli   
-#unison /home/abraxas/bin ssh://ionos2///home/abraxas/bin
 
-#  git clone git@github.com/abraxas678/start.git  
-#  cd $HOME/tmp/start
-#  chmod +x *.s
-#  ./pueue-setup.sh
-#  ./install_brew_original.sh 
-#  ./install_brew_original2.sh 
-#  ./apt-install.sh
 mkdir $HOME/.unison
 cp ~/startp/*.prf ~/.unison/
 cp ~/startp/white* ~/.unison/
 cd  $HOME/.unison
-cd /home/abraxas
+
+cd /home/$MY_MAIN_USER
+
 #mv .ssh .sshOLD
 #mv .config .configOLD
 #mv bin binOLD
 #mv dotfiles dotfilesOLD
-#echo "execute on other PC:   cd /home/abraxas; /usr/bin/wormhole send .config;  /usr/bin/wormhole send .ssh;  /usr/bin/wormhole send dotfiles;  /usr/bin/wormhole send bin --ignore-unsendable-files"
-echo
+#echo "execute on other PC:   cd /home/$MY_MAIN_USER; /usr/bin/wormhole send .config;  /usr/bin/wormhole send .ssh;  /usr/bin/wormhole send dotfiles;  /usr/bin/wormhole send bin --ignore-unsendable-files"
+#echo
 #echo "#####################################################################"
 #echo                       UNISON IONOS2
 #echo "#####################################################################"
@@ -265,7 +236,7 @@ echo
 #read -p "Worhmhole: >>" WH
 #$WH
 #fi
-echo
+#echo
 #echo "#####################################################################"
 #echo                       COPY RCLONE.CONF
 #echo "#####################################################################"
@@ -274,7 +245,7 @@ echo
 #echo
 #read -p "Worhmhole: >>" WH
 #$WH
-echo/home/abraxas   
+#echo/home/$MY_MAIN_USER   
 #unison ~/.ssh ionos2:.ssh -batch -auto        
 #read -p "RCLONE PASSWORD: " RCPW
 #export RCPW=$RCPW
@@ -286,11 +257,13 @@ echo/home/abraxas
 #rclone copy df:bin/bashful-setup.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
 #rclone copy df:bin/bashfuler.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
 #rclone copy df:dotfiles/.zshrc ~/ -P --password-command="echo $RC_PASSWORD"
+
+
 cd $HOME
-chmod +x /home/abraxas/bin/*.sh
+chmod +x /home/$MY_MAIN_USER/bin/*.sh
 curl -L git.io/antigen > antigen.zsh
-cp $HOME/dotfiles/.zshrc $HOME/
-sudo chown abraxas: -R /usr/share/taskwarrior
+cp $HOME/.local/share/dotfiles/home/$MY_MAIN_USER/.zshrc $HOME/
+sudo chown $MY_MAIN_USER: -R /usr/share/taskwarrior
 echo
 #cat $HOME/syncthing-start.log | grep GUI
 #echo http://127.0.0.1:63310/#   ### syncthing razer
@@ -321,16 +294,18 @@ sudo dpkg -i cloudflared.deb &&
 
 sudo cloudflared service install eyJhIjoiYjZjOTc0YmU4MzZmMDVkZmNhNjU4OTVlZjUxYTAwMzYiLCJ0IjoiYzZjOGI0NjctZDYxZS00NGY1LTg5OWEtNTBlYTUwNjVmZDBmIiwicyI6IlpETTBaVFUxWW1NdE9EWTBNQzAwWlRVMkxUbGpNV1V0WWpKaFpHRXdaREJsTURVNCJ9
 fi
- [[ $(cat /etc/sudoers) != *"timestamp_timeout="* ]] && echo "add      timestamp_timeout=240     on next page" && read -p BUTTON me && sudo visudo        
+echo
 
+[[ "$(sudo cat /etc/sudoers)" != *"timestamp_timeout=240"* ]] && echo "add   timestamp_timeout=240  on next page" && read -p BUTTON me && sudo visudo        
+echo
 echo "#####################################################################"
 echo                       BREW
 echo "#####################################################################"
 sudo /usr/bin/restic self-update
 echo
 read -p BUTTON120vorBREW -t 120 me
-/bin/bash /home/abraxas/startp/install_brew_original.sh 
-/bin/bash /homeabraxas/startp/install_brew_original2.sh
+/bin/bash /home/$MY_MAIN_USER/startp/install_brew_original.sh 
+/bin/bash /home/abraxas/startp/install_brew_original2.sh
 sudo apt purge task -y
 sudo apt purge task taskwarrior -y
 brew install taskwarrior 
@@ -339,16 +314,17 @@ sudo apt autoremove -y
 echo "#####################################################################"
 echo                       EASYPANEL
 echo "#####################################################################"
-/bin/bash /home/abraxas/startp/docker-without-sudo.sh &
+/bin/bash /home/$MY_MAIN_USER/startp/docker-without-sudo.sh &
 read -p BUTTON20 -t 20 me
 curl -sSL https://get.easypanel.io | sh
+curl -OL https://bashhub.com/setup && /usr/bin/zsh setup
 cd $HOME
 rm -rf .antigen
 curl -L git.io/antigen > antigen.zsh
-cp /home/abraxas/dotfiles/* /home/abraxas -r
-cp /home/abraxas/dotfiles/.* /home/abraxas -r
-rm -rf /home/abraxas/.antigen
-curl -L git.io/antigen > /home/abraxas/antigen.zsh
+cp /home/$MY_MAIN_USER/dotfiles/* /home/$MY_MAIN_USER -r
+cp /home/$MY_MAIN_USER/dotfiles/.* /home/$MY_MAIN_USER -r
+rm -rf /home/$MY_MAIN_USER/.antigen
+curl -L git.io/antigen > /home/$MY_MAIN_USER/antigen.zsh
 source ~/.zshrc
 exec zsh
 fi
