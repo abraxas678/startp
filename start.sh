@@ -4,9 +4,14 @@ cd $HOME
 VERSION="v0.62"
 echo $VERSION
 MY_MAIN_USER="abraxas"
+MY_CH="n"
+read -p "CHANGE? (y/n) >> " -t 10 -n 1 MY_CH
+[[ $MY_CH = *"y"* ]] && read -p "MY_MAIN_USER: >> " MY_MAIN_USER
 export MY_MAIN_USER=$MY_MAIN_USER
+echo
 echo "MY_MAIN_USER=$MY_MAIN_USER"
-read -t3 me
+echo
+read -p BUTTON5 -t 5 me
 echo
 echo "sudo chown $MY_MAIN_USER: /home/$MY_MAIN_USER -R"
 sudo chown $MY_MAIN_USER: /home/$MY_MAIN_USER -R

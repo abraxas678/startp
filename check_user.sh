@@ -3,16 +3,19 @@ USER=$(whoami)
 echo "#####################################################################"
 echo "                      CHECKING USER DETAILS                          "
 echo "#####################################################################"
+echo
 echo "CURRENT USER: $USER"
-read -t 1 me
-#echo  >/home/abraxas/mysudo
-### && [[ ! $(id -u abraxas) ]]
-if [[ $USER != "abraxas" ]]; then
-  sudo adduser abraxas 
-  sudo passwd abraxas 
-  sudo usermod -aG sudo  abraxas 
-  su abraxas
+echo "MY_MAIN_USER: $MY_MAIN_USER"
+echo
+read -p BUTTON5 -t 5 me
+#echo  >/home/$MY_MAIN_USER/mysudo
+### && [[ ! $(id -u $MY_MAIN_USER) ]]
+if [[ $USER != "$MY_MAIN_USER" ]]; then
+  sudo adduser $MY_MAIN_USER 
+  sudo passwd $MY_MAIN_USER 
+  sudo usermod -aG sudo  $MY_MAIN_USER 
+  su $MY_MAIN_USER
 fi
-#[[ $USER != "abraxas" ]] && su abraxas
-[[ $USER != "abraxas" ]] && echo BUTTON && read me || read -t 1 me
+#[[ $USER != "$MY_MAIN_USER" ]] && su $MY_MAIN_USER
+[[ $USER != "$MY_MAIN_USER" ]] && echo BUTTON && read me || read -t 1 me
 
