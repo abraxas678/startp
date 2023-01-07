@@ -1,5 +1,9 @@
 #!/bin/bash
 clear
+MY_MAIN_USER="abraxas"
+export MY_MAIN_USER=$MY_MAIN_USER
+echo "MY_MAIN_USER=$MY_MAIN_USER"
+read -t2 me
 cd $HOME
 VERSION="v0.62"
 echo $VERSION
