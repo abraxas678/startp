@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 cd $HOME
-VERSION="v0.62"
+VERSION="v0.63"
 echo $VERSION
 MY_MAIN_USER="abraxas"
 MY_CH="n"
