@@ -30,6 +30,7 @@ MY_TMATE=y
 #fi
  fi
 
+echo
 echo #####################################################################
 /usr/bin/figlet                       USER-CHECK
 echo #####################################################################
@@ -38,6 +39,7 @@ curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >
 chmod +x $HOME/tmp/*.sh
 /bin/bash $HOME/tmp/check_user.sh
 
+echo
 ### machine_name.sh
 curl -L https://raw.githubusercontent.com/abraxas678/startp/master/machine_name.sh >$HOME/tmp/machine_name.sh
 sudo chmod +x $HOME/tmp/machine_name.sh
@@ -47,13 +49,7 @@ sudo chmod +x $HOME/tmp/machine_name.sh
 sudo apt install -y rclone 
 sudo apt install -y age
 
-if [[ $(duck --version) != "Cyberduck" ]]; then
-  echo -e "deb https://s3.amazonaws.com/repo.deb.cyberduck.io stable main" | sudo tee /etc/apt/sources.list.d/cyberduck.list > /dev/null
-  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FE7097963FEFBE72
-  sudo apt-get update
-  sudo apt-get install duck -y
-fi
-
+echo
 read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
 
 if [[ $MY_TYPE = "m" ]]; then
@@ -65,6 +61,16 @@ elif [[ $MY_TYPE = "s" ]]; then
 
 
 cd $HOME/tmp
+
+if [[ $(duck --version) != "Cyberduck" ]]; then
+  echo "#####################################################################"
+  echo                       INSTALL CYBERDUCK
+  echo "#####################################################################"
+  echo -e "deb https://s3.amazonaws.com/repo.deb.cyberduck.io stable main" | sudo tee /etc/apt/sources.list.d/cyberduck.list > /dev/null
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FE7097963FEFBE72
+  sudo apt-get update
+  sudo apt-get install duck -y
+fi
 
 if [[ $(which rclone) != *"/usr/bin/rclone"* ]]; then
   echo "#####################################################################"
@@ -80,9 +86,9 @@ fi
 
 
 echo; 
-echo #####################################################################
+echo "#####################################################################"
 /usr/bin/figlet                       "UPDATE & UPGRADE"
-echo #####################################################################
+echo "#####################################################################"
 sleep 1
 $MY_SUDO apt update && $MY_SUDO apt upgrade -y
 sudo apt install unzip -y
@@ -90,9 +96,9 @@ sudo apt install unzip -y
 
 
 if [[ $(whoami) = "$MY_MAIN_USER" ]]; then
-echo #####################################################################
+echo "#####################################################################"
 /usr/bin/figlet                       TAILSCALE
-echo #####################################################################
+echo "#####################################################################"
 sleep 1
   [[ $(tailscale ip | wc -l) != "2" ]] && sudo apt update && curl -fsSL https://tailscale.com/install.sh | sh
   echo
@@ -110,9 +116,9 @@ sleep 1
     read -p "'y' to continue" MY_Y
   done
   read -p BUTTON30 -t 30 me
-echo #####################################################################
+echo "#####################################################################"
 /usr/bin/figlet                       UNISON INSTALL
-echo #####################################################################
+echo "#####################################################################"
 
   if [[ $(which unison | wc -l) = "0" ]]; then
     echo; echo install unison
@@ -147,18 +153,17 @@ git clone https://github.com/abraxas678/startp.git
 cd /home/$MY_MAIN_USER/startp
 chmod +x *.sh
 echo
+if [[ "1" -eq "2" ]]; then
 echo "###############################################################i####"
 echo                       RESILIO START - DOCKER
 echo "####################################################################"
 echo
 echo
-sleep 2
-read -p BUTTON30 -t 30 me
-./resilio-start.sh
-#sudo cp /home/abraxas/startp/resilio-sync/* /etc/resilio-sync/ -r
-#sudo systemctl restart resilio-sync
-#systemctl --user restart resilio-sync
-#/bin/bash /home/abraxas/startp/openme.sh $(hostname):8888
+  ./resilio-start.sh
+  #sudo cp /home/abraxas/startp/resilio-sync/* /etc/resilio-sync/ -r
+  #sudo systemctl restart resilio-sync
+  #systemctl --user restart resilio-sync
+  #/bin/bash /home/abraxas/startp/openme.sh $(hostname):8888
 ##/bin/bash permission-ssh-folder.sh
 #kill $(ps aux | grep syncthing | grep -v grep  | awk '{ print $2 }')
 #sudo apt install syncthing -y
@@ -173,6 +178,7 @@ rm -rf $HOME/startp
 git clone https://github.com/abraxas678/startp.git
 cd /home/$MY_MAIN_USER/startp
 chmod +x *.sh
+fi
 
 echo
 echo "#####################################################################"
@@ -191,6 +197,7 @@ $PUEUE group add mount >/dev/null 2>/dev/null
 #./apt-install.sh
 read -p BUTTON60 -t 60 me
 cd $HOME/startp
+
 echo
 echo "#####################################################################"
 /usr/bin/figlet                       APT INSTALL
@@ -202,26 +209,20 @@ echo "#####################################################################"
 echo "#####################################################################"
 sleep 1
 pip3 install rich-cli   
-#unison /home/abraxas/bin ssh://ionos2///home/abraxas/bin
 
-#  git clone git@github.com/abraxas678/start.git  
-#  cd $HOME/tmp/start
-#  chmod +x *.s
-#  ./pueue-setup.sh
-#  ./install_brew_original.sh 
-#  ./install_brew_original2.sh 
-#  ./apt-install.sh
 mkdir $HOME/.unison
 cp ~/startp/*.prf ~/.unison/
 cp ~/startp/white* ~/.unison/
 cd  $HOME/.unison
-cd /home/abraxas
+
+cd /home/$MY_MAIN_USER
+
 #mv .ssh .sshOLD
 #mv .config .configOLD
 #mv bin binOLD
 #mv dotfiles dotfilesOLD
 #echo "execute on other PC:   cd /home/$MY_MAIN_USER; /usr/bin/wormhole send .config;  /usr/bin/wormhole send .ssh;  /usr/bin/wormhole send dotfiles;  /usr/bin/wormhole send bin --ignore-unsendable-files"
-echo
+#echo
 #echo "#####################################################################"
 #echo                       UNISON IONOS2
 #echo "#####################################################################"
@@ -230,7 +231,7 @@ echo
 #read -p "Worhmhole: >>" WH
 #$WH
 #fi
-echo
+#echo
 #echo "#####################################################################"
 #echo                       COPY RCLONE.CONF
 #echo "#####################################################################"
@@ -239,7 +240,7 @@ echo
 #echo
 #read -p "Worhmhole: >>" WH
 #$WH
-echo/home/$MY_MAIN_USER   
+#echo/home/$MY_MAIN_USER   
 #unison ~/.ssh ionos2:.ssh -batch -auto        
 #read -p "RCLONE PASSWORD: " RCPW
 #export RCPW=$RCPW
@@ -251,10 +252,12 @@ echo/home/$MY_MAIN_USER
 #rclone copy df:bin/bashful-setup.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
 #rclone copy df:bin/bashfuler.sh /home/abraxas/bin -P --password-command="echo $RC_PASSWORD"  --drive-acknowledge-abuse
 #rclone copy df:dotfiles/.zshrc ~/ -P --password-command="echo $RC_PASSWORD"
+
+
 cd $HOME
 chmod +x /home/$MY_MAIN_USER/bin/*.sh
 curl -L git.io/antigen > antigen.zsh
-cp $HOME/dotfiles/.zshrc $HOME/
+cp $HOME/.local/share/dotfiles/home/$MY_MAIN_USER/.zshrc $HOME/
 sudo chown $MY_MAIN_USER: -R /usr/share/taskwarrior
 echo
 #cat $HOME/syncthing-start.log | grep GUI
@@ -287,7 +290,8 @@ sudo dpkg -i cloudflared.deb &&
 sudo cloudflared service install eyJhIjoiYjZjOTc0YmU4MzZmMDVkZmNhNjU4OTVlZjUxYTAwMzYiLCJ0IjoiYzZjOGI0NjctZDYxZS00NGY1LTg5OWEtNTBlYTUwNjVmZDBmIiwicyI6IlpETTBaVFUxWW1NdE9EWTBNQzAwWlRVMkxUbGpNV1V0WWpKaFpHRXdaREJsTURVNCJ9
 fi
 echo
- [[ "$(sudo cat /etc/sudoers)" != *"timestamp_timeout=240"* ]] && echo "add   timestamp_timeout=240  on next page" && read -p BUTTON me && sudo visudo        
+
+[[ "$(sudo cat /etc/sudoers)" != *"timestamp_timeout=240"* ]] && echo "add   timestamp_timeout=240  on next page" && read -p BUTTON me && sudo visudo        
 echo
 echo "#####################################################################"
 echo                       BREW
