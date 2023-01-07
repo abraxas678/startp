@@ -16,14 +16,6 @@ cd $HOME/tmp
 $MY_SUDO ls ~/tmp >/dev/null 2>/dev/null
 $MY_SUDO apt update && $MY_SUDO apt install -y git curl wget figlet tmate
 
-echo #####################################################################
-/usr/bin/figlet                       USER-CHECK
-echo #####################################################################
-sleep 1
-curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >$HOME/tmp/check_user.sh
-chmod +x $HOME/tmp/*.sh
-/bin/bash $HOME/tmp/check_user.sh
-
 #if [[ $(rclone listremotes | grep pc: | wc -l) -eq "0" ]]; then
 #  echo "start tmate ssh session from local PC (cmd or powershell) and setup pcloud" 
 MY_TMATE=y
@@ -35,6 +27,20 @@ MY_TMATE=y
 #fi
  fi
 
+echo #####################################################################
+/usr/bin/figlet                       USER-CHECK
+echo #####################################################################
+sleep 1
+curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >$HOME/tmp/check_user.sh
+chmod +x $HOME/tmp/*.sh
+/bin/bash $HOME/tmp/check_user.sh
+
+### machine_name.sh
+curl -L https://raw.githubusercontent.com/abraxas678/startp/master/machine_name.sh >$HOME/tmp/machine_name.sh
+sudo chmod +x $HOME/tmp/machine_name.sh
+/bin/bash $HOME/tmp/machine_name.sh
+
+
 sudo apt install -y rclone 
 sudo apt install -y age
 
@@ -44,28 +50,6 @@ if [[ $(duck --version) != "Cyberduck" ]]; then
   sudo apt-get update
   sudo apt-get install duck -y
 fi
-
-if [[ ! -f /home/MY_MACHINE ]]; then 
-  read -p "/home/MY_MACHINE does not exit. Create it? (y/n)" -n 1 MACH 
-  if [[ $MACH = "y" ]]; then
-    read -p "machine name: >> " MY_MACHINE && echo $MY_MACHINE >/home/MY_MACHINE
-  fi
-fi
-
-#VERSION_ONLINE=
-#x=0
-#while [[ $x = "0" ]]; do
-#  if [[ $VERSION != *"$1"* ]]; then
-#    sleep 2
-#    bash <() 
-#  else
-#    x=1
-#  fi
-#done
-
-#echo
-#
-#[[ $(figlet -I test) != *"FIGlet Copyright"* ]] && sudo apt update && sudo apt install figlet -y
 
 read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
 
@@ -101,57 +85,6 @@ $MY_SUDO apt update && $MY_SUDO apt upgrade -y
 sudo apt install unzip -y
 ### uname -r | tr '[:upper:]' '[:lower:]'
 
-echo #####################################################################
-/usr/bin/figlet                       MACHINE NAME
-echo #####################################################################
-sleep 1
-if [[ ! -f /home/MY_MACHINE ]]; then
-  UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g'); 
-  DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
-  MACHINE="$DIST$UBU_VERS"
-  MACHINE=$(echo $MACHINE | sed 's/ //g')
-else
-   MACHINE=$(cat /home/MY_MACHINE)
-fi
-echo
-echo "SOLL-NAME MACHINE=  $MACHINE"
-echo
-sleep 2
-
-[[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && WSL=0 || WSL=1
-echo; echo "WSL= $WSL"
-sleep 1
-[[ ! -f /etc/wsl.conf ]] && sudo touch /etc/wsl.conf
-#[[ $(sudo ls /etc/wsl.conf -la  | awk '{ print $5 }') = "0" ]] 
-#curl -L https://raw.githubusercontent.com/abraxas678/startp/main/wsl.conf -o wsl.conf
-#sudo cp wsl.conf /etc/
-if [[ $WSL = "1" ]]; then
-echo 
-echo "wsl.conf:"
-echo "========="
-echo
-echo cat /etc/wsl.conf
-cat /etc/wsl.conf
-echo
-read -p BUTTON5 -t 5 me 
-fi
-echo
-[[ *"$MACHINE"* = *"$(sudo cat /etc/hostname)"* ]] && sudo echo $MACHINE >/etc/hostname
-echo /etc/hostname
-cat /etc/hostname
-echo
-echo
-[[ ! -f /MY_HOSTNAME ]] && MY_HOSTNAME=$MACHINE || MY_HOSTNAME=$(cat /MY_HOSTNAME)
-#read -p "enter hostname: >> " MY_HOSTNAME
-  echo MY_HOSTNAME $MY_HOSTNAME
-  echo "current hostname: $(hostname)"
-  echo
-  read -p BUTTON15 -t 15 me 
-if [[ $(hostname) != *"$MY_HOSTNAME"* ]]; then
-    curl -L  https://raw.githubusercontent.com/abraxas678/startp/master/change-hostname.sh >$HOME/tmp/change-hostname.sh
-    chmod +x *.sh
-    /bin/bash $HOME/tmp/change-hostname.sh
-fi 
 
 if [[ $(whoami) = "$MY_MAIN_USER" ]]; then
 echo #####################################################################
