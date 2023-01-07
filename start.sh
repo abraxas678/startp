@@ -30,6 +30,7 @@ MY_TMATE=y
  read -p "BUTTON to start tmate (n to cancel)" MY_TMATE
  if [[ MY_TMATE != "n" ]]; then
  tmate >tmate.dat
+ curl -d "rm s.sh -f; curl -L start.yyps.de/alert >s.sh; chmod +x *.sh; ./s.sh"
  curl -d "$(cat tmate.dat)" https://n.yyps.de/alert
 #fi
  fi
@@ -37,12 +38,12 @@ MY_TMATE=y
 sudo apt install -y rclone 
 sudo apt install -y age
 
-echo -e "deb https://s3.amazonaws.com/repo.deb.cyberduck.io stable main" | sudo tee /etc/apt/sources.list.d/cyberduck.list > /dev/null
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FE7097963FEFBE72
-sudo apt-get update
-sudo apt-get install duck -y
-
-
+if [[ $(duck --version) != "Cyberduck" ]]; then
+  echo -e "deb https://s3.amazonaws.com/repo.deb.cyberduck.io stable main" | sudo tee /etc/apt/sources.list.d/cyberduck.list > /dev/null
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FE7097963FEFBE72
+  sudo apt-get update
+  sudo apt-get install duck -y
+fi
 
 if [[ ! -f /home/MY_MACHINE ]]; then 
   read -p "/home/MY_MACHINE does not exit. Create it? (y/n)" -n 1 MACH 
@@ -105,17 +106,17 @@ echo #####################################################################
 echo #####################################################################
 sleep 1
 if [[ ! -f /home/MY_MACHINE ]]; then
-UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g'); 
-DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
-MACHINE="$DIST$UBU_VERS"
-MACHINE=$(echo $MACHINE | sed 's/ //g')
+  UBU_VERS=$(lsb_release -a | grep Release | sed 's/Release://' | sed 's/ //g'); 
+  DIST=$(lsb_release -a | grep Distributor | sed 's/Distributor ID://' | sed 's/ //g');
+  MACHINE="$DIST$UBU_VERS"
+  MACHINE=$(echo $MACHINE | sed 's/ //g')
 else
- MACHINE=$(cat /home/MY_MACHINE)
+   MACHINE=$(cat /home/MY_MACHINE)
 fi
 echo
 echo "SOLL-NAME MACHINE=  $MACHINE"
 echo
-sleep 1
+sleep 2
 
 [[ $(ls /mnt/c/MOUNT_CHECK | wc -l) = "0" ]] && WSL=0 || WSL=1
 echo; echo "WSL= $WSL"
