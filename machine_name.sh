@@ -43,7 +43,7 @@ if [[ ! -f /etc/wsl.conf ]]; then
   echo cat /etc/wsl.conf
   sudo cat /etc/wsl.conf
   echo
-  read -p BUTTON15 -t 15 me 
+#  read -p BUTTON15 -t 15 me 
 fi
 fi
 echo
