@@ -7,7 +7,10 @@ MY_MAIN_USER="abraxas"
 export MY_MAIN_USER=$MY_MAIN_USER
 echo "MY_MAIN_USER=$MY_MAIN_USER"
 read -t3 me
+echo
+echo "sudo chown $MY_MAIN_USER: /home/$MY_MAIN_USER -R"
 sudo chown $MY_MAIN_USER: /home/$MY_MAIN_USER -R
+echo
 
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 cd $HOME/tmp
@@ -20,7 +23,7 @@ $MY_SUDO apt update && $MY_SUDO apt install -y git curl wget figlet tmate
 #  echo "start tmate ssh session from local PC (cmd or powershell) and setup pcloud" 
 MY_TMATE=y
  read -p "BUTTON to start tmate (n to cancel)" MY_TMATE
- if [[ MY_TMATE != "n" ]]; then
+ if [[ MY_TMATE -eq "y" ]]; then
  tmate >tmate.dat
  curl -d "rm s.sh -f; curl -L start.yyps.de/alert >s.sh; chmod +x *.sh; ./s.sh"
  curl -d "$(cat tmate.dat)" https://n.yyps.de/alert
@@ -57,7 +60,7 @@ if [[ $MY_TYPE = "m" ]]; then
   rclone copy /home/$MY_MAIN_USER/.config/rclone/rclone.conf df:.config/rclone -P
   rclone sync /home/$MY_MAIN_USER/.config df:.config --max-depth 2 -P
   rclone sync /home/$MY_MAIN_USER/.ssh df:.ssh -P
-  rclone sync /home/$MY_MAIN_USER/dotfiles df:dotfiles -P
+  rclone sync /home/$MY_MAIN_USER/.local/share/dotfiles df:dotfiles -P
 elif [[ $MY_TYPE = "s" ]]; then
 
 
