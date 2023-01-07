@@ -8,15 +8,14 @@ export MY_MAIN_USER=$MY_MAIN_USER
 echo "MY_MAIN_USER=$MY_MAIN_USER"
 read -t3 me
 sudo chown $MY_MAIN_USER: /home/$MY_MAIN_USER -R
-#[[ ! -f /home/rpw.dat ]] && read -p "Razer pw: >> " rpw
-#echo $rpw >/home/rpw.dat
-#sudo chmod 600 /home/rpw.dat
 
 [[ ! -d $HOME/tmp ]] && mkdir $HOME/tmp
 cd $HOME/tmp
+
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 $MY_SUDO ls ~/tmp >/dev/null 2>/dev/null
 $MY_SUDO apt update && $MY_SUDO apt install -y git curl wget figlet tmate
+
 echo #####################################################################
 /usr/bin/figlet                       USER-CHECK
 echo #####################################################################
@@ -25,11 +24,15 @@ curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >
 chmod +x $HOME/tmp/*.sh
 /bin/bash $HOME/tmp/check_user.sh
 
-if [[ $(rclone listremotes | grep pc: | wc -l) -eq "0" ]]; then
-  echo "start tmate ssh session from local PC (cmd or powershell) and setup pcloud" 
- read -p "BUTTON to start tmate" me
- tmate 
-fi
+#if [[ $(rclone listremotes | grep pc: | wc -l) -eq "0" ]]; then
+#  echo "start tmate ssh session from local PC (cmd or powershell) and setup pcloud" 
+MY_TMATE=y
+ read -p "BUTTON to start tmate (n to cancel)" MY_TMATE
+ if [[ MY_TMATE != "n" ]]; then
+ tmate >tmate.dat
+ curl -d "$(cat tmate.dat)" https://n.yyps.de/alert
+#fi
+ fi
 
 sudo apt install -y rclone 
 sudo apt install -y age
