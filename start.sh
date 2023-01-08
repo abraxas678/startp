@@ -52,12 +52,10 @@ curl -L https://raw.githubusercontent.com/abraxas678/startp/main/check_user.sh >
 chmod +x $HOME/tmp/*.sh
 /bin/bash $HOME/tmp/check_user.sh
 
-echo
 ### machine_name.sh
 curl -L https://raw.githubusercontent.com/abraxas678/startp/master/machine_name.sh >$HOME/tmp/machine_name.sh
 sudo chmod +x $HOME/tmp/machine_name.sh
 /bin/bash $HOME/tmp/machine_name.sh
-
 
 sudo apt install -y rclone 
 sudo apt install -y age
@@ -65,15 +63,14 @@ sudo apt install -y age
 echo
 read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
 
-if [[ $MY_TYPE = "m" ]]; then
+if [[ $MY_TYPE -eq *"m"* ]]; then
   rclone copy /home/$MY_MAIN_USER/.config/rclone/rclone.conf df:.config/rclone -P
   rclone sync /home/$MY_MAIN_USER/.config df:.config --max-depth 2 -P
   rclone sync /home/$MY_MAIN_USER/.ssh df:.ssh -P
   rclone sync /home/$MY_MAIN_USER/.local/share/dotfiles df:dotfiles -P
-elif [[ $MY_TYPE = "s" ]]; then
-
-
-cd $HOME/tmp
+elif [[ $MY_TYPE -eq *"s"* ]]; then
+  echo "--slave--"
+  cd $HOME/tmp
 
 if [[ $(duck --version) != "Cyberduck" ]]; then
   echo "#####################################################################"
@@ -147,7 +144,7 @@ echo "#####################################################################"
 /usr/bin/figlet                       WORMHOLE INSTALL
 echo "#####################################################################"
 VERS=$(/usr/bin/wormhole --version)
-[[ $VERS = *"command not"* ]] && sudo apt install -y wormhole
+[[ $VERS = *"command not"* ]] && sudo apt install -y wormhole || echo "alreay installed"
 echo
 #unison /home/abraxas/.ssh ssh://ionos2///home/abraxas/.ssh -auto -batch
 #unison /home/abraxas/.config ssh://ionos2///home/abraxas/.config -auto -batch
