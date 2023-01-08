@@ -1,7 +1,6 @@
-jq 
 rsync
-copyq 
- cockpit 
+#copyq 
+# cockpit 
            exa 
                wormhole 
                mosh 
@@ -15,7 +14,7 @@ copyq
            xorg 
           ssh 
           xclip 
-          sshfs 
+ #         sshfs 
            figlet 
            python3-pip 
            mosquitto-clients 
@@ -30,11 +29,11 @@ copyq
    ansible 
            nfs-common 
            zsh 
-           rclone 
+  #         rclone 
            restic 
            curl 
   php 
-zsh 
+#zsh 
            unison 
            sshpass 
            ssh-askpass 
