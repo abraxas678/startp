@@ -63,12 +63,12 @@ sudo apt install -y age
 echo
 read -p "Is this \[M]aster or \[S]lave? >> " -n 1 MY_TYPE
 
-if [[ $MY_TYPE -eq *"m"* ]]; then
+if [[ $MY_TYPE = *"m"* ]]; then
   rclone copy /home/$MY_MAIN_USER/.config/rclone/rclone.conf df:.config/rclone -P
   rclone sync /home/$MY_MAIN_USER/.config df:.config --max-depth 2 -P
   rclone sync /home/$MY_MAIN_USER/.ssh df:.ssh -P
   rclone sync /home/$MY_MAIN_USER/.local/share/dotfiles df:dotfiles -P
-elif [[ $MY_TYPE -eq *"s"* ]]; then
+elif [[ $MY_TYPE = *"s"* ]]; then
   echo "--slave--"
   cd $HOME/tmp
 
