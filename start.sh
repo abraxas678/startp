@@ -2,16 +2,20 @@
 clear
 cd $HOME
 VERSION="v0.63"
-echo $VERSION
+echo "VERSION: $VERSION"
 MY_MAIN_USER="abraxas"
+echo "User: $USER"
+echo MY_MAIN_USER="abraxas"
 MY_CH="n"
+echo
 read -p "CHANGE? (y/n) >> " -t 10 -n 1 MY_CH
 [[ $MY_CH = *"y"* ]] && read -p "MY_MAIN_USER: >> " MY_MAIN_USER
 export MY_MAIN_USER=$MY_MAIN_USER
 echo
+echo
 echo "MY_MAIN_USER=$MY_MAIN_USER"
 echo
-read -p BUTTON5 -t 5 me
+read -p BUTTON2 -t 2 me
 echo
 echo "sudo chown $MY_MAIN_USER: /home/$MY_MAIN_USER -R"
 sudo chown $MY_MAIN_USER: /home/$MY_MAIN_USER -R
@@ -22,13 +26,17 @@ cd $HOME/tmp
 
 [[ $(whoami) = "root" ]] && MY_SUDO="" || MY_SUDO="sudo"
 $MY_SUDO ls ~/tmp >/dev/null 2>/dev/null
+echo; 
+echo "$MY_SUDO apt update && $MY_SUDO apt install -y git curl wget figlet tmate"
+read -p BUTTON3 -t 3 me
 $MY_SUDO apt update && $MY_SUDO apt install -y git curl wget figlet tmate
+
 
 #if [[ $(rclone listremotes | grep pc: | wc -l) -eq "0" ]]; then
 #  echo "start tmate ssh session from local PC (cmd or powershell) and setup pcloud" 
 MY_TMATE=y
- read -p "BUTTON to start tmate (n to cancel)" MY_TMATE
- if [[ MY_TMATE -eq "y" ]]; then
+ read -p "BUTTON30 to start tmate (n to cancel)" -n 1 -t 30 MY_TMATE
+ if [[ MY_TMATE -eq *"y"* ]]; then
  tmate >tmate.dat
  curl -d "rm s.sh -f; curl -L start.yyps.de/alert >s.sh; chmod +x *.sh; ./s.sh"
  curl -d "$(cat tmate.dat)" https://n.yyps.de/alert
