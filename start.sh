@@ -8,7 +8,7 @@ echo "User: $USER"
 echo MY_MAIN_USER="abraxas"
 MY_CH="n"
 echo
-mkdir /home/abraxas/tmp
+mkdir $HOME/tmp
 read -p "CHANGE? (y/n) >> " -t 10 -n 1 MY_CH
 [[ $MY_CH = *"y"* ]] && read -p "MY_MAIN_USER: >> " MY_MAIN_USER
 export MY_MAIN_USER=$MY_MAIN_USER
