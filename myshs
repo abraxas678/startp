@@ -22,148 +22,31 @@ resilio-start.sh
 resilio-sync/
 setup_unison.sh
 start.sh
+test.sh
 timezone.sh
-<<<<<<< HEAD
-.bashful/logs/
-=======
 resilio-sync/init_user_config.sh
 .sync/Archive/
-.sync/Archive/resilio-start-gd.sh
-.sync/Archive/resilio-start.1.sh
->>>>>>> 136ec9c666a2499bbaf71110bf266e2ed4ce72ea
 .git/branches/
 .git/hooks/
 .git/info/
 .git/logs/
 .git/objects/
 .git/refs/
-<<<<<<< HEAD
-.sync/Archive/
-resilio-sync/init_user_config.sh
 .sync/Archive/resilio-start-gd.sh
 .sync/Archive/resilio-start.1.sh
-=======
-.bashful/logs/
->>>>>>> 136ec9c666a2499bbaf71110bf266e2ed4ce72ea
 .git/refs/heads/
 .git/refs/remotes/
 .git/refs/tags/
 .git/logs/refs/
 .git/logs/refs/heads/
 .git/logs/refs/remotes/
-<<<<<<< HEAD
-.git/objects/02/
-.git/objects/05/
-.git/objects/10/
-=======
 .git/refs/remotes/origin/
-.git/objects/02/
-.git/objects/05/
-.git/objects/06/
-.git/objects/0b/
-.git/objects/10/
-.git/objects/13/
-.git/objects/15/
->>>>>>> 136ec9c666a2499bbaf71110bf266e2ed4ce72ea
-.git/objects/17/
-.git/objects/22/
-.git/objects/26/
-.git/objects/27/
-.git/objects/28/
-.git/objects/29/
-.git/objects/2a/
-<<<<<<< HEAD
-.git/objects/32/
-.git/objects/39/
-.git/objects/41/
-.git/objects/44/
-.git/objects/4f/
-.git/objects/52/
-.git/objects/54/
-.git/objects/5e/
-.git/objects/62/
-=======
-.git/objects/2f/
-.git/objects/32/
-.git/objects/39/
-.git/objects/3f/
-.git/objects/41/
-.git/objects/44/
-.git/objects/49/
-.git/objects/4f/
-.git/objects/52/
-.git/objects/54/
-.git/objects/59/
-.git/objects/5d/
-.git/objects/5e/
-.git/objects/62/
-.git/objects/65/
->>>>>>> 136ec9c666a2499bbaf71110bf266e2ed4ce72ea
-.git/objects/6c/
-.git/objects/73/
-.git/objects/75/
-.git/objects/79/
-<<<<<<< HEAD
-.git/objects/7f/
-=======
-.git/objects/7c/
-.git/objects/7f/
-.git/objects/80/
+.git/objects/57/
 .git/objects/81/
->>>>>>> 136ec9c666a2499bbaf71110bf266e2ed4ce72ea
-.git/objects/83/
-.git/objects/8d/
-.git/objects/90/
-.git/objects/94/
-.git/objects/9b/
-<<<<<<< HEAD
-.git/objects/9e/
-.git/objects/a5/
-.git/objects/af/
-.git/objects/b2/
-.git/objects/b5/
-=======
-.git/objects/9c/
-.git/objects/9e/
-.git/objects/a5/
-.git/objects/ac/
-.git/objects/af/
-.git/objects/b2/
-.git/objects/b5/
-.git/objects/ba/
->>>>>>> 136ec9c666a2499bbaf71110bf266e2ed4ce72ea
-.git/objects/bc/
-.git/objects/bd/
-.git/objects/bf/
-.git/objects/c4/
-<<<<<<< HEAD
-.git/objects/d6/
-.git/objects/d9/
-.git/objects/e0/
-.git/objects/e1/
-.git/objects/e2/
-.git/objects/eb/
-.git/objects/ec/
-=======
-.git/objects/ce/
-.git/objects/d6/
-.git/objects/d9/
-.git/objects/dd/
-.git/objects/e0/
-.git/objects/e1/
-.git/objects/e2/
-.git/objects/ea/
-.git/objects/eb/
-.git/objects/ec/
-.git/objects/ee/
->>>>>>> 136ec9c666a2499bbaf71110bf266e2ed4ce72ea
-.git/objects/f0/
-.git/objects/f1/
-.git/objects/f9/
-.git/objects/fe/
+.git/objects/c8/
+.git/objects/db/
+.git/objects/fc/
+.git/objects/ff/
 .git/objects/info/
 .git/objects/pack/
-<<<<<<< HEAD
-.git/refs/remotes/origin/
-=======
->>>>>>> 136ec9c666a2499bbaf71110bf266e2ed4ce72ea
+.bashful/logs/

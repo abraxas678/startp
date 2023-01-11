@@ -1,0 +1,5 @@
+root = /home/abraxas
+root = ssh://100.94.192.135
+#root = /mnt/snas/homes/abraxas
+#mountpoint = MOUNT_CHECK
+include whitelist

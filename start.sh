@@ -84,17 +84,6 @@ if [[ $(duck --version) != "Cyberduck" ]]; then
   sudo apt-get update
   sudo apt-get install duck -y
 fi
-
-cd $HOME/tmp
-duck --download b2:rko-master-files/rko-master-files.tar.xz .
-tar -xf rko-master-files.tar.xz
-cd /home/abraxas/tmp/home/rko-master-files
-echo; $PWD; echo
-ls -a
-echo
-
-exit
-
 if [[ $(which rclone) != *"/usr/bin/rclone"* ]]; then
   echo "#####################################################################"
   echo                       INSTALL RCLONE
@@ -103,6 +92,22 @@ if [[ $(which rclone) != *"/usr/bin/rclone"* ]]; then
   curl https://rclone.org/install.sh | sudo bash
   echo
 fi
+
+cd $HOME/tmp
+duck --download b2:rko-master-files/rko-master-files.tar.xz .
+tar -xf rko-master-files.tar.xz
+cd /home/abraxas/tmp/home/rko-master-files
+echo
+read -p "transfer rko-master-files to $HOME?" TRANSFER
+if [[ $TRANSFER = *"y"* ]]; then
+rclone move /home/abraxas/tmp/home/rko-master-files $HOME
+read -p BUTTON600 -t 600 me
+fi
+echo; $PWD; echo
+ls -a
+echo
+
+
 #[[ $(eval $RCLONE_PASSWORD_COMMAND | wc -l) = "0" ]] && read -p "RCLONE-PASSWORD: >> " RC_PASSWORD && export RC_PASSWORD=$RC_PASSWORD && clear || export RC_PASSWORD=$(eval $RCLONE_PASSWORD_COMMAND)
 
 #[[ $(/usr/bin/rclone listremotes --password-command="echo $RC_PASSWORD") != *"gd:"* ]] && /usr/bin/rclone config

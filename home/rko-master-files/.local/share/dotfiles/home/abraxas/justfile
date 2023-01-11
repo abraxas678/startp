@@ -1,0 +1,149 @@
+# add comment
+set dotenv-load
+set shell := ["zsh", "-uc"]
+
+ntfy-server:
+  docker run -p 80:80 -it binwiederhier/ntfy serve
+taskserver:
+  sudo apt install g++
+  sudo apt install libgnutls28-dev
+  sudo apt install uuid-dev
+  sudo apt install cmake
+  sudo apt install gnutls-utils
+## wget latest tarball from https://taskwarrior.org/download/
+#  wget https://taskwarrior.org/download/taskd-1.1.0.tar.gz
+#  tar xzf taskd-latest.tar.gz
+  cd taskd-latest
+  cmake -DCMAKE_BUILD_TYPE=release .
+  make
+  make clean
+  rm CMakeCache.txt
+  sudo make install
+  taskd
+  export TASKDDATA=/var/taskd
+  sudo mkdir -p $TASKDDATA
+  taskd init
+  taskd config server localhost:53589
+#  It is a good idea to copy the pki subdirectory from your SOURCEDIR to your TASKDDATA directory.
+#  If you installed from a package (manager) search for the pki directory, find / -name pki -type d (example /usr/share/taskd/pki/ for Ubuntu).
+
+# The scripts make assumptions that are guaranteed to be wrong for you. Specifically the generate.server script has a hard-coded CN entry that is not going to work. You need to edit the vars file, which you find in the pki subdirectory in your SOURCEDIR.
+# CN=localhost
+# You will need to modify this value to match your server.
+# Most probably the result of hostname -f is exactly what you need ("yourserver.example.com").
+
+#COMMON NAME
+#The value of CN (Common Name) is important.
+#It is this value against which Taskwarrior validates the servername, so use a value similar to ack.example.com, don't expect that example to work for you. If you do not change this value, the only option for the client is to skip some or all certificate validation, which is a bad idea.
+#Go to your SOURCEDIR, which depends on which installation method you chose.
+
+$ cd ~/taskd-1.1.0/pki
+$ ./generate
+...
+
+$ cp client.cert.pem $TASKDDATA
+$ cp client.key.pem $TASKDDATA
+$ cp server.cert.pem $TASKDDATA
+$ cp server.key.pem $TASKDDATA
+$ cp server.crl.pem $TASKDDATA
+$ cp ca.cert.pem $TASKDDATA
+
+crontab:
+  echo "/var/spool/cron/crontabs"
+
+clean: 
+  echo sudo >/var/log/lastlog
+  echo sudo docker system prune --volumes
+  echo sudo docker system prune
+
+heroku:
+  heroku plugins:install heroku-slugs
+  heroku slugs:download -a rkonodered
+
+my-external-ip:
+   dig @resolver4.opendns.com myip.opendns.com +short
+
+updatedb:
+  ppa $HOME/bin/sudo.sh updatedb
+
+runi-restic-1h:
+  runitor -every="1h" -slug="restic-home"   pp.sh add -- restic backup $HOME --tag 16-HOME --exclude-file "/home/abraxas/excludes.dat" >/dev/null 2>/dev/null &
+
+restic-home:
+  restic backup $HOME --tag 16-HOME --exclude-file "/home/abraxas/excludes.dat" >/dev/null 2>/dev/null &
+
+clone-start2:
+  cd ~; git clone https://github.com/abraxas678/start2.git ~/
+
+size:
+  df -h
+  sudo du -hsx /* | sort -rh | head -n 40
+
+display:
+  export DISPLAY=100.101.117.77:0.0 
+x11:
+  DISPLAY=100.101.117.77:0.0 firefox  
+copy-last command:
+ echo "!!"
+copy-seond last command:
+ echo "!!!"
+
+install-fails:
+  sudo apt-get install cifs-utils -y  
+  sudo apt-get install docker.io docker-compose -y 
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyz   /home/abraxas   00:20:08     00:20:08
+  sh/master/tools/install.sh)"
+
+runi-processq:
+   runitor -every="2m" -api-url="https://hc-ping.com" -uuid="8df13fe6-31d4-40a0-a8ca-8fc769b03a98" -ping-key="o4zFWbG--a472NL8pc39jQ" $HOME/myq/processq.sh & 
+apache:
+  sudo nano /etc/apache2/sites-enabled/000-default.conf
+  sudo nano /etc/apache2/ports.conf
+  sudo systemctl restart apache2
+
+pcopy:
+  pcopy serve --listen-https 100.124.192.124:2223 >/dev/null 2>/dev/null &
+
+test: 
+ echo $HC_API_KEY
+
+add:
+  nano ~/justfile
+
+recipe-name:
+  echo 'This is a recipe!'
+
+# this is a comment
+another-recipe:
+  @echo 'This is another recipe.'
+
+drei:
+  ls
+healthcheck:
+  /usr/bin/python3 /home/abraxas/webapps/healthchecks/manage.py runserver 0.0.0.0:8000
+healthcheckfull: 
+  sudo apt-get update
+  sudo apt-get install -y gcc python3-dev python3-venv -y
+  sudo apt install libpq-dev python3-dev -y
+  mkdir -p ~/webapps
+  cd ~/webapps
+  python3 -m venv hc-venv
+  pip install -r /home/abraxas/webapps/healthchecks/requirements.txt
+  cd ~/webapps/healthchecks
+  cp /home/abraxas/webapps/healthchecks/hc/local_settings.py.example /home/abraxas/webapps/healthchecks/hc/local_settings.py
+  cd /home/abraxas/webapps/healthchecks
+  /usr/bin/python3 /home/abraxas/webapps/healthchecks/manage.py migrate
+#  /home/abraxas/webapps/healthchecks/manage.py createsuperuser
+#  /home/abraxas/webapps/healthchecks/manage.py runserver
+
+new-script:
+  $HOME/bin/new_script.sh  
+  rkch
+
+  pcopy serve --listen-https 100.124.192.124:2223 >/dev/null 2>/dev/null &
+
+health:
+ sed -i "s/$(hostname)//g" health; cat health
+ sudo ./tronitorORG.sh -m hc -l | grep Down 
+ printf "Host	Date	Operation	Duration
+

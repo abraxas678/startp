@@ -1,0 +1,186 @@
+# [Created by task 2.6.2 4/3/2022 12:59:11]
+# Taskwarrior program configuration file.
+# For more documentation, see https://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# You can also refence environment variables:
+#   variable=$HOME/task
+#   variable=$VALUE
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Files
+#data.location=/home/abrax/.task/
+data.location=/usr/share/taskwarrior
+verbose=no
+
+# To use the default location of the XDG directories,
+# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
+
+#data.location=~/.local/share/task
+#hooks.location=~/.config/task/hooks
+
+# Color theme (uncomment one to use)
+#include /usr/share/taskwarrior/light-16.theme
+#include /usr/share/taskwarrior/light-256.theme
+#include /usr/share/taskwarrior/dark-16.theme
+#include /usr/share/taskwarrior/dark-256.theme
+#include /usr/share/taskwarrior/dark-red-256.theme
+include /usr/share/taskwarrior/dark-green-256.theme
+#include /usr/share/taskwarrior/dark-blue-256.theme
+#include /usr/share/taskwarrior/dark-violets-256.theme
+#include /usr/share/taskwarrior/dark-yellow-green.theme
+#include /usr/share/taskwarrior/dark-gray-256.theme
+#include /usr/share/taskwarrior/dark-gray-blue-256.theme
+#include /usr/share/taskwarrior/solarized-dark-256.theme
+#include /usr/share/taskwarrior/solarized-light-256.theme
+#include /usr/share/taskwarrior/no-color.theme
+
+# neu über amdamdes@mymails.cc 22072022 02:07
+#news.version=2.6.0
+#  FREEINC
+#taskd.certificate=\/usr\/share\/taskwarrior\/freecinc_0df6e410.cert.pem
+#taskd.key=\/usr\/share\/taskwarrior\/freecinc_0df6e410.key.pem
+#taskd.ca=\/usr\/share\/taskwarrior\/freecinc_0df6e410.ca.pem
+#taskd.server=freecinc.com:53589
+#taskd.credentials=FreeCinc\/freecinc_0df6e410\/c8452641-8a8c-42e5-a016-586c03047f86
+#taskd.trust=ignore hostname
+
+taskd.certificate=/usr/share/taskwarrior/private.cert
+taskd.key=/usr/share/taskwarrior/private.key
+taskd.ca=/usr/share/taskwarrior/ca.cert.pem
+taskd.server=inthe.am:53589
+taskd.credentials=inthe_am/amdamdesa925977309234609/7ed43e5e-6327-447c-ad54-fd35cc58a1bb
+taskd.trust=ignore hostname
+
+
+
+
+uda.url.type=string
+uda.url.label=url
+uda.html.type=string
+uda.html.label=html
+report.simple.description=Simple list of open tasks with url
+report.simple.columns=id,priority,url
+report.simple.labels=ID,Prio,url
+report.simple.sort=priority+
+report.simple.filter=Description:1._1._Oberbekleidung_1.6_Oberbekleidung_für_Männer.html
+report.desc.labels=id,description,url
+report.desc.columns=id,description,url
+report.url.labels=url
+report.url.columns=url
+report.urlid.columns=id,url
+report.urlid.labels=id,url
+report.list.filter=status:pending
+report.short.labels=description,---,due
+report.short.filter=status:pending
+search.case.sensitive=no
+report.id.filter=status:pending
+remove=report.short.labels
+report.short.columns=description.truncated,end,due.age
+report.short.sort=due+
+delete=report.uid.descriptions
+# UDAs
+uda.trelloid.type=string
+uda.trelloid.label=Trello ID
+uda.trellolistname.type=string
+uda.trellolistname.label=Trello List Name
+uda.uid.type=string
+uda.uid.label=UID
+report.uid.columns=uid
+report.uid.labels=uid
+report.uid.filter=status:pending or status:waiting or status:done
+report.uid.sort=due+
+report.uid.description=OwnUID only report
+report.uid.colums=uid
+report.uid.filt=status:pending or status:waiting or status:done or status:completed
+report.if.sort=id+
+report.if.description=id column only
+report.id.columns=id
+report.id.labels=id
+report.id.sort=id+
+report.id.description=id only
+report.next.filter=status:pending -WAITING limit:page -bm -hide
+report.bms.columns=uuid,priority,description
+report.bms.labels=id,priority,description
+report.bms.description=All tasks report modified for bookmarks
+report.bms.sort=priority-
+report.bms.column=id,short,priority,description
+report.test.columns=entered,descrition
+report.test.labels=age,descrition
+report.test.sort=description
+report.snippets.columns=uuid,priority,project,tags,description
+report.snippets.description=report for snippet collection, base on .simple report
+report.snippets.labels=uuid,priority,project,tags,description
+report.snippets.sort=priority+
+report.snippets.filter=+snippets -hide
+report.bm.filter=tags:bm
+report.bm.columns=id,priority,tags,description,url
+report.bm.labels=id,prio,tags,description,url
+report.bm.sort=priority-
+uda.reviewed.type=date
+uda.reviewed.label=Reviewed
+report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
+report._reviewed.columns=uuid
+report._reviewed.sort=reviewed+,modified+
+report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
+report.description.columns=description
+report.description.labels=Description
+report.description.description=show only the description column
+report.description.sort=priority-
+report.overdue-html.columns=id,start.age,entry.age,depends,priority,project,tags,recur.indicator,scheduled.countdown,due.age,until,description,urgency
+report.overdue-html.description=Overdue tasks for html output
+report.overdue-html.filter=status:pending and +OVERDUE
+report.overdue-html.labels=ID,Active,Age,Deps,P,Project,Tag,R,S,Due,Until,Description,Urg
+report.overdue-html.sort=urgency-,due+
+report.next.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,ID,Description,Urg
+report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,id,description,urgency
+report.uuid.columns=uuid
+report.uuid.labels=uuid
+report.uuid.filter=project:
+report.uuid.sort=priority+
+report.uuid.description=Report only showing UUID
+
+report.uuiddesc.columns=uuid,description
+report.uuiddesc.labels=uuid,description
+report.uuiddesc.sort=priority+
+report.uuiddesc.description=Report only showing UUID and description
+report.allshort.columns=id,uuid,description
+report.allshort.labels=id,uuid,description
+report.allshort.sort=entry-
+report.allshort.description=All short
+report.notag.columns=id,start.age,entry.age,depends.indicator,priority,project,recur.indicator,scheduled.countdown,due.relative,until.remaining,description.count,urgency
+report.notag.description=list report without tags
+report.notag.labels=ID,Active,Age,D,P,Project,R,Sch,Due,Until,Description,Urg
+report.notag.filter=status:pending -WAITING
+report.notag.sort=start-,due+,project+,urgency-
+report.nx.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,id,description,urgency
+report.nx.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,ID,Description,Urg
+report.nx.sort=urgency-
+report.nx.filter=status:pending -WAITING limit:page -bm -hide -snippets -data
+report.nx.description=based on next report
+news.version=2.6.0
+report.reldue.description=relative due date report
+report.reldue.columns=due.relative
+report.reldue.label=DUE
+report.reldue.filter=status:pending
+report.reldue.sort=urgency-
+confirmation=no
+context.work.read=project:Work or +urgent
+context.work.write=project:Work or +urgent
+context.twe.read=+twe
+context.twe.write=+twe
+context.mytasks.read=project:
+context.mytasks.write=project:
+context.snippets.read=+snippets
+context.snippets.write=+snippets
+context.bm.read=+bm
+context.bm.write=+bm
+_forcecolor=on
+color.project.snippets=black on yellow
+color.project.bm=black on green

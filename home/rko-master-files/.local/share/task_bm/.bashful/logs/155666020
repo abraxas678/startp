@@ -1,0 +1,32 @@
+2022/12/18 15:48:52 [1;39mTask full output: rclone copy /home/abraxas/dotfiles /home/abraxas/ --filter-from /home/abraxas/.config/dotfiles.txt --update -Pv -L --max-depth 3 --dry-run[0m
+
+2022-12-18 15:48:53 NOTICE: .sync/Archive/.myalert: Skipped copy as --dry-run is set (size 19)
+[91m2022/12/18 15:48:53 NOTICE: [0m
+[91mTransferred:     374.655 KiB / 374.655 KiB, 100%, 0 B/s, ETA -[0m
+Transferred:             0 B / 374.637 KiB, 0%, 0 B/s, ETA -
+Checks:                24 / 24, 100%
+Transferred:            0 / 3, 0%
+Elapsed time:         0.1s
+[91mChecks:                24 / 24, 100%[0m
+[91mTransferred:            3 / 3, 100%[0m
+Transferring:
+[91mElapsed time:         0.1s[0m
+ *                        .sync/Archive/.myalert: transferring
+
+2022-12-18 15:48:53 NOTICE: .sync/Archive/.z: Skipped copy as --dry-run is set (size 2.325Ki)
+Transferred:            19 B / 372.330 KiB, 0%, 0 B/s, ETA -
+Checks:                24 / 24, 100%
+Transferred:            1 / 3, 33%
+Elapsed time:         0.1s
+Transferring:
+ *                              .sync/Archive/.z: transferring
+2022-12-18 15:48:53 NOTICE: .sync/Archive/.zsh_history: Skipped copy as --dry-run is set (size 372.312Ki)
+Transferred:       2.344 KiB / 2.344 KiB, 100%, 0 B/s, ETA -
+Checks:                24 / 24, 100%
+Transferred:            2 / 3, 67%
+Elapsed time:         0.1s
+Transferring:
+ *                    .sync/Archive/.zsh_history: transferringTransferred:     374.655 KiB / 374.655 KiB, 100%, 0 B/s, ETA -
+Checks:                24 / 24, 100%
+Transferred:            3 / 3, 100%
+Elapsed time:         0.1s

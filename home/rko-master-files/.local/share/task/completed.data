@@ -1,0 +1,2 @@
+[description:"test" due:"1672604617" end:"1672791171" entry:"1672604617" modified:"1672791171" start:"1672604639" status:"deleted" uuid:"ef488e86-1128-4e8e-b127-cc8492bae092"]
+[description:"elektrolyte" due:"1659274967" end:"1671359281" entry:"1659253367" mask:"++++++X+++++++++++++++++++++++++X+++++++++++++WWWWWWW++++++++W+++++++W++WWWWWWWWWWWWWWWWWWWWWWWWWW" modified:"1671717458" priority:"L" recur:"36h" rtype:"periodic" status:"deleted" uuid:"e5a5e374-6a4d-4ced-ab81-3d9e307ad70f" wait:"1659274967"]

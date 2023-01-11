@@ -1,0 +1,27 @@
+- **delme**
+- **mail/personal/archive/**
+- **resti**
+- **.antigen**
+- **googleapis**
+- **.mozilla**
+- **.config/google-chrome**
+- **.goodsync**
+- **.git**
+- **hc-venv**
+- **healthchecks**
+- .rustup**
+- .local**
+- **temp**
+- **tmp**
+- .cache**
+- .cargo**
+- **mnt**
+- **/github/**/video/**
+- **/.ssh
+- **_gsdata_**
+- **cache**
+- .antigen**
+- docker2/**
++ **
+
+#### v1

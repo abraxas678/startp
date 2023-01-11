@@ -1,0 +1,141 @@
+2022/12/18 15:48:50 [1;39mTask full output: rclone copy /home/abraxas/ /home/abraxas/dotfiles --filter-from /home/abraxas/.config/dotfiles.txt --update -Pv -L --max-depth 3 --dry-run[0m
+
+2022-12-18 15:48:50 NOTICE: .myalert: Skipped copy as --dry-run is set (size 18)
+Transferred:             0 B / 387.037 KiB, 0%, 0 B/s, ETA -
+Checks:                17 / 24, 71%
+Transferred:            0 / 4, 0%
+Transferred:           22 / 33, 67%
+Elapsed time:         0.2s
+Transferring:
+Errors:                 1 (no need to retry)
+2022-12-18 15:48:50 NOTICE: start/.zshrc: Skipped copy as --dry-run is set (size 4.708Ki)
+2022-12-18 15:48:50 ERROR : ansible/etc/resolv.conf: Listing error: symlink: stat /home/abraxas/ansible/etc/resolv.conf: no such file or directory
+Transferred:       1.046 MiB / 1.107 MiB, 95%, 0 B/s, ETA -
+Errors:                 5 (no need to retry)
+Errors:                 6 (no need to retry)
+Transferred:           33 / 35, 94%
+Elapsed time:         0.2s
+2022-12-18 15:48:50 ERROR : .config/google-chrome/SingletonLock: Listing error: symlink: stat /home/abraxas/.config/google-chrome/SingletonLock: no such file or directory
+Transferred:       1.046 MiB / 1.107 MiB, 95%, 0 B/s, ETA -
+2022-12-18 15:48:50 NOTICE: .config/.config/.bashrc: Skipped copy as --dry-run is set (size 3.882Ki)
+Transferred:           34 / 35, 97%
+Elapsed time:         0.2s
+Transferring:
+ *                   .config/.config/antigen.zsh: transferring
+2022-12-18 15:48:50 ERROR : .config/google-chrome/SingletonSocket: Listing error: symlink: stat /home/abraxas/.config/google-chrome/SingletonSocket: no such file or directory
+Transferred:       1.107 MiB / 1.107 MiB, 100%, 0 B/s, ETA -
+Errors:                 9 (no need to retry)
+Checks:                24 / 24, 100%
+Transferred:           35 / 35, 100%
+Elapsed time:         0.2s
+2022-12-18 15:48:50 ERROR : .config/pulse/b21a16ef70aa44298835faac9a368baa-runtime: Listing error: symlink: stat /home/abraxas/.config/pulse/b21a16ef70aa44298835faac9a368baa-runtime: no such file or directory
+Transferred:       1.107 MiB / 1.107 MiB, 100%, 0 B/s, ETA -
+[91m2022/12/18 15:48:50 NOTICE: [0m
+[91mTransferred:       1.427 MiB / 1.427 MiB, 100%, 0 B/s, ETA -[0m
+[91mErrors:                14 (no need to retry)[0m
+[91mChecks:                24 / 24, 100%[0m
+[91mTransferred:           45 / 45, 100%[0m
+[91mElapsed time:         0.7s[0m
+
+[91m2022/12/18 15:48:50 Failed to copy with 14 errors: last error was: symlink: stat /home/abraxas/.config/pulse/e8b0490294cd4da4af6c3d9011eda65f-runtime: no such file or directory[0m
+Elapsed time:         0.3s
+2022-12-18 15:48:50 ERROR : .config/pulse/e8b0490294cd4da4af6c3d9011eda65f-runtime: Listing error: symlink: stat /home/abraxas/.config/pulse/e8b0490294cd4da4af6c3d9011eda65f-runtime: no such file or directory
+Transferred:       1.107 MiB / 1.107 MiB, 100%, 0 B/s, ETA -
+Errors:                13 (no need to retry)
+Checks:                24 / 24, 100%
+Transferred:           35 / 35, 100%
+Elapsed time:         0.3s
+2022-12-18 15:48:50 NOTICE: .config/rclone/rclone.conf: Skipped copy as --dry-run is set (size 16.971Ki)
+Transferred:       1.107 MiB / 1.164 MiB, 95%, 0 B/s, ETA -
+Errors:                14 (no need to retry)
+Checks:                24 / 24, 100%
+Transferred:           35 / 37, 95%
+Elapsed time:         0.3s
+Transferring:
+ *                    .config/rclone/rclone.conf: transferring
+2022-12-18 15:48:50 NOTICE: github/start5/antigen.zsh: Skipped copy as --dry-run is set (size 58.373Ki)
+Transferred:       1.124 MiB / 1.124 MiB, 100%, 0 B/s, ETA -
+Errors:                14 (no need to retry)
+Checks:                24 / 24, 100%
+Transferred:           36 / 37, 97%
+Elapsed time:         0.3s
+Transferring:
+ *                     github/start5/antigen.zsh: transferring
+2022-12-18 15:48:50 NOTICE: bin/antigen.zsh: Skipped copy as --dry-run is set (size 58.373Ki)
+Transferred:       1.181 MiB / 1.185 MiB, 100%, 0 B/s, ETA -
+Errors:                14 (no need to retry)
+Checks:                24 / 24, 100%
+Transferred:           37 / 39, 95%
+Elapsed time:         0.3s
+Transferring:
+ *                               bin/antigen.zsh: transferring
+2022-12-18 15:48:50 NOTICE: bin/justfile: Skipped copy as --dry-run is set (size 4.640Ki)
+Transferred:       1.238 MiB / 1.238 MiB, 100%, 0 B/s, ETA -
+Errors:                14 (no need to retry)
+Checks:                24 / 24, 100%
+Transferred:           38 / 39, 97%
+Elapsed time:         0.3s
+Transferring:
+ *                                  bin/justfile: transferring
+2022-12-18 15:48:50 NOTICE: bin/bin2/antigen.zsh: Skipped copy as --dry-run is set (size 58.373Ki)
+Transferred:       1.242 MiB / 1.247 MiB, 100%, 0 B/s, ETA -
+Errors:                14 (no need to retry)
+Checks:                24 / 24, 100%
+Transferred:           39 / 41, 95%
+Elapsed time:         0.4s
+Transferring:
+ *                          bin/bin2/antigen.zsh: transferring
+2022-12-18 15:48:50 NOTICE: bin/bin2/justfile: Skipped copy as --dry-run is set (size 4.640Ki)
+Transferred:       1.299 MiB / 1.299 MiB, 100%, 0 B/s, ETA -
+Errors:                14 (no need to retry)
+Checks:                24 / 24, 100%
+Transferred:           40 / 41, 98%
+Elapsed time:         0.4s
+Transferring:
+ *                             bin/bin2/justfile: transferring
+2022-12-18 15:48:50 NOTICE: .unison.bin.d0a77ffa2211dc33e65c9623ae5314f8.unison.tmp/antigen.zsh: Skipped copy as --dry-run is set (size 58.373Ki)
+Transferred:       1.304 MiB / 1.308 MiB, 100%, 0 B/s, ETA -
+Errors:                14 (no need to retry)
+Checks:                24 / 24, 100%
+Transferred:           41 / 43, 95%
+Elapsed time:         0.5s
+Transferring:
+ * .unison.bin.d0a77ffa22…unison.tmp/antigen.zsh: transferringTransferred:       1.361 MiB / 1.365 MiB, 100%, 0 B/s, ETA -
+Errors:                14 (no need to retry)
+Checks:                24 / 24, 100%
+Transferred:           42 / 43, 98%
+Elapsed time:         0.5s
+2022-12-18 15:48:50 NOTICE: .unison.bin.d0a77ffa2211dc33e65c9623ae5314f8.unison.tmp/justfile: Skipped copy as --dry-run is set (size 4.640Ki)
+Transferred:       1.361 MiB / 1.361 MiB, 100%, 0 B/s, ETA -
+Errors:                14 (no need to retry)
+Checks:                24 / 24, 100%
+Transferred:           42 / 43, 98%
+Elapsed time:         0.5s
+Transferring:
+ * .unison.bin.d0a77ffa22…f8.unison.tmp/justfile: transferring
+2022-12-18 15:48:50 NOTICE: .unison.bin.d0a77ffa2211dc33e65c9623ae5314f8.unison.tmp/bin2/antigen.zsh: Skipped copy as --dry-run is set (size 58.373Ki)
+Transferred:       1.365 MiB / 1.370 MiB, 100%, 0 B/s, ETA -
+Errors:                14 (no need to retry)
+Checks:                24 / 24, 100%
+Transferred:           43 / 45, 96%
+Elapsed time:         0.7s
+Transferring:
+ * .unison.bin.d0a77ffa22…n.tmp/bin2/antigen.zsh: transferring
+2022-12-18 15:48:50 NOTICE: .unison.bin.d0a77ffa2211dc33e65c9623ae5314f8.unison.tmp/bin2/justfile: Skipped copy as --dry-run is set (size 4.640Ki)
+Transferred:       1.422 MiB / 1.422 MiB, 100%, 0 B/s, ETA -
+Errors:                14 (no need to retry)
+Checks:                24 / 24, 100%
+Transferred:           44 / 45, 98%
+Elapsed time:         0.7s
+Transferring:
+ * .unison.bin.d0a77ffa22…ison.tmp/bin2/justfile: transferring
+2022-12-18 15:48:50 ERROR : Can't retry any of the errors - not attempting retries
+Transferred:       1.427 MiB / 1.427 MiB, 100%, 0 B/s, ETA -
+Errors:                14 (no need to retry)
+Checks:                24 / 24, 100%
+Transferred:           45 / 45, 100%
+Elapsed time:         0.7sTransferred:       1.427 MiB / 1.427 MiB, 100%, 0 B/s, ETA -
+Errors:                14 (no need to retry)
+Checks:                24 / 24, 100%
+Transferred:           45 / 45, 100%
+Elapsed time:         0.7s

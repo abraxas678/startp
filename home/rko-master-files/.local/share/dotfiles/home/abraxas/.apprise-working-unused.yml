@@ -1,0 +1,281 @@
+###
+### === >>> v4
+###
+# Optionally define some global tags to associate with ALL of your
+tag: alles, all
+urls:
+
+### DISCORD ###
+#  - https://discordapp.com/api/webhooks/983553526707925063/knEUvY591tNGDm912OPexM1vdYcNEZJlfs_V2OxkhZPzF5CtbTifzqdxOj7Q3TBU5byu/?tts=No&avatar=Yes&footer=Yes&image=Yes:
+#    - tag: discord, ds, prio1, dsgeneral
+  - https://discordapp.com/api/webhooks/983585010114261023/Fa8GYKKYOhZ0mHtKEbfsE0vahW-RA5I-LdDOyOe5CvxJEk7YDIZr9-8Vn-o7Wc9gFwBd/?tts=No&avatar=Yes&footer=Yes&image=Yes:
+    - tag: ds, discord, dsbotter, prio1, botter, prio2, prio3, prio4
+
+### CB  IFTTT -> JOIN 
+#  - ifttt://4q38KZvz7CwD5_QzdUZHq@clipboard/?+value2&+value3:
+#    - tag: cb, cbx
+### CB POST auf N8 -> Razer aud ra.dmw.zone als GET
+  - jsons://n8.dmw.zone/webhook-test/winnoti:  ### wird auf n8 b64 encoded
+    - tag: winnoti-test
+
+  - jsons://n8.dmw.zone/webhook/winnoti:  ### wird auf n8 b64 encoded
+    - tag: winnoti, prio1, prio2, prio3, prio4, script
+  - jsons://n8.dmw.zone/webhook/winnoti64:  ### wird auf n8 b64 encoded
+    - tag: win64
+
+
+#  - jsons://n8.dmw.zone/webhook/cb:  ### wird auf n8 b64 encoded
+#    - tag: cb, cbr
+#  - jsons://n8.dmw.zone/webhook/cb64: ### ist bereits b64 encoded
+#    - tag: cb64, cbr64
+  - jsons://n8.dmw.zone/webhook-test/cb64: ### ist bereits b64 encoded
+    - tag: cb64test
+
+  - jsons://nr2.dmw.zone/cb:
+    - tag: cbnr, cb
+  - jsons://nr2.dmw.zone/cb64:
+    - tag: cbnr, cbr64
+
+
+
+### OPENME (URLs)
+  - json://164.92.169.252:5678/webhook/openme:
+    - tag: openme, openmeeg
+    
+### OSD
+  - json://164.92.169.252:5678/webhook/osd:
+    - tag: osd, prio4, razer, prio3, script2, script1, script
+  - json://164.92.169.252:5678/webhook/osdshort:
+    - tag: osdshort, prio3, prio4, razer, script1, script, script2
+  - json://164.92.169.252:5678/webhook/osdlong:
+    - tag: osdlong, prio2, prio1, razer, script2, script
+  - json://164.92.169.252:5678/webhook-test/osdlong:
+    - tag: osdlong-test
+  - json://164.92.169.252:5678/webhook/osdbox:
+    - tag: osdbox, prio2, prio1, razer
+
+
+
+  - json://n8.dmw.zone/webhook/xiaominotification:
+    - tag: xiaominotification
+
+### apprise -->  n8n auf DigitalOcean ###
+## apprise -t title -b body "json://164.92.169.252:5678/webhook/236c7bb2-678b-43f9-9998-2b9bae64c504/?+target=target&+system=system&+value3=value3" ##
+
+## export APPRISE_JSON_URL="https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush?apikey\=304c57b5ddbd4c10b03b76fa97d44559\&deviceNames\=razer
+
+  - json://164.92.169.252:5678/webhook/236c7bb2-678b-43f9-9998-2b9bae64c504/?+target=target&+system=url&+value3=$APPRISE_JSON_URL:
+    - tag: apprise
+  - json://164.92.169.252:5678/webhook/236c7bb2-678b-43f9-9998-2b9bae64c504/?+target=target&+system=url&+value3=$APPRISE_JSON_URL:
+    - tag: url
+  - json://164.92.169.252:5678/webhook-test/236c7bb2-678b-43f9-9998-2b9bae64c504/?+target=target&+system=url&+value3=$APPRISE_JSON_URL:
+    - tag: urltest
+
+### EVENTGHOST VIA AUTOREMOTE https://ra2.dmw.zone/?message= ###
+## hatoken="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI2ZGU5NjJkMjFmZDg0ZjcwYTc0YmNkNjM3NDAwYzcxOSIsImlhdCI6MTY1NDE3MzI5NiwiZXhwIjoxOTY5NTMzMjk2fQ.I2rLV5burbkna6Bx1DASwCf25hbp2zyA7uKZv3KX6xg"
+  - hassios://wkjag6elo035oufatwa0axlc4mg1xy53.ui.nabu.casa/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI3NDNmOGUwOThiNmU0MDU0YTc1OTFkZTI3ODQ3NDVlZSIsImlhdCI6MTY1NDUwODYxOCwiZXhwIjoxOTY5ODY4NjE4fQ.4TmC5SZWSW9Q6MGBxRUYhsYoyEN65jz7FEcZIBKhb4Q:
+    - tag: hassio, ha, prio1, prio2, prio3, prio4, script, sript2
+
+#  - hassio://abraxas678:winter11:192.168.86.70/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwOWM2MmRlMDQyYzE0MTQwOGI1YmQ0M2M3MTNkYThlMiIsImlhdCI6MTY1NDE0MzU0MCwiZXhwIjoxOTY5NTAzNTQwfQ.d4-vjKoG8WFKefRdgY2xPOXY3XTyTiU20UJ4UcDvIYk:
+#    - tag: hassio, ha
+
+#  - hassio://abraxas678:winter11:wkjag6elo035oufatwa0axlc4mg1xy53.ui.nabu.casa/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwOWM2MmRlMDQyYzE0MTQwOGI1YmQ0M2M3MTNkYThlMiIsImlhdCI6MTY1NDE0MzU0MCwiZXhwIjoxOTY5NTAzNTQwfQ.d4-vjKoG8WFKefRdgY2xPOXY3XTyTiU20UJ4UcDvIYk:
+#    - tag: hassio, ha
+
+### PSAFER ###
+# psafer: razr: 54072
+#        xiaomi: 54071
+
+#  - psafers://lRMuivPYqXOrHcrFmLQt:
+#    - tag: ps, prio1, prio2, prio3, prio4
+ # - psafers://lRMuivPYqXOrHcrFmLQt?priority=low:
+  #  - tag: prio4
+#  - psafers://lRMuivPYqXOrHcrFmLQt?priority=normal:
+ #   - tag: ps, prio3
+  - psafers://lRMuivPYqXOrHcrFmLQt?priority=high:
+    - tag: prio2
+  - psafers://lRMuivPYqXOrHcrFmLQt?priority=emergency:
+    - tag: prio1
+
+  - psafers://lRMuivPYqXOrHcrFmLQt/54072:
+    - tag: psra, psr
+  - psafers://lRMuivPYqXOrHcrFmLQt/54071:
+    - tag: psx, psxiaomi
+
+
+### JOIN ALLGEMEIN ###
+
+## an JOIN anhängen ##
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@openmeop/?value2:
+    - tag: join, 2join, joinanhang
+
+  - join://304c57b5ddbd4c10b03b76fa97d44559/:
+    - tag: join, prio1
+  - join://304c57b5ddbd4c10b03b76fa97d44559/xiaomi:
+    - tag: prio3, join, xiaomi, joinxiaomi, jx
+  - join://304c57b5ddbd4c10b03b76fa97d44559/oneplus:
+    - tag: prio3, join, oneplus, joinoneplus, jop
+
+### design: https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush?apikey=304c57b5ddbd4c10b03b76fa97d44559&deviceNames=chrome%2Crazor%2CChromeRazer%2Cxiaomi&text=text%20text%20text&title=Title%20Title&icon=https%3A%2F%2Fcdn.icon-icons.com%2Ficons2%2F2596%2FPNG%2F512%2Fcheck_one_icon_155665.png&smallicon=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAPsAAADJCAMAAADSHrQyAAAAeFBMVEX%2F%2F%2F8AAADz8%2FP4%2BPi8vLyIiIgxMTHt7e22trZdXV2ioqLT09PIyMj7%2B%2Fvh4eHq6upDQ0PCwsLd3d1oaGiTk5NISEipqalubm6xsbF4eHhVVVWKiooiIiIpKSnQ0NAbGxs6Ojqbm5sMDAxYWFgeHh4VFRV%2Ff38%2BPj6tSvc4AAAJJElEQVR4nO2dbVviOhCGy4u8tIUqLAVE1OJ6%2FP%2F%2F8CwiK9BnpklmktS9en8V0zyQpJOZySRJOjo6Ojo6Ojo6OlwYZ8N0t52uRk%2B9I0%2Bj1XS7S4fZOHbHvNLPq%2FWoRzNaV%2Fm%2F%2BA3MyzWj%2BpJluYjdWUX6E1PdZ9aTfuxOazAu7y2Fn7hPf%2Fjwn23chH%2FJ38xiC3Amsx3qddZZbBFObPZi5Uf2m9hCbJlVKsJPVD9p6M9%2BKSo%2F8uvHqK%2BUlX%2Bqjy3KiI0H5UfaP%2B8znRUOsW%2F3mj9YelN%2BZDmILZDG13D%2Fpq0Dv%2F%2FoXXqv99hKQ38YQPmRYWyhdeT2qynr2FJvKF6CSe%2F1XorYci8JNd7PtGjc39n1fLS8S4d5Ni%2BKcVHMs3yY7pacLwtwF1vymTfzPk%2BrnBqwRV5NzRt6C6qQYmBqyU3LeWNj89JU%2F74Fdk5h1tVtbtxivjVrMvqKNzfp5RILLz8nyxIsXLmRbdw8jLyyaO7hIcWjs%2Fz%2BCPhqBumhuemozuxm6a8PxL9ezesd%2BsTDa5vFN0r%2FeKb%2B9WZJw66J50YvbzTxTXN9T69v6e1niS8pb3qJRJrz44ZuMfvNWe3DT9RHm%2FbFUSIYA75PW%2B5%2Faz87XO%2B%2B%2BI9%2FUIz3PGuFvvATEczj%2F%2BhPL35zjxop6zKAtb%2BazG3wL6%2Fc59kNw1RNkyE7rjfk6v5FH%2F0T%2Bx%2FP3OPgG9IfD0xXVo2BBHvtyWzFPJGyIbzALfEGv4KDdn6khVzsmbeuiVvBSTvnINnLJZnCbLSMDC037ZwZyb5RNWEmu9m%2B0lE7t18ONOVpo%2Bbd0Hnuqj3pv5PPDmPikG%2F2F9PnO2tPBqQ%2FOMhbnlxy3o2%2FenftyYD85UP4bqln98yjRQLt%2BH9tGhBArvEW7jOJdnrB877Wk%2B8Zm%2BC4SHuSUV3w7cig%2FEgTm0Zk2pMJ0YdXOym2UAudXZxEqJ3c1vld7oiH3tu1ItWO9v%2FWbdhSEs%2B0NCzE2inzqrTrhxXEI81jLifE2pM8%2BA8P3GxHGHcTRq6dcuKltl0xBj%2FvYN2OgvaECNtY98UQYrbbp71paCfe8r5mPP6qHdJfNLQTCT72g9AIYtvukOaror0e3%2FjEz0YeewtdBpmKdmIKrhz60wiOvr27NKWjPcHbWR8ROmxIOg0xJe14EvpIQ4IPcgsIKWknwmJOXWLBX7LbyqKlXbNPHNBLR0aOebS0J0%2BoIXXPHX6jWO3av1HTjnfy2odr8FMcG1PTjhchx1%2BEBA551wM8etrhgSztQQ%2B%2FYNcQoJ52HBR17BYB3C8%2Furampz2BZzVs%2FQk80LBxdo8paocORF3zBr5MnFtT1A4no%2BOrFwOn1dK5OU3tMPNWMxcBjix3j7CmduWu1YHeMfeor5X2xSQtH%2BhYH3TZWnsQGVA0RrBRttBeff31nly7kVvh1b1vNVBfK%2FfmjLVfblYoi6UybcwNGIAUnMw11H5z0PIJ2%2BnQaakXloT5vIL2zLTXftAP3BpqTO%2FcLLJsLENwV5hofwbZJTjygIJzetYNMhwlrTdrJw6Tw9bQL%2BNsbtdA3ZBsFBu1UzFP%2BN6G22tB765BjUtWkwbtCzI9Hb634Uos6N0V0DstcY7w2pmsTWhTQJeSlqcaJnBLGuS0Uwkln2C3MPpkUxq7Kag7osWE1l7wJ6OwLYmWYi2%2FFQq7ixK6SO3siQTyqWiSaAXiUY9EtXYI7dyBhBP410ROO62zFOh7FcW5ofaZQakQ3Bx6I2olGiI7Q7RDpvNCeYjBhrbw7o6Va9APInIHOmqnTkcgR6qWYYd2yKL6So7aKQcG2slpheGR50K0SXTS%2FkH6iZBh9yrp3wXIxAyundmVIu1apyWRdpHNaK99zTkHkc3tU3vQ3%2F03v7r4%2FN1jz%2Fcmz6DP%2BR53nX9sDDT4XOejvt8NMkh8vt8j2nVGnjGfdl0Yex7wYfY28WnPh9nH1TF1NPvcx4XZv9%2ByNvaK%2Bdy%2Fh%2FHbXPNk8SLx6bcJ46%2B7wirYhxrQ8teF8dNe8GZVjNSrnzaMf%2F4bS9vBq38%2BTFzmjPUK7Tcuox2Po89S9%2B7tB6vfeJx2HJauieQymvzGYbXj7zgV9I%2FR4LSAopb04u%2FaeRc4Z23vtnx6zrvQzreBiVuulliFOifp2w3KeVZJvTrQ1Lm%2BuO88K%2BX8uj8MrrJUD%2B7uAO%2F5dT6SFy%2FONUo2hd7zKpXzaU%2FMT%2Fuvw06U%2Feo9n1Y5j%2Fov48VCeo8A6phqHrVy%2FrwiAfLndc9NKBLg3ITueRk9QpyX0T0npUeQc1Kq5%2BP0gL3SPh%2Bnei5SjTDnIlXPw6oR5jxssDPHrewTfE6EgsgXhDr%2Frln3QIlwdQ8U610oEa7ehWKdEx0C1jlRrG%2BjQtD6Nnp1jVQIWtdIr56VBoHrWanVMdMgcB0ztfp1CgSvX6dVt1BO%2BLqFWvUqxcSoV6lUp1RMjDqlZH3asFOeunHGswNRpS6xkEh1iXXqUcuIVo9apQ65iHh1yFXqz0uIWX9e494BAXHvHVC4b8KdyPdNKNwz4kz0e0ZIg7Lne8Fj7pcJZlZL7xVypA33Convk3KjHfdJsfeI%2Bbqmui33iAnvj3OgPffHkdmBJ7QSuL9h7w0MHg4W3RdpS7vui5TdE2pH6%2B4JFd0PawV%2FJfohyj3wgnuBLWjlvcCi%2B6BNaet90KJ7wI14%2Fmh6QJsvQafvf2%2Bm3fe%2Fm4jvHVKX1WiQEoGX1khvnvOfLG0nfo7L190Qba6fYfaVl2zN5ef8S%2B0v8TMbk0HTUnxmWjb%2FUPOStRcv2Ed5r9d4M%2BzuUX%2F1QLk3irwy1f2Ht6AKGVhzu85oeZdO8mxeFOOimGf5JN0tWQu5jq%2BNsgOMW8ELbche%2F0tB%2Bk898BIqDGIKTn%2FxQawEH4ZQ475V4%2F1M36D4npjHMJEve9gaoyronXNVhyilrMWyHfYMRWZq5dmzj5PIZ0OTo8WVFg%2F3CyoPykWnrkMyY733DvyKlbDswqxSVF79JOWfbHRWvf3PmOe3ZHI7d93%2BtZ1ituFCiE3cb37cYL9mXPJl1UnhaQt8UnL6E9vBv5601Wx3YV6a6l%2BWkV3PXujn1ZrzTY3WVf4v%2Fd51xtkw3W2nq9HpMOvTaDXd7tJh9k9M746Ojo6Ojo6Ojgj8DzZdbc7Gw5k5AAAAAElFTkSuQmCC&image=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F69%2FHow_to_use_icon.svg%2F2214px-How_to_use_icon.svg.png&group=mygroup&category=mycat&notificationId=2211&mediaVolume=5&ringVolume=5&alarmVolume=10
+
+### VOLUME ###
+###  https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush?apikey=304c57b5ddbd4c10b03b76fa97d44559&deviceNames=xiaomi&alarmVolume=10
+
+  - join://304c57b5ddbd4c10b03b76fa97d44559/xiaomi/alarmVolume=3/cliipboard=7777/title=33333/text=22222:
+    - tag: jtest
+
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/osd:
+    - tag: script, prio1, prio2, prio3, osd, osdrazer, osdeventghost, prio1, prio4
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/osdshort:
+    - tag: prio1, prio2, prio3, osd, osdrazer, osdeventghost, prio3, prio1, prio4
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/osdlong:
+    - tag: prio1, script
+
+### TV ###
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/tv:
+    - tag: prio1, prio2, prio3, mqtt, tv, gtv, mqtttv, mqttgtv, prio1, script
+
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/command:
+    - tag: command
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/info:
+    - tag: mqtt, eventghost, razer, mqttrazer, mqtteventghost, prio1, script
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/mqttegtest:
+    - tag: mqttegtest
+
+### OPENME (LINKS)###
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@openme/?value2:
+    - tag: openme, openmexiaomi, openmex
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@openmeop/?value2:
+    - tag: openme, openmeoneplus, openmeop
+#  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/openme:
+#    - tag: openmeeg, openmer, openmemqtt, openme, openmerazor, openmeeventghost
+
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@openapp/?value2&value3=oneplus:
+    - tag: openme, openmeoneplus, openmeop, openappop, oaop
+
+#openapp name & package: https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush?apikey=304c57b5ddbd4c10b03b76fa97d44559&deviceNames=oneplus&app=com.e2esoft.ivcam&appPackage=com.e2esoft.ivcam
+#https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush?apikey=304c57b5ddbd4c10b03b76fa97d44559&deviceNames=razer&url=https%3A%2F%2Fweb.airdroid.com%2F%3Flang%3Dde
+#openme: https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush?apikey=304c57b5ddbd4c10b03b76fa97d44559&deviceNames=oneplus&url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.sand.airdroid
+#open by package: https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush?apikey=304c57b5ddbd4c10b03b76fa97d44559&deviceNames=oneplus&appPackage=com.e2esoft.ivcam
+
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/edit:
+    - tag: edit, editeg, editeventghost
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/apprise:
+    - tag: apprise
+#  - mqtt://abraxas678:winter11@192.168.86.32:1883/madhouse/eventghost/edit:
+#    - tag: edit, editeg, editeventghost
+
+### TTS ###
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/tts:
+    - tag: tts, ttsrazor, ttseventghost, prio1
+
+### MESSAGEBOX ###  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/messagebox:
+#    - tag: prio1, prio2, box, messagebox, eventghost, razer
+
+# low, moderate, normal, high, or emergency
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@ar5ha4ps5p1xo9mtgmz66v658ho5qm/xiaomi?priority=low:
+    - tag: pover, pushover, xiaomi, poverxiaomisilent
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@ar5ha4ps5p1xo9mtgmz66v658ho5qm/xiaomi?priority=normal&sound=pianobar:
+    - tag: pover, pushover, xiaomi, poverxiaomi
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@ar5ha4ps5p1xo9mtgmz66v658ho5qm/razer?priority=normal:
+    - tag: razer, poverrazer, prio3, prio4
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@ar5ha4ps5p1xo9mtgmz66v658ho5qm?priority=1:
+     - tag: pover, pushover, prio1, prio2
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@ar5ha4ps5p1xo9mtgmz66v658ho5qm?priority=moderate:
+     - tag: pover, pushover, prio1, prio2, povermoderate, pomoderate
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@ar5ha4ps5p1xo9mtgmz66v658ho5qm?priority=low:
+     - tag: pover, pushover, prio1, prio2, poverlow, polow
+
+# PUSHOVER APP SCRIPT
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@a48qexgz7ydt5jszhdvuhyitj32pgg?priority=normal:
+    - tag: poscript, poscriptnormal
+
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@ttsxiaomi/?value2:
+    - tag: tts, ttsxiaomi, prio1, ttsx
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@pushoveremergency/?+value1&+valuee2&+value3:
+    - tag: poveremergency, pushoveremergency, prio1
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@ntfy/?+value1+value2&+value3:
+    - tag: ntfy, xiaomi, ntfyx, xiaomintfy
+
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@forlater/?+value1+value2&+value3:
+    - tag: zoom, 4later, forlater
+
+
+#### nur value1 http link open on razer:
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@openonrazer/?+value1&+valuee2&+value3:
+    - tag: openonrazer
+
+### EMAIL ###
+  - mailtos://dmw.zone:587?smtp=smtp.strato.de&user=contact@dmw.zone&password=Winter11==??&to=amdamdes@mymails.cc?from=contact@dmw.zone:
+    - tag: atest3, email
+  - mailtos://dmw.zone:587?smtp=smtp.strato.de&user=contact@dmw.zone&password=Winter11==??&to=eaoyvkn4p2@pomail.net?from=contact@dmw.zone:
+    - tag: fr, friendly_reminder
+    
+  - mailtos://dmw.zone:587?smtp=smtp.strato.de&user=contact@dmw.zone&password=Winter11==??&to=67a8pry7k6@pomail.net?from=contact@dmw.zone:
+    - tag: snarl, snarlsound, razersound, prio1, prio2
+  - mailtos://dmw.zone:587?smtp=smtp.strato.de&user=contact@dmw.zone&password=Winter11==??&to=dcvki8jg11@pomail.net?from=contact@dmw.zone:
+    - tag: snarl2, snarlsound2, razersound2, prio3
+    
+  - json://164.92.169.252:5678/webhook/snarl:
+    - tag: snarl, razer, prio1, prio2, snarl2
+    
+  - json://164.92.169.252:5678/webhook-test/snarl:
+    - tag: snarltest
+
+  - json://164.92.169.252:5678/webhook/snarl:
+    - tag: snarl2, prio3, prio4, script, script2
+
+### JOIN + NTFY -> OnePlus {{VALUE1}} -> openapp
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@opcommand/?+value1&+valuee2&+value3:
+    - tag: opcommand, command
+
+### JOIN + NTFY -> xiaomi {{VALUE1}} -> openapp
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@xiaomicommand/?+value1&+valuee2&+value3:
+    - tag: xiaomicommand, command, xiaomicom, xcom
+
+#### WAKE ONEPLUS #### send "wake" to "-g opwake"
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@opwake/?+value1&+valuee2&+value3:
+    - tag: wake, opwake
+  - ntfys://ntfy.sh/rkorkorkooneplus/:
+    - tag wake, opwake, ntfy
+  - ntfys://ntfy.sh/rkorkorkomain/:
+    - tag wake, opwake, ntfymain
+#  https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush?apikey=304c57b5ddbd4c10b03b76fa97d44559&deviceNames=oneplus&text=wake
+
+  - xmls://ra.dmw.zone:443:
+    - tag: xml 
+  - xml://ra.dmw.zone:80/?+value1:
+    - tag: aabb, xml
+  - form://ra.dmw.zone:80/?+value1:
+    - tag: aa11, form, forms
+  - json://ra.dmw.zone:80/?+value1:
+    - tag: aa22, json
+
+### GCHAT ###
+  - gchat://AAAANWoW8k8/AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI/JI3Ipj_xVpan17H5r6bzZSru6K6t0nEDFQI6o1rsXEU:
+    - tag: gchat, prio1, prio2, always
+### Google Chat Webhook URL: https://chat.googleapis.com/v1/spaces/AAAANWoW8k8/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=JI3Ipj_xVpan17H5r6bzZSru6K6t0nEDFQI6o1rsXEU%3D
+### duplikat, origianl URL geht auch  - https://chat.googleapis.com/v1/spaces/AAAANWoW8k8/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=JI3Ipj_xVpan17H5r6bzZSru6K6t0nEDFQI6o1rsXEU%3D:
+###    - tag: gchat2
+ 
+
+   # The more elements you specify under a URL the more times the URL will
+  # get replicated and used. Hence this entry actually could be considered
+  # 2 URLs being called with just the destination email address changed:
+#  - mailto://george:password@gmail.com:
+#     - to: jason@hotmail.com
+#     - to: fred@live.com
+
+  # Again... to re-iterate, the above mailto:// would actually fire two (2)
+  # separate emails each with a different destination address specified.
+  # Be careful when defining your arguments and differentiating between
+  # when to use the dash (-) and when not to.  Each time you do, you will
+  # cause another instance to be created.
+
+  # Defining more then 1 element to a multi-set is easy, it looks like this:
+#  - mailto://jackson:abc123@hotmail.com:
+#     - to: jeff@gmail.com
+#       tag: jeff, customer
+
+#     - to: chris@yahoo.com
+#       tag: chris, customer

@@ -1,0 +1,201 @@
+# Optionally define some global tags to associate with ALL of your
+tag: alles, all
+urls:
+  - join://304c57b5ddbd4c10b03b76fa97d44559/:
+    - tag: join, prio1
+  - join://304c57b5ddbd4c10b03b76fa97d44559/xiaomi:
+    - tag: prio3, join, xiaomi, joinxiaomi
+
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/osd:
+    - tag: prio1, prio2, prio3, osd, osdrazer, osdeventghost, prio3, prio1, prio4
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/osdshort:
+    - tag: always, prio1, prio2, prio3, osd, osdrazer, osdeventghost, prio3, prio1, prio4
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/tv:
+    - tag: prio1, prio2, prio3, mqtt, tv, gtv, mqtttv, mqttgtv, prio1
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/info:
+    - tag: mqtt, eventghost, razer, mqttrazer, mqtteventghost, prio1
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/tv:
+    - tag: priot1, prio2, mqtt, mqtttv, tv, prio1, prio3
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/openme:
+    - tag: openme, openmerazor, openmeeventghost
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/tts:
+    - tag: tts, ttsrazor, ttseventghost, prio1
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/clipboard:
+    - tag: cb, clipboard, cbrazer, cbeventghost, cbeg
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/messagebox:
+    - tag: prio1, prio2, messagebox, eventghost, razer
+
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@ar5ha4ps5p1xo9mtgmz66v658ho5qm/xiaomi?priority=1:
+    - tag: pover, pushover, xiaomi, poverxiaomi, prio3
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@ar5ha4ps5p1xo9mtgmz66v658ho5qm/razer?priority=1:
+    - tag: razer, poverrazer, prio3, prio4
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@ar5ha4ps5p1xo9mtgmz66v658ho5qm?priority=1:
+     - tag: pover, pushover, prio1, prio2
+
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@ttsxiaomi/?value2:
+    - tag: tts, ttsxiaomi, prio1, script
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@openme/?value2:
+    - tag: openme, openmexiaomi, openmex
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@pushoveremergency/?+value1&+valuee2&+value3:
+    - tag: poveremergency, pushoveremergency, prio1
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@clipboard/?+value2&+value3:
+    - tag: cb, clipboard, cbxiaomi, cbx
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@ntfy/?+value1+value2&+value3:
+    - tag: ntfy, xiaomi, ntfyx, xiaomintfy
+
+  # The more elements you specify under a URL the more times the URL will
+  # get replicated and used. Hence this entry actually could be considered
+  # 2 URLs being called with just the destination email address changed:
+#  - mailto://george:password@gmail.com:
+#     - to: jason@hotmail.com
+#     - to: fred@live.com
+
+  # Again... to re-iterate, the above mailto:// would actually fire two (2)
+  # separate emails each with a different destination address specified.
+  # Be careful when defining your arguments and differentiating between
+  # when to use the dash (-) and when not to.  Each time you do, you will
+  # cause another instance to be created.
+
+  # Defining more then 1 element to a multi-set is easy, it looks like this:
+#  - mailto://jackson:abc123@hotmail.com:
+#     - to: jeff@gmail.com
+#       tag: jeff, customer
+
+#     - to: chris@yahoo.com
+#       tag: chris, customer
+
+# Optionally define some global tags to associate with ALL of your
+  - join://304c57b5ddbd4c10b03b76fa97d44559/:
+    - tag: join, prio1
+  - join://304c57b5ddbd4c10b03b76fa97d44559/xiaomi:
+    - tag: prio3, join, xiaomi, joinxiaomi
+### OSD ###
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/osd:
+    - tag: prio1, prio2, prio3, osd, osdrazer, osdeventghost, prio3, prio1, prio4
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/osdshort:
+    - tag: prio1, prio2, prio3, osd, osdrazer, osdeventghost, prio3, prio1, prio4
+### TV ###
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/tv:
+    - tag: prio1, prio2, prio3, mqtt, tv, gtv, mqtttv, mqttgtv, prio1, script
+
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/command:
+    - tag: command
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/info:
+    - tag: mqtt, eventghost, razer, mqttrazer, mqtteventghost, prio1, script
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/mqttegtest:
+    - tag: mqttegtest
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/openme:
+    - tag: openme, openmerazor, openmeeventghost
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/edit:
+    - tag: edit, editeg, editeventghost
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/apprise:
+    - tag: apprise
+#  - mqtt://abraxas678:winter11@192.168.86.32:1883/madhouse/eventghost/edit:
+#    - tag: edit, editeg, editeventghost
+
+### TTS ###
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/tts:
+    - tag: tts, ttsrazor, ttseventghost, prio1
+
+### CB Eventghost ###
+  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/clipboard:
+    - tag: cb, clipboard, cbrazer, cbr, cbeventghost, cbeg
+.apprise.yml.save#  - mqtt://abraxas678:winter11@192.168.86.32:1883/madhouse/eventghost/clipboard:
+#    - tag: cb, clipboard, cbrazer, cbeventghost, cbeg, cb111
+### MESSAGEBOX ###  - mqtts://abraxas678:Winter11==@45af1ccf4d964d0495a3d9fcaa04f700.s1.eu.hivemq.cloud:8883/madhouse/eventghost/messagebox:
+    - tag: prio1, prio2, box, messagebox, eventghost, razer
+
+# low, moderate, normal, high, or emergency
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@ar5ha4ps5p1xo9mtgmz66v658ho5qm/xiaomi?priority=1:
+    - tag: pover, pushover, xiaomi, poverxiaomi, prio3
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@ar5ha4ps5p1xo9mtgmz66v658ho5qm/razer?priority=1:
+    - tag: razer, poverrazer, prio3, prio4
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@ar5ha4ps5p1xo9mtgmz66v658ho5qm?priority=1:
+     - tag: pover, pushover, prio1, prio2
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@ar5ha4ps5p1xo9mtgmz66v658ho5qm?priority=moderate:
+     - tag: pover, pushover, prio1, prio2, script, povermoderate, pomoderate
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@ar5ha4ps5p1xo9mtgmz66v658ho5qm?priority=low:
+     - tag: pover, pushover, prio1, prio2, script, poverlow, polow
+
+# PUSHOVER APP SCRIPT
+  - pover://BSXtveypM4mQ9v47DpnT3xrzgEXum3@a48qexgz7ydt5jszhdvuhyitj32pgg?priority=normal:
+    - tag: poscript, poscriptnormal
+
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@ttsxiaomi/?value2:
+    - tag: tts, ttsxiaomi, prio1, ttsx
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@openme/?value2:
+    - tag: openme, openmexiaomi, openmex
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@pushoveremergency/?+value1&+valuee2&+value3:
+    - tag: poveremergency, pushoveremergency, prio1
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@ntfy/?+value1+value2&+value3:
+    - tag: ntfy, xiaomi, ntfyx, xiaomintfy
+
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@forlater/?+value1+value2&+value3:
+    - tag: zoom, 4later, forlater
+
+### CLIPBOARD ###
+  ###### [TASKER CB] > EVENTGHOST(HTTP)
+  ###### [APPRISE CB] >  IFTTT > EVENTGHOST(HTTP)
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@cbeg/?+value1+value2&+value3:
+    - tag: cbifttteg, cbr, cbrazer
+  ###### geht auf razer - läuft üver join
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@clipboard/?+value2&+value3:
+    - tag: cb, clipboard
+
+#### nur value1 http link open on razer:
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@openonrazer/?+value1&+valuee2&+value3:
+    - tag: openonrazer
+
+### EMAIL ###
+  - mailtos://dmw.zone:587?smtp=smtp.strato.de&user=contact@dmw.zone&password=Winter11==??&to=amdamdes@mymails.cc?from=contact@dmw.zone:
+    - tag: atest3, email
+  - mailtos://dmw.zone:587?smtp=smtp.strato.de&user=contact@dmw.zone&password=Winter11==??&to=eaoyvkn4p2@pomail.net?from=contact@dmw.zone:
+    - tag: fr, friendly_reminder
+
+### JOIN + NTFY -> OnePlus {{VALUE1}} -> openapp
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@opcommand/?+value1&+valuee2&+value3:
+    - tag: opcommand, command
+
+### JOIN + NTFY -> xiaomi {{VALUE1}} -> openapp
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@xiaomicommand/?+value1&+valuee2&+value3:
+    - tag: xiaomicommand, command, xiaomicom, xcom
+
+#### WAKE ONEPLUS #### send "wake" to "-g opwake"
+  - ifttt://4q38KZvz7CwD5_QzdUZHq@opwake/?+value1&+valuee2&+value3:
+    - tag: wake, opwake
+  - ntfys://ntfy.sh/rkorkorkooneplus/:
+    - tag wake, opwake
+#  https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush?apikey=304c57b5ddbd4c10b03b76fa97d44559&deviceNames=oneplus&text=wake
+
+  - xmls://ra.dmw.zone:443:
+    - tag: xml 
+  - xml://ra.dmw.zone:80/?+value1:
+    - tag: aabb, xml
+  - form://ra.dmw.zone:80/?+value1:
+    - tag: aa11, form, forms
+  - json://ra.dmw.zone:80/?+value1:
+    - tag: aa22, json
+
+### Google Chat Webhook URL: 
+
+
+  # The more elements you specify under a URL the more times the URL will
+  # get replicated and used. Hence this entry actually could be considered
+  # 2 URLs being called with just the destination email address changed:
+#  - mailto://george:password@gmail.com:
+#     - to: jason@hotmail.com
+#     - to: fred@live.com
+
+  # Again... to re-iterate, the above mailto:// would actually fire two (2)
+  # separate emails each with a different destination address specified.
+  # Be careful when defining your arguments and differentiating between
+  # when to use the dash (-) and when not to.  Each time you do, you will
+  # cause another instance to be created.
+
+  # Defining more then 1 element to a multi-set is easy, it looks like this:
+#  - mailto://jackson:abc123@hotmail.com:
+#     - to: jeff@gmail.com
+#       tag: jeff, customer
+
+#     - to: chris@yahoo.com
+#       tag: chris, customer

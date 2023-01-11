@@ -1,0 +1,3 @@
+root = /home/abraxas
+root = socket://100.114.122.60:2244
+include whitelist
