@@ -8,6 +8,7 @@ echo "User: $USER"
 echo MY_MAIN_USER="abraxas"
 MY_CH="n"
 echo
+mkdir /home/abraxas/tmp
 read -p "CHANGE? (y/n) >> " -t 10 -n 1 MY_CH
 [[ $MY_CH = *"y"* ]] && read -p "MY_MAIN_USER: >> " MY_MAIN_USER
 export MY_MAIN_USER=$MY_MAIN_USER
@@ -32,6 +33,7 @@ read -p BUTTON3 -t 3 me
 $MY_SUDO apt update && $MY_SUDO apt install -y git curl wget figlet tmate
 
 
+if [[ 1 = 0 ]]; then
 #if [[ $(rclone listremotes | grep pc: | wc -l) -eq "0" ]]; then
 #  echo "start tmate ssh session from local PC (cmd or powershell) and setup pcloud" 
 MY_TMATE=y
@@ -42,6 +44,7 @@ MY_TMATE=y
  curl -d "$(cat tmate.dat)" https://n.yyps.de/alert
 #fi
  fi
+fi
 
 echo
 echo #####################################################################
@@ -81,6 +84,16 @@ if [[ $(duck --version) != "Cyberduck" ]]; then
   sudo apt-get update
   sudo apt-get install duck -y
 fi
+
+cd $HOME/tmp
+duck --download b2:rko-master-files/rko-master-files.tar.xz .
+tar -xf rko-master-files.tar.xz
+cd /home/abraxas/tmp/home/rko-master-files
+echo; $PWD; echo
+ls -a
+echo
+
+exit
 
 if [[ $(which rclone) != *"/usr/bin/rclone"* ]]; then
   echo "#####################################################################"
